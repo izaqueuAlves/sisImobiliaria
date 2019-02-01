@@ -32851,7 +32851,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Tela Compra",
+											"text": "Tela Venda",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -33140,7 +33140,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Ctr Compra",
+											"text": "Ctr Venda",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -40950,7 +40950,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFopuB3HDBysts="
 					},
-					"name": "Tela Compra",
+					"name": "Tela Venda",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -41013,7 +41013,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFopuB3HDBysts="
 					},
-					"name": "Ctr Compra",
+					"name": "Ctr Venda",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
