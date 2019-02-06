@@ -18,14 +18,15 @@ public class Imovel {
    private float valorCompra;
    private float valorAluguel;
    private String CPF_proprietario;
-   //private Situacao_Imovel situacao;
+   private Situacao_Imovel situacao;
 
     // Funcoes contrutoras Imovel
-   
+    //Construtor Vazio
     public Imovel(){
         
     }
-    public Imovel(float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, ArrayList<String> fotos, String descricao, float valorCompra, float valorAluguel, String CPF_proprietario) {
+    //Construtor Completo; obs: Lembrar que o id quem define é o banco de dados, por isso não está no construtor
+    public Imovel(float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, ArrayList<String> fotos, String descricao, float valorCompra, float valorAluguel, String CPF_proprietario, Situacao_Imovel situacao_Imovel) {
         this.area = area;
         this.numQuartos = numQuartos;
         this.numBanheiros = numBanheiros;
@@ -36,6 +37,7 @@ public class Imovel {
         this.valorCompra = valorCompra;
         this.valorAluguel = valorAluguel;
         this.CPF_proprietario = CPF_proprietario;
+        this.situacao = situacao_Imovel;
     }
     /*
         Inicio Gets e Sets Gerados Automaticamente
