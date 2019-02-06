@@ -1,5 +1,5 @@
 
-package principal;
+package classesEntidade;
 
 import java.util.ArrayList;
 
