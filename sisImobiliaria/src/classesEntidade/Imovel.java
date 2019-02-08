@@ -19,7 +19,7 @@ public class Imovel {
    private float valorAluguel;
    private String CPF_proprietario;
    private Situacao_Imovel situacao;
-   private float teste;
+   
     // Funcoes contrutoras Imovel
     //Construtor Vazio
     public Imovel(){
