@@ -5,12 +5,16 @@
  */
 package classesEntidade;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author welerson
  */
+@Entity
 public class Adm {
-    
+    @Id
     private String login;
     private String senha;
     private String nomeCompleto;

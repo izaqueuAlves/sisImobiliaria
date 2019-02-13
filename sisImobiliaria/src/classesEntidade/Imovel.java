@@ -2,6 +2,9 @@
 package classesEntidade;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
@@ -9,7 +12,10 @@ import java.util.ArrayList;
  * @author welerson
  * 
  */
+@Entity
 public class Imovel {
+   @Id
+   @GeneratedValue
    private int id;
    private float area;
    private int numQuartos, numBanheiros, numSuites, vagasGaragem;

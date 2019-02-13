@@ -5,12 +5,16 @@
  */
 package classesEntidade;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author welerson
  */
+@Entity
 public class TipoImovel {
-    
+    @Id 
     private int idTipoImovel;
     private String nome;
     private boolean emCondominio;

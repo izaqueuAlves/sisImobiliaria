@@ -5,10 +5,13 @@
  */
 package classesEntidade;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author welerson
  */
+@Entity
 public class Endereco {
     
     private String CEP;
