@@ -1,15 +1,25 @@
 
 package classesEntidade;
 
+
+import conexao.Connect;
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
- *
  * 
- * @author welerson
+ * @author Izaqueu
  * 
  */
+@Entity
 public class Imovel {
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    private float area;
    private int numQuartos, numBanheiros, numSuites, vagasGaragem;
@@ -17,7 +27,10 @@ public class Imovel {
    private String descricao;
    private float valorCompra;
    private float valorAluguel;
-   private String CPF_proprietario;
+   // chaves estranheiras
+   @ManyToOne
+   private Proprietario CPF_proprietario;
+   @ManyToOne
    private Situacao_Imovel situacao;
    
     // Funcoes contrutoras Imovel
@@ -25,7 +38,7 @@ public class Imovel {
     public Imovel(){
         
     }
-    //Construtor Completo; obs: Lembrar que o id quem define é o banco de dados, por isso não está no construtor
+    /*Construtor Completo; obs: Lembrar que o id quem define é o banco de dados, por isso não está no construtor
     public Imovel(float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, ArrayList<String> fotos, String descricao, float valorCompra, float valorAluguel, String CPF_proprietario, Situacao_Imovel situacao_Imovel) {
         this.area = area;
         this.numQuartos = numQuartos;
@@ -38,7 +51,7 @@ public class Imovel {
         this.valorAluguel = valorAluguel;
         this.CPF_proprietario = CPF_proprietario;
         this.situacao = situacao_Imovel;
-    }
+    } */
     /*
         Inicio Gets e Sets Gerados Automaticamente
     */
@@ -82,12 +95,12 @@ public class Imovel {
         return valorAluguel;
     }
 
-    public String getCPF_proprietario() {
+    public Proprietario getCPF_proprietario() {
         return CPF_proprietario;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    public Situacao_Imovel getSituaccao_Imovel() {
+        return situacao;
     }
 
     public void setArea(float area) {
@@ -126,8 +139,12 @@ public class Imovel {
         this.valorAluguel = valorAluguel;
     }
 
-    public void setCPF_proprietario(String CPF_proprietario) {
+    public void setCPF_proprietario(Proprietario CPF_proprietario) {
         this.CPF_proprietario = CPF_proprietario;
+    }
+    
+     public void setSituaccao_Imovel(Situacao_Imovel situacao) {
+        this.situacao = situacao;
     }
    /*
         Fim Gets e Sets Gerados Automaticamente
@@ -136,6 +153,22 @@ public class Imovel {
    /*
         Inicio Funções Classe Imovel
     */ 
-   
+   public void inserir(Imovel imovel) {
+		// ABRE A CONEXAO
+		EntityManager em = new Connect().getConexao();	
+		
+		try {		
+                    em.getTransaction().begin();
+		    em.persist(imovel);
+		    em.getTransaction().commit();
+			 		
+			// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+		}finally{
+		 	em.close();
+		}
+	}
    
 }

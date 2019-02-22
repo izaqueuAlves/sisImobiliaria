@@ -5,20 +5,29 @@
  */
 package classesEntidade;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
 /**
  *
- * @author welerson
+ * @author izaqueu
  */
-public enum Situacao_Imovel {
-        DISPONIVEL_ALUGUEL(1), DISPONIVE_VENDA(2), DISPONIVEL_VENDA_ALUGUEL(3), ALUGADO(4), VENDIDO(5), INVALIDO(6);
-        
-        private final int valor;
+@Entity
+public class Situacao_Imovel{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String descricao;
 
-    private Situacao_Imovel(int val) {
-        this.valor = val;
+    private Situacao_Imovel() {
+        
     }
-    public int getValor(){
-        return valor;
+    
+    public String getDescricao(){
+        return descricao;
     }
         
 }

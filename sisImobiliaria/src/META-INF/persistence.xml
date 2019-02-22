@@ -10,8 +10,9 @@
     <!-- Lista de entidades -->
     <!-- <class> nome_pacote.nome_classe </class> -->
     
-    <class>classes.Imovel</class>
+        <class>classes.Imovel</class>
 	<class>classes.Situacao_Imovel</class>
+        <class>classes.Proprietario</class>
 	
     
     <properties>
