@@ -3345,7 +3345,6 @@
 											"left": 793,
 >>>>>>> 4ba735072a0d603687491c860eb76b4fc14b4839
 											"top": 611.5,
-											"width": 122,
 											"width": 124,
 											"height": 13,
 <<<<<<< HEAD
@@ -3505,7 +3504,6 @@
 							"containerChangeable": true,
 							"left": 760,
 							"top": 600,
-							"width": 187,
 							"width": 190,
 							"height": 35,
 							"nameCompartment": {
@@ -10122,7 +10120,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -80,
-									"top": -384,
 									"top": -392,
 									"width": 10,
 									"height": 10
@@ -10139,7 +10136,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -80,
-									"top": -384,
 									"top": -392,
 									"width": 10,
 									"height": 10
@@ -10156,7 +10152,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -80,
-									"top": -384,
 									"top": -392,
 									"width": 10,
 									"height": 10
@@ -10173,7 +10168,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -80,
-									"top": -384,
 									"top": -392,
 									"width": 10,
 									"height": 10
@@ -10190,7 +10184,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -80,
-									"top": -384,
 									"top": -392,
 									"width": 10,
 									"height": 10
@@ -21368,7 +21361,6 @@
 					"_parent": {
 						"$ref": "AAAAAAFoguRvfrJZsxo="
 					},
-					"name": "Alterar Locatário",
 					"name": "Editar Locatário",
 					"ownedElements": [
 						{
@@ -21480,7 +21472,6 @@
 					"_parent": {
 						"$ref": "AAAAAAFoguRvfrJZsxo="
 					},
-					"name": "Alterar Proprietário",
 					"name": "Editar Proprietário",
 					"ownedElements": [
 						{
@@ -21592,7 +21583,6 @@
 					"_parent": {
 						"$ref": "AAAAAAFoguRvfrJZsxo="
 					},
-					"name": "Alterar Comprador",
 					"name": "Editar Comprador",
 					"ownedElements": [
 						{
