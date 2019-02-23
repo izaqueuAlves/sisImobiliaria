@@ -19,6 +19,7 @@ public class Corretor {
     private String creci;
     private String senha;
     private String nomeCompleto;
+    private String telefone;
     private String email;
     
 }
