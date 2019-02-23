@@ -6,6 +6,8 @@
 package classesEntidade;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -15,6 +17,7 @@ import javax.persistence.Id;
 @Entity
 public class Tipo_Imovel {
     @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipoImovel;
     private String nome;
     private boolean emCondominio;
