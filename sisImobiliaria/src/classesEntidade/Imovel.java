@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 /**
@@ -33,6 +35,17 @@ public class Imovel {
    private Proprietario CPF_proprietario;
    @ManyToOne
    private Situacao_Imovel situacao;
+   @ManyToOne
+   private Tipo_Imovel tipo_imovel;
+   @OneToOne 
+   private Endereco endereco;
+   @ManyToOne
+   private Adm adm;
+   @OneToMany
+   private Contrato_Venda contrato_venda;
+   @OneToMany
+   private Contrato_Aluguel contrato_aluguel;
+   
    
     // Funcoes contrutoras Imovel
     //Construtor Vazio
@@ -154,7 +167,7 @@ public class Imovel {
    /*
         Inicio Funções Classe Imovel
     */ 
-   public void inserir(Imovel imovel) {
+   public void cadastrarImovel(Imovel imovel) {
 		// ABRE A CONEXAO
 		EntityManager em = new Connect().getConexao();	
 		
@@ -170,6 +183,10 @@ public class Imovel {
 		}finally{
 		 	em.close();
 		}
+    }
+
+    public void cinserir(Imovel im) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
 }

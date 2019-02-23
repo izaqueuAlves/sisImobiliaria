@@ -17,7 +17,7 @@ public class Classe_Teste {
         im.setNumSuites(0);
         im.setValorAluguel(500);
         
-        im.inserir(im);
+        im.cadastrarImovel(im);
         
         System.out.println("hello World!");
     }
