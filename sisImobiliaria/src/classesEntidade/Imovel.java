@@ -170,6 +170,6 @@ public class Imovel {
 		}finally{
 		 	em.close();
 		}
-	}
+    }
    
 }

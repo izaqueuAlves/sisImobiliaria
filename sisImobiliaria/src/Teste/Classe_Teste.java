@@ -10,7 +10,7 @@ public class Classe_Teste {
     public static void main(String[] args){
         
         Imovel im = new Imovel();
-        im.setDescricao("Casa");
+        im.setDescricao("Casa 2");
         im.setArea(5);
         im.setNumBanheiros(3);
         im.setNumQuartos(4);
