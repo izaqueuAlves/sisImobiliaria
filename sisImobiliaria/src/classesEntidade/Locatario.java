@@ -13,7 +13,7 @@ import javax.persistence.Id;
  * @author Izaqueu
  */
 @Entity
-public class Coomprador {
+public class Locatario {
     @Id
     private String cpf;
     private String nomeCompleto;

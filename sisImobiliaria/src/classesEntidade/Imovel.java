@@ -40,12 +40,7 @@ public class Imovel {
    @OneToOne 
    private Endereco endereco;
    @ManyToOne
-   private Adm adm;
-   @OneToMany
-   private Contrato_Venda contrato_venda;
-   @OneToMany
-   private Contrato_Aluguel contrato_aluguel;
-   
+   private Adm adm;   
    
     // Funcoes contrutoras Imovel
     //Construtor Vazio

@@ -19,6 +19,9 @@
         <class>classes.Tipo_Imovel</class>
         <class>classes.Endereco</class>
         <class>classes.Situacao_Contrato</class>
+        <class>classes.Comprador</class>
+        <class>classes.Corretor</class>
+        <class>classes.Locatario</class>
 	
     
     <properties>
