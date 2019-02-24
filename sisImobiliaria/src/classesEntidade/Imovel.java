@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -30,18 +29,17 @@ public class Imovel {
    private String descricao;
    private float valorCompra;
    private float valorAluguel;
+   private Situacao_Imovel situacao_Imovel;
    // chaves estranheiras
    @ManyToOne
-   private Proprietario CPF_proprietario;
-   @ManyToOne
-   private Situacao_Imovel situacao;
+   private Proprietario proprietario;
    @ManyToOne
    private Tipo_Imovel tipo_imovel;
    @OneToOne 
    private Endereco endereco;
    @ManyToOne
    private Adm adm;   
-   
+
     // Funcoes contrutoras Imovel
     //Construtor Vazio
     public Imovel(){
@@ -64,6 +62,15 @@ public class Imovel {
     /*
         Inicio Gets e Sets Gerados Automaticamente
     */
+
+    public Tipo_Imovel getTipo_imovel() {
+        return tipo_imovel;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    
     public int getId() {
         return id;
     }
@@ -104,12 +111,12 @@ public class Imovel {
         return valorAluguel;
     }
 
-    public Proprietario getCPF_proprietario() {
-        return CPF_proprietario;
+    public Proprietario getProprietario() {
+        return proprietario;
     }
     
-    public Situacao_Imovel getSituaccao_Imovel() {
-        return situacao;
+    public Situacao_Imovel getSituacao_Imovel() {
+        return this.situacao_Imovel;
     }
 
     public void setArea(float area) {
@@ -148,13 +155,27 @@ public class Imovel {
         this.valorAluguel = valorAluguel;
     }
 
-    public void setCPF_proprietario(Proprietario CPF_proprietario) {
-        this.CPF_proprietario = CPF_proprietario;
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
     }
     
-     public void setSituaccao_Imovel(Situacao_Imovel situacao) {
-        this.situacao = situacao;
+     public void setSituacao_Imovel(Situacao_Imovel situacao_Imovel) {
+        this.situacao_Imovel = situacao_Imovel;
+    }  
+     
+    public void setTipo_imovel(Tipo_Imovel tipo_imovel) {
+        this.tipo_imovel = tipo_imovel;
     }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setAdm(Adm adm) {
+        this.adm = adm;
+    }
+   
+     
    /*
         Fim Gets e Sets Gerados Automaticamente
     */

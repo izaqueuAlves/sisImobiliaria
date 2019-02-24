@@ -56,4 +56,10 @@ public class Proprietario {
     public void setEmail(String email){
         this.email = email;
     }
+
+    //Retorna o objeto proprietario buscado no banco de dados pelo CPF, preenchendo todos os atributos
+    public Proprietario buscarProprietario(String CPF_proprietario) {
+        //Preenche todos os campos e retorna o objeto this
+        return this;
+    }
 }

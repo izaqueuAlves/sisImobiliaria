@@ -9,6 +9,6 @@ package classesControle;
  *
  * @author welerson
  */
-public class ControleConsultarLocatario {
+public class ControleLocatario {
     
 }
