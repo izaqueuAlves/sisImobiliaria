@@ -62,4 +62,5 @@ public class Proprietario {
         //Preenche todos os campos e retorna o objeto this
         return this;
     }
+    
 }

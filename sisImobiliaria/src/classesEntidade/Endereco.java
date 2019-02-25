@@ -42,6 +42,11 @@ public class Endereco {
     public Endereco(){
         
     }
+
+    @Override
+    public String toString() {
+        return "Rua/Av/Rod " + logradouro + " Nº " + numero + " " + complemento + ", bairro " + bairro + ", " + cidade + " - "+ UF + " de CEP: " + CEP ;
+    }
     
     //Gets e Sets
 

@@ -62,6 +62,10 @@ public class Comprador {
     public String getEmail() {
         return email;
     }
+
+    public Comprador buscarComprador(String CPF_comprador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

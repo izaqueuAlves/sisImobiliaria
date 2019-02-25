@@ -27,6 +27,8 @@ public class Contrato_Venda {
     private float valorVenda;
     private String descricaoVenda;
     private String dataFechamento;
+    private Situacao_Contrato situacao_contrato;
+
     
     /* TALVEZ SEJA MELHOR COLOCAR SITUACAO_IMOVEL COMO TABELA
     @ManyToOne
@@ -51,6 +53,10 @@ public class Contrato_Venda {
         this.valorVenda = valorVenda;
         this.descricaoVenda = descricaoVenda;
         this.dataFechamento = dataFechamento;
+    }
+    
+    public void setSituacao_contrato(Situacao_Contrato situacao_contrato) {
+        this.situacao_contrato = situacao_contrato;
     }
 
     public void setIdContrato(int idContrato) {
@@ -80,8 +86,10 @@ public class Contrato_Venda {
     public void setImovel(Imovel imovel) {
         this.imovel = imovel;
     }
-    
-    
+
+    public Situacao_Contrato getSituacao_contrato() {
+        return situacao_contrato;
+    }
 
     public int getIdContrato() {
         return idContrato;
@@ -109,6 +117,10 @@ public class Contrato_Venda {
 
     public Imovel getImovel() {
         return imovel;
+    }
+
+    public void abrirContrato() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

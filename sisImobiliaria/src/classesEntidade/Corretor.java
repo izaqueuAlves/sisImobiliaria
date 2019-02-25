@@ -83,6 +83,10 @@ public class Corretor {
     public String getEmail() {
         return email;
     }
+
+    public Corretor buscarCorretor(String CPF_corretor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

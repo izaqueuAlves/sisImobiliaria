@@ -46,7 +46,7 @@ public class ControleImovel {
         
         try {
             novoImovel.cadastrarImovel(novoImovel);
-            //Imovel cadastrado com sucesso!
+            //Mensagem de Imovel cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
