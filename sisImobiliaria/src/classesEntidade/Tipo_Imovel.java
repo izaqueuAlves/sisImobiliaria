@@ -6,6 +6,8 @@
 package classesEntidade;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -13,18 +15,19 @@ import javax.persistence.Id;
  * @author welerson
  */
 @Entity
-public class TipoImovel {
+public class Tipo_Imovel {
     @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipoImovel;
     private String nome;
     private boolean emCondominio;
     
     // Funcoes contrutoras Imovel
-    public TipoImovel(){
+    public Tipo_Imovel(){
         
     }
 
-    public TipoImovel(String nome, boolean emCondominio) {
+    public Tipo_Imovel(String nome, boolean emCondominio) {
         this.nome = nome;
         this.emCondominio = emCondominio;
     }

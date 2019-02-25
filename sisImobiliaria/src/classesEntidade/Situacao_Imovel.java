@@ -5,14 +5,16 @@
  */
 package classesEntidade;
 
+
 /**
  *
- * @author welerson
+ * @author izaqueu
  */
+
 public enum Situacao_Imovel {
-        DISPONIVEL_ALUGUEL(1), DISPONIVE_VENDA(2), DISPONIVEL_VENDA_ALUGUEL(3), ALUGADO(4), VENDIDO(5), INVALIDO(6);
+    DISPONIVEL_ALGUEL(1), DISPONIVEL_VENDA(2), DISPONIVEL_VENDA_ALUGUEL(3), ALUGADO(4), VENDIDO(5);
         
-        private final int valor;
+    private final int valor;
 
     private Situacao_Imovel(int val) {
         this.valor = val;
@@ -20,5 +22,4 @@ public enum Situacao_Imovel {
     public int getValor(){
         return valor;
     }
-        
 }

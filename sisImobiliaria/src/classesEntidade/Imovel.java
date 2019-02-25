@@ -1,21 +1,27 @@
 
 package classesEntidade;
 
+
+import conexao.Connect;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 
 /**
- *
  * 
- * @author welerson
+ * @author Izaqueu
  * 
  */
 @Entity
 public class Imovel {
    @Id
-   @GeneratedValue
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    private float area;
    private int numQuartos, numBanheiros, numSuites, vagasGaragem;
@@ -23,15 +29,23 @@ public class Imovel {
    private String descricao;
    private float valorCompra;
    private float valorAluguel;
-   private String CPF_proprietario;
-   private Situacao_Imovel situacao;
-   
+   private Situacao_Imovel situacao_Imovel;
+   // chaves estranheiras
+   @ManyToOne
+   private Proprietario proprietario;
+   @ManyToOne
+   private Tipo_Imovel tipo_imovel;
+   @OneToOne 
+   private Endereco endereco;
+   @ManyToOne
+   private Adm adm;   
+
     // Funcoes contrutoras Imovel
     //Construtor Vazio
     public Imovel(){
         
     }
-    //Construtor Completo; obs: Lembrar que o id quem define é o banco de dados, por isso não está no construtor
+    /*Construtor Completo; obs: Lembrar que o id quem define é o banco de dados, por isso não está no construtor
     public Imovel(float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, ArrayList<String> fotos, String descricao, float valorCompra, float valorAluguel, String CPF_proprietario, Situacao_Imovel situacao_Imovel) {
         this.area = area;
         this.numQuartos = numQuartos;
@@ -44,10 +58,19 @@ public class Imovel {
         this.valorAluguel = valorAluguel;
         this.CPF_proprietario = CPF_proprietario;
         this.situacao = situacao_Imovel;
-    }
+    } */
     /*
         Inicio Gets e Sets Gerados Automaticamente
     */
+
+    public Tipo_Imovel getTipo_imovel() {
+        return tipo_imovel;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    
     public int getId() {
         return id;
     }
@@ -88,12 +111,12 @@ public class Imovel {
         return valorAluguel;
     }
 
-    public String getCPF_proprietario() {
-        return CPF_proprietario;
+    public Proprietario getProprietario() {
+        return proprietario;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    public Situacao_Imovel getSituacao_Imovel() {
+        return this.situacao_Imovel;
     }
 
     public void setArea(float area) {
@@ -132,9 +155,27 @@ public class Imovel {
         this.valorAluguel = valorAluguel;
     }
 
-    public void setCPF_proprietario(String CPF_proprietario) {
-        this.CPF_proprietario = CPF_proprietario;
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
     }
+    
+     public void setSituacao_Imovel(Situacao_Imovel situacao_Imovel) {
+        this.situacao_Imovel = situacao_Imovel;
+    }  
+     
+    public void setTipo_imovel(Tipo_Imovel tipo_imovel) {
+        this.tipo_imovel = tipo_imovel;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setAdm(Adm adm) {
+        this.adm = adm;
+    }
+   
+     
    /*
         Fim Gets e Sets Gerados Automaticamente
     */
@@ -142,6 +183,26 @@ public class Imovel {
    /*
         Inicio Funções Classe Imovel
     */ 
-   
+   public void cadastrarImovel(Imovel imovel) {
+		// ABRE A CONEXAO
+		EntityManager em = new Connect().getConexao();	
+		
+		try {		
+                    em.getTransaction().begin();
+		    em.persist(imovel);
+		    em.getTransaction().commit();
+			 		
+			// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+		}finally{
+		 	em.close();
+		}
+    }
+
+    public void cinserir(Imovel im) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }
