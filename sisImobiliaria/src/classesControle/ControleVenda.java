@@ -17,8 +17,18 @@ import classesEntidade.Situacao_Contrato;
  *
  * @author welerson
  */
+
+
 public class ControleVenda {
-    public void vendaImovel(String CPF_comprador, int IdImovel, String CPF_corretor, String condicoesPagamento, int precoNegociado) 
+    /**
+     * 
+     * @param CPF_comprador
+     * @param IdImovel
+     * @param CPF_corretor
+     * @param condicoesPagamento // Descrição em string das condições 
+     * @param precoNegociado // Obs: O preço negociado pode ser diferente do preço real do imovel salvo na classe imovel. Por isso dá a opção de preço na hora de cadastrar a venda
+     */
+    public void vendaImovel(String CPF_comprador, int IdImovel, String CPF_corretor, String condicoesPagamento, String precoNegociado) 
     {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
@@ -63,13 +73,22 @@ public class ControleVenda {
         contrato.setComprador(comprador);
         contrato.setCorretor(corretor);
         contrato.setImovel(imovel);
-        contrato.setValorVenda(precoNegociado);
+        precoNegociado = precoNegociado.replace(',', '.');
+        contrato.setValorVenda(Float.parseFloat(precoNegociado));
         contrato.setDescricaoVenda(descricao);
         contrato.setSituacao_contrato(Situacao_Contrato.EM_ABERTO);
         
-        contrato.abrirContrato();
+        try 
+        {
+            contrato.abrirContrato();
+            // Mensagem Contrato aberto com sucesso
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            // Mensagem de erro ao abrir contrato
+        }
         
-        // Mensagem Contrato aberto com sucesso
+        
     }
     
 }

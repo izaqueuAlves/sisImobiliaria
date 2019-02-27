@@ -26,6 +26,8 @@ public class Contrato_Aluguel {
     private String dataFechamento;
     private String dataInicio;
     private String dataFim;
+    private Situacao_Contrato situacao_contrato;
+    
     
     /* TALVEZ SEJA MELHOR COLOCAR SITUACAO_IMOVEL COMO TABELA
     @ManyToOne
@@ -125,6 +127,20 @@ public class Contrato_Aluguel {
     public Imovel getImovel() {
         return imovel;
     }
+
+    public Situacao_Contrato getSituacao_contrato() {
+        return situacao_contrato;
+    }
+
+    public void setSituacao_contrato(Situacao_Contrato situacao_contrato) {
+        this.situacao_contrato = situacao_contrato;
+    }
+
+    public void abrirContrato() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
     
     

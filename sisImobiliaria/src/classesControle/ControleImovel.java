@@ -21,6 +21,22 @@ public class ControleImovel {
     public ControleImovel() {
     }
     
+    /**
+     * 
+     * @param CPF_proprietario
+     * @param area
+     * @param numQuartos
+     * @param numBanheiros
+     * @param numSuites
+     * @param vagasGaragem
+     * @param descricao
+     * @param valorCompra
+     * @param valorAluguel
+     * @param situacao_Imovel
+     * @param tipo_imovel
+     * @param endereco
+     * @param admLogado 
+     */
     void cadastrarImovel(String CPF_proprietario, float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, String descricao, float valorCompra, float valorAluguel, Situacao_Imovel situacao_Imovel, Tipo_Imovel tipo_imovel, Endereco endereco, Adm admLogado)
     {
         Proprietario proprietario = new Proprietario();

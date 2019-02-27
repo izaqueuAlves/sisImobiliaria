@@ -63,6 +63,12 @@ public class Locatario {
     public String getEmail() {
         return email;
     }
+
+    public Locatario buscarLocatario(String CPF_locatario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     
     
 }
