@@ -87,6 +87,10 @@ public class Corretor {
     public Corretor buscarCorretor(String CPF_corretor) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void cadastrarCorretor(Corretor corretor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

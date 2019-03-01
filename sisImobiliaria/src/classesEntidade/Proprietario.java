@@ -62,5 +62,9 @@ public class Proprietario {
         //Preenche todos os campos e retorna o objeto this
         return this;
     }
+
+    public void cadastrarProprietario(Proprietario proprietario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
