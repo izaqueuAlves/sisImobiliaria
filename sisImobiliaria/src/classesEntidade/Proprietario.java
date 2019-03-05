@@ -5,7 +5,10 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
 /**
@@ -57,14 +60,80 @@ public class Proprietario {
         this.email = email;
     }
 
-    //Retorna o objeto proprietario buscado no banco de dados pelo CPF, preenchendo todos os atributos
-    public Proprietario buscarProprietario(String CPF_proprietario) {
-        //Preenche todos os campos e retorna o objeto this
-        return this;
-    }
-
-    public void cadastrarProprietario(Proprietario proprietario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+   
+       public void cadastrarProprietario(Proprietario proprietario) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	
+	try {		
+                em.getTransaction().begin();
+                em.persist(proprietario);
+		em.getTransaction().commit();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+    }
+     
+       public void editarProprietario(Proprietario proprietario) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	
+	try {		
+                em.getTransaction().begin();
+                em.merge(proprietario);
+		em.getTransaction().commit();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+    }
+     
+    
+    
+    //Retorna o objeto proprietario buscado no banco de dados pelo CPF, preenchendo todos os atributos
+    public Proprietario buscarProprietario(String cpf_proprietario) {
+        EntityManager em = new Connect().getConexao();	
+	Proprietario proprietario = null;
+	
+        try {		
+               proprietario = em.find(Proprietario.class, cpf_proprietario);
+                
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+        
+        return proprietario;
+    }
+   
+
+    public List<Proprietario> getTodosProprietarios() {
+	
+	EntityManager em = new Connect().getConexao();	
+	List<Proprietario> proprietarios = null;
+        
+	try {		
+               proprietarios = em.createQuery("from Proprietario p").getResultList();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+        
+        return proprietarios;
+    } 
+      
 }

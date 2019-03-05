@@ -202,6 +202,23 @@ public class Imovel {
 	 	em.close();
 	}
     }
+     public void editarImovel(Imovel imovel) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	
+	try {		
+                em.getTransaction().begin();
+                em.merge(imovel);
+		em.getTransaction().commit();
+			 		
+		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+	}finally{
+	 	em.close();
+	}
+    }
 
     public void removerImovel(Integer id_imovel) {
  
@@ -243,7 +260,7 @@ public class Imovel {
         return im;  
     }
     
-      public List<Imovel> getTodosImovel() {
+      public List<Imovel> getTodosImoveis() {
  
         EntityManager em = new Connect().getConexao();
         List<Imovel> imoveis = null;

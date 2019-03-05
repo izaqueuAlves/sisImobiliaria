@@ -5,7 +5,10 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,4 +61,41 @@ public class Tipo_Imovel {
         this.emCondominio = emCondominio;
     }
     
+    
+    
+       public void novoTipo(Tipo_Imovel tipo_imovel) {
+	
+	EntityManager em = new Connect().getConexao();	
+	
+	try {		
+                em.getTransaction().begin();
+                em.persist(tipo_imovel);
+		em.getTransaction().commit();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+    }
+       // verificar se vai ser preciso buscar apenas um tipo, provavelmente isso estará em uma combo listantos todos. ass izaqueu
+    public List<Tipo_Imovel> buscarTipo(){
+	
+	EntityManager em = new Connect().getConexao();	
+	List<Tipo_Imovel> tipos = null;
+	
+        try {		
+                tipos = em.createQuery("from Tipo_Imovel tp").getResultList();
+                	 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+    
+       return tipos;
+       
+       }
 }
