@@ -4,6 +4,7 @@ package classesEntidade;
 
 import conexao.Connect;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Query;
 
 
 /**
@@ -22,9 +24,9 @@ import javax.persistence.OneToOne;
 public class Imovel {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+   private Integer id;
    private float area;
-   private int numQuartos, numBanheiros, numSuites, vagasGaragem;
+   private Integer numQuartos, numBanheiros, numSuites, vagasGaragem;
    private ArrayList<String> fotos;
    private String descricao;
    private float valorCompra;
@@ -71,7 +73,7 @@ public class Imovel {
         return endereco;
     }
     
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -79,19 +81,19 @@ public class Imovel {
         return area;
     }
 
-    public int getNumQuartos() {
+    public Integer getNumQuartos() {
         return numQuartos;
     }
 
-    public int getNumBanheiros() {
+    public Integer getNumBanheiros() {
         return numBanheiros;
     }
 
-    public int getNumSuites() {
+    public Integer getNumSuites() {
         return numSuites;
     }
 
-    public int getVagasGaragem() {
+    public Integer getVagasGaragem() {
         return vagasGaragem;
     }
 
@@ -184,29 +186,78 @@ public class Imovel {
         Inicio Funções Classe Imovel
     */ 
    public void cadastrarImovel(Imovel imovel) {
-		// ABRE A CONEXAO
-		EntityManager em = new Connect().getConexao();	
-		
-		try {		
-                    em.getTransaction().begin();
-		    em.persist(imovel);
-		    em.getTransaction().commit();
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	
+	try {		
+                em.getTransaction().begin();
+                em.persist(imovel);
+		em.getTransaction().commit();
 			 		
-			// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
-		}finally{
-		 	em.close();
-		}
+		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+	}finally{
+	 	em.close();
+	}
     }
 
-    public void cinserir(Imovel im) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Imovel buscarImovel(int IdImovel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removerImovel(Integer id_imovel) {
+ 
+        EntityManager em = new Connect().getConexao();
+        
+        try{    
+                em.getTransaction().begin();
+                 //procura pelo imovel
+                Imovel im = em.find(Imovel.class, id_imovel);
+                // remove o imovel
+                em.remove(im);                
+                em.getTransaction().commit();
+                
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+        }
+        
+        
     }
    
+   
+   
+   
+   
+    public Imovel buscarImovel(Integer id_imovel) {
+ 
+        EntityManager em = new Connect().getConexao();
+        Imovel im = null;
+        try{
+            im = em.find(Imovel.class, id_imovel);   
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            em.close();
+        }
+        
+        return im;  
+    }
+    
+      public List<Imovel> getTodosImovel() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;
+        
+        try{
+            imoveis = em.createQuery("from Imovel i").getResultList();                           
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+    
+    
 }

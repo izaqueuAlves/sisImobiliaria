@@ -1,5 +1,6 @@
 package Teste;
 
+import classesControle.ControleImovel;
 import classesEntidade.Imovel;
 
 /**
@@ -8,16 +9,32 @@ import classesEntidade.Imovel;
  */
 public class Classe_Teste {  
     public static void main(String[] args){
-        /*
+        // valores que vem da tela
+       
         Imovel im = new Imovel();
-        im.setDescricao("Casa 2");
-        im.setArea(5);
-        im.setNumBanheiros(3);
+      /*
+        im.setDescricao("ap teste");
+        im.setArea(25);
+        im.setNumBanheiros(2);
         im.setNumQuartos(4);
-        im.setNumSuites(0);
-        im.setValorAluguel(500);
+        im.setNumSuites(2);
+        im.setValorAluguel(700);
+        im.setVagasGaragem(2);
+        
         im.cadastrarImovel(im);
-        **/
-        System.out.println("hello World!");
+        */
+      //  ControleImovel ctrImovel = new ControleImovel();
+      //  im.removerImovel(1);
+        
+        
+        //ctrImovel.cadastrarImovel2(im);
+        
+        for(Imovel i: im.getTodosImovel()){
+            System.out.println("Descrição: "+i.getDescricao());
+            System.out.println("Valor: "+i.getValorAluguel());
+            System.out.println("Nr Garagens: "+i.getVagasGaragem());
+            
+        }
+               
     }
 }

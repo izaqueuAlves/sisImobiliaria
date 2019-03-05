@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class Tipo_Imovel {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTipoImovel;
+    private Integer idTipoImovel;
     private String nome;
     private boolean emCondominio;
     
@@ -34,7 +34,7 @@ public class Tipo_Imovel {
     
     //Gets e sets
 
-    public int getIdTipoImovel() {
+    public Integer getIdTipoImovel() {
         return idTipoImovel;
     }
 

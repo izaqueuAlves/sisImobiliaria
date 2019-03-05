@@ -70,4 +70,14 @@ public class ControleImovel {
         
     }
     
+    
+    // metodo de teste [o metodo cadastrarImovel tem mtos parametros segundo o professor isso nao é bom, ver a possibilidade de passar 
+    // o objeto imovel como o metodo abaixo]
+    public void cadastrarImovel2(Imovel i){
+        // castra imovel
+        i.cadastrarImovel(i);
+        
+        
+    }
+    
 }
