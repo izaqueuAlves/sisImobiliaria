@@ -5,7 +5,9 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,7 +47,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Rua/Av/Rod " + logradouro + " Nº " + numero + " " + complemento + ", bairro " + bairro + ", " + cidade + " - "+ UF + " de CEP: " + CEP ;
+        return "Rua/Av/Rod " + logradouro + " Nยบ " + numero + " " + complemento + ", bairro " + bairro + ", " + cidade + " - "+ UF + " de CEP: " + CEP ;
     }
     
     //Gets e Sets
@@ -107,5 +109,18 @@ public class Endereco {
     }
     
     
-    
+    public Endereco buscarImovel(Integer id_endereco) {
+ 
+        EntityManager em = new Connect().getConexao();
+        Endereco en = null;
+        try{
+            en = em.find(Endereco.class, id_endereco);   
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            em.close();
+        }
+        
+        return en;  
+    }
 }

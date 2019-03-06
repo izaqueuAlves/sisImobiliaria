@@ -241,9 +241,7 @@ public class Imovel {
         
     }
    
-   
-   
-   
+ 
    
     public Imovel buscarImovel(Integer id_imovel) {
  

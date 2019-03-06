@@ -62,6 +62,20 @@ public class Tipo_Imovel {
     }
     
     
+       public void CadastrarTipo(String nome, boolean emCondominio){
+           Tipo_Imovel type = new Tipo_Imovel();
+           
+           type.setNome(nome);
+           type.setEmCondominio(emCondominio);
+           
+           try {
+            type.novoTipo(type);
+            //Mensagem de Imovel cadastrado com sucesso!
+            } catch (Error e) {
+                e.printStackTrace();
+                //Mandar mensagem de erro para a tela
+            }
+       }
     
        public void novoTipo(Tipo_Imovel tipo_imovel) {
 	

@@ -5,7 +5,9 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
 /**
@@ -76,4 +78,23 @@ public class Adm {
         this.email = email;
     }
     
+
+
+public void cadastrarAdm(Adm adm) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	
+	try {		
+                em.getTransaction().begin();
+                em.persist(adm);
+		em.getTransaction().commit();
+			 		
+		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+	}finally{
+	 	em.close();
+	}
+    }
 }
