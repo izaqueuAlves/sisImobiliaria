@@ -127,9 +127,9 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         // TODO add your handling code here:
-        if(senha != ){
-            j
-        }
+   //     if(senha != ){
+    //        j
+  //      }
     }//GEN-LAST:event_entrarActionPerformed
 
     private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
