@@ -197,6 +197,8 @@ public class Imovel {
 		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
 	} catch (Exception e) {
 		em.getTransaction().rollback();
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar o imóvel!: "+e);
 		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
 	}finally{
 	 	em.close();
@@ -214,6 +216,8 @@ public class Imovel {
 		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
 	} catch (Exception e) {
 		em.getTransaction().rollback();
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao editar o imóvel!: "+e);
 		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
 	}finally{
 	 	em.close();
@@ -234,6 +238,8 @@ public class Imovel {
                 
         }catch(Exception e){
             em.getTransaction().rollback();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao excluir imóvel!: "+e);
         }finally{
             em.close();
         }
@@ -243,30 +249,58 @@ public class Imovel {
    
  
    
-    public Imovel buscarImovel(Integer id_imovel) {
+    public Imovel getImovelById(Integer id_imovel) {
  
         EntityManager em = new Connect().getConexao();
         Imovel im = null;
         try{
             im = em.find(Imovel.class, id_imovel);   
         }catch(Exception e){
-            e.printStackTrace();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
         }finally{
             em.close();
         }
         
         return im;  
     }
-    
-      public List<Imovel> getTodosImoveis() {
+    // alterar no diagrama de classe, parametro e retorno
+     public List<Imovel> buscarImovel(String nome) {
  
         EntityManager em = new Connect().getConexao();
         List<Imovel> imoveis = null;
+        String nomeImovel = "%"+nome+"%";
+                
+        try{
+
+            Query query = em.createQuery("from Imovel where upper(descricao) like upper(:nomeImovel) order by descricao");
+            query.setParameter("nomeImovel", nomeImovel);
+            imoveis = query.getResultList();
+
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+     // retorna uma lista com todos os imoveis disponiveis para venda (situacao: DISPONIVEL_VENDA; DISPONIVEL_VENDA_ALUGUEL)
+     public List<Imovel> getImoveisVenda() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;
+      //  int situacao = 1;                
         
         try{
-            imoveis = em.createQuery("from Imovel i").getResultList();                           
+
+            Query query = em.createQuery("from Imovel where situacao_imovel = 1 or situacao_imovel = 2 order by descricao");
+            imoveis = query.getResultList();
+
         }catch(Exception e){
-            e.printStackTrace();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
         }finally{
             em.close();
         }
@@ -274,5 +308,42 @@ public class Imovel {
         return imoveis;  
     }
     
-    
+     // retorna uma lista com todos os imoveis disponiveis para aluguel (situacao: DISPONIVEL_ALUGUEL; DISPONIVEL_VENDA_ALUGUEL)
+     public List<Imovel> getImoveisAluguel() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;           
+        
+        try{
+
+            Query query = em.createQuery("from Imovel where situacao_imovel = 0 or situacao_imovel = 2 order by descricao");
+            imoveis = query.getResultList();
+
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+
+     public List<Imovel> getTodosImoveis() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;
+        
+        try{
+            imoveis = em.createQuery("from Imovel i").getResultList();                           
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+
 }

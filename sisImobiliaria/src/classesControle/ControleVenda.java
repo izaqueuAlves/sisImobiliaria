@@ -36,7 +36,7 @@ public class ControleVenda {
         Comprador comprador = new Comprador();
         Corretor corretor = new Corretor();
         
-        imovel = imovel.buscarImovel(IdImovel);
+        imovel = imovel.getImovelById(IdImovel);
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
         comprador = comprador.buscarComprador(CPF_comprador);

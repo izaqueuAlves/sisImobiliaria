@@ -12,7 +12,7 @@ package classesEntidade;
  */
 
 public enum Situacao_Imovel {
-    DISPONIVEL_ALGUEL(1), DISPONIVEL_VENDA(2), DISPONIVEL_VENDA_ALUGUEL(3), ALUGADO(4), VENDIDO(5);
+    DISPONIVEL_ALGUEL(0), DISPONIVEL_VENDA(1), DISPONIVEL_VENDA_ALUGUEL(2), ALUGADO(3), VENDIDO(4);
         
     private final int valor;
 

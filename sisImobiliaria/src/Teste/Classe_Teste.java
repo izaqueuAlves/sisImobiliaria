@@ -3,7 +3,9 @@ package Teste;
 import classesControle.ControleImovel;
 import classesEntidade.Imovel;
 import classesEntidade.Proprietario;
+import classesEntidade.Situacao_Imovel;
 import classesEntidade.Tipo_Imovel;
+import java.util.List;
 
 
 /**
@@ -50,12 +52,35 @@ public class Classe_Teste {
             System.out.println("Email: "+pr.getEmail());
             System.out.println("Telefone: "+pr.getTelefone());
             
-        } */
+        } 
          for(Tipo_Imovel ti: tp.buscarTipo()){
             System.out.println("Nome: "+ti.getNome());
             System.out.println("Email: "+ti.isEmCondominio());
             
-        }
+        } 
+      */
+       for(Imovel i: im.getImoveisVenda()){
+            System.out.println("Descrição: "+i.getDescricao());
+            System.out.println("Valor: "+i.getValorAluguel());
+       } 
+      
+      
+      Situacao_Imovel s = Situacao_Imovel.DISPONIVEL_VENDA;
+      /*
+      im.setDescricao("Mansão");
+      im.setArea(30);
+      im.setNumBanheiros(2);
+      im.setNumQuartos(3);
+      im.setNumSuites(0);
+      im.setVagasGaragem(2);
+      im.setValorAluguel(500);
+      im.setSituacao_Imovel(s);
+            
+      im.cadastrarImovel(im);
+      */
+      
+      
+      
       
     
     }

@@ -39,7 +39,7 @@ public class ControleAluguel {
         Locatario locatario = new Locatario();
         Corretor corretor = new Corretor();
         
-        imovel = imovel.buscarImovel(IdImovel);
+        imovel = imovel.getImovelById(IdImovel);
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
         locatario = locatario.buscarLocatario(CPF_locatario);
