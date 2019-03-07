@@ -28,6 +28,13 @@ public class Proprietario {
         
     }
     
+    public Proprietario(String cpf, String nomeCompleto, String telefone, String email){
+        this.cpf = cpf;
+        this.nomeCompleto = nomeCompleto;
+        this.telefone = telefone;
+        this.email = email;
+    }
+    
     public String getCpf(){
         return cpf;
     }
