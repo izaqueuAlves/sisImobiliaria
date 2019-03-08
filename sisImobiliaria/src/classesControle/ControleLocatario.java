@@ -13,8 +13,16 @@ public class ControleLocatario {
     public ControleLocatario() {
      locatario = new Locatario();
 }
-            
-    void cadastrarLocatario (String CPF, String nomeCompleto, String email, Tipo_Imovel tipo_imovel)
+           
+    /**
+     * 
+     * @param CPF
+     * @param nomeCompleto
+     * @param email
+     * @param tipo_imovel 
+     */
+    
+    public void cadastrarLocatario (String CPF, String nomeCompleto, String email, Tipo_Imovel tipo_imovel)
     {
         
          locatario = new Locatario();
@@ -33,7 +41,16 @@ public class ControleLocatario {
             //Mandar mensagem de erro para a tela
         }
     }
-    void editarLocatario (String novoCPF, String novoNomeCompleto, String novoEmail, Tipo_Imovel novoTipo_imovel)
+    
+    /**
+     * 
+     * @param novoCPF
+     * @param novoNomeCompleto
+     * @param novoEmail
+     * @param novoTipo_imovel 
+     */
+    
+    public void editarLocatario (String novoCPF, String novoNomeCompleto, String novoEmail, Tipo_Imovel novoTipo_imovel)
     {
         
          locatario = new Locatario();
@@ -52,8 +69,10 @@ public class ControleLocatario {
             //Mandar mensagem de erro para a tela
         }
     }
-       void excluirLocatario() {
-     locatario = new Locatario();
-}
+    
+    //FAZER 
+    public  void excluirLocatario() {
+         locatario = new Locatario();
+    }
 }
         

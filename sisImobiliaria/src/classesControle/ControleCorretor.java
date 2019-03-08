@@ -13,7 +13,17 @@ public class ControleCorretor {
         corretor = new Corretor();
     }
     
-  void cadastrarCorretor (String CRECI, String CPF, String senha, String nomeCompleto, String telefone, String email)
+  /**
+   * 
+   * @param CRECI
+   * @param CPF
+   * @param senha
+   * @param nomeCompleto
+   * @param telefone
+   * @param email 
+   * return void
+   */  
+  public void cadastrarCorretor (String CRECI, String CPF, String senha, String nomeCompleto, String telefone, String email)
   {
       corretor = new Corretor();
       
@@ -35,7 +45,17 @@ public class ControleCorretor {
         }
   }
   
-   void editarCorretor (String novoCRECI, String novoCPF, String novaSenha, String novoNomeCompleto, String novoTelefone, String novoEmail)
+  /***
+   * 
+   * @param novoCRECI
+   * @param novoCPF
+   * @param novaSenha
+   * @param novoNomeCompleto
+   * @param novoTelefone
+   * @param novoEmail 
+   */
+  
+  public void editarCorretor (String novoCRECI, String novoCPF, String novaSenha, String novoNomeCompleto, String novoTelefone, String novoEmail)
   {
       corretor = new Corretor();
       
@@ -57,7 +77,9 @@ public class ControleCorretor {
         }
          
   }
-    void excluirCorretor(){  
+  
+  
+   public void excluirCorretor(){  
         corretor = new Corretor();
     }  
 }

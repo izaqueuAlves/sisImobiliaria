@@ -13,7 +13,16 @@ import classesEntidade.Adm;
  */
 public class ControleGerenciarAdm {
     
-    void CadastrarAdm(String login, String senha, String nomeComp, String telefone, String email){
+    /**
+     * 
+     * @param login
+     * @param senha
+     * @param nomeComp
+     * @param telefone
+     * @param email 
+     */
+    
+    public void CadastrarAdm(String login, String senha, String nomeComp, String telefone, String email){
         Adm novoAdm = new Adm();
         
         novoAdm.setLogin(login);

@@ -18,7 +18,7 @@ public class ControleProprietario {
 }
     
 
-  void cadastrarProprietario(String CPF, String nomeCompleto, String telefone, String email)
+    public void cadastrarProprietario(String CPF, String nomeCompleto, String telefone, String email)
     {
          proprietario = new Proprietario();
          
@@ -38,7 +38,7 @@ public class ControleProprietario {
             //Mandar mensagem de erro para a tela
         }
     }
-  void editarProprietario(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail)
+    public void editarProprietario(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail)
     {
          proprietario = new Proprietario();
          
@@ -58,7 +58,9 @@ public class ControleProprietario {
             //Mandar mensagem de erro para a tela
         }
     }
-      void excluirProprietario(){
+    
+    //FAZER
+    public void excluirProprietario(){
          proprietario = new Proprietario();
 }
 }

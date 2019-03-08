@@ -16,8 +16,15 @@ public class ControleComprador {
         comprador = new Comprador();
     }
 
+    /***
+     * 
+     * @param CPF
+     * @param nomeCompleto
+     * @param telefone
+     * @param email 
+     */
     
-     void cadastrarComprador (String CPF, String nomeCompleto, String telefone, String email)
+    public void cadastrarComprador (String CPF, String nomeCompleto, String telefone, String email)
     {
         
         comprador= new Comprador();
@@ -35,8 +42,16 @@ public class ControleComprador {
             //Mandar mensagem de erro para a tela
         }
     }
-
-   void editarComprador(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail){
+    
+    /**
+     * 
+     * @param novoCPF
+     * @param novoNomeCompleto
+     * @param novoTelefone
+     * @param novoEmail 
+     */
+    
+   public void editarComprador(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail){
         
        comprador= new Comprador();
         
@@ -57,7 +72,8 @@ public class ControleComprador {
         }
    }
    
-   void excluirComprador(){
+   //FAZER 
+   public void excluirComprador(){
         
        comprador = new Comprador();    
    }
