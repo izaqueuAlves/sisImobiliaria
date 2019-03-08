@@ -136,21 +136,19 @@ public class Contrato_Aluguel {
     public void setSituacao_contrato(Situacao_Contrato situacao_contrato) {
         this.situacao_contrato = situacao_contrato;
     }
+    
+     //O objeto é a ser tratado nas func abaixo é próprio contrato (this)
 
     public void abrirContrato() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void alterarContratoEmAberto() {
+        // Fazer condição para saber se o contrato está em aberto para assim alterar no banco de dados.        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public List<Contrato_Aluguel> getTodosContratos(){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    //Retorna uma lista de duas posições onde a primeira posição é o locatario e a segunda o proprietario
-    public List<Contrato_Aluguel> getNegociantes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

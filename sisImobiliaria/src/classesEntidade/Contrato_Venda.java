@@ -132,11 +132,6 @@ public class Contrato_Venda {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    //Retorna uma lista de duas posições onde a primeira posição é o comprador e a segunda o vendedor
-    public List<Contrato_Venda> getNegociantes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public Contrato_Venda consultarContrato(int idContrato) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
