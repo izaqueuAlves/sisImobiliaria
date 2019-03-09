@@ -1,5 +1,6 @@
 package Teste;
 
+import classesControle.ControleCorretor;
 import classesControle.ControleImovel;
 import classesEntidade.Imovel;
 import classesEntidade.Endereco;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author Thome
  */
 public class Classe_Teste 
-{
+{/*
     public static void testaCadastroAdm(){
         Adm xz = new Adm("Belarmino_Adm","batata012","Belarmino Ferreira",
             "99999-1003","adm3@hotmail.com");
@@ -183,10 +184,15 @@ public class Classe_Teste
             imprimeTipo(t_i);
         }
     }//</editor-fold>
-    
+  */  
     public static void main(String[] args){
         //testaCadastroAdm();
         //testaBuscarImovel();
         //...
+        
+        ControleCorretor ctr_c = new ControleCorretor();
+        ctr_c.cadastrarCorretor("9985-4", "05395589962", "naosei", "Pedro alves", "", "");
+        
+        
     }
 }

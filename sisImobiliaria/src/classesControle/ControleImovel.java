@@ -75,6 +75,7 @@ public class ControleImovel {
     // o objeto imovel como o metodo abaixo]
     // Eu pensei nisso também, mas pelo projeto as telas não se comunicam com as entidades, 
     // então em tese elas n podem criar o objeto imovel, dai ela envia os dados para o controle criar o objeto e cadastrar
+    // entendi, faz sentido :)
     
     public void cadastrarImovel2(Imovel i){
         // castra imovel

@@ -245,8 +245,7 @@ public class Imovel {
         }
         
         
-    }
-   
+    }   
  
    
     public Imovel getImovelById(Integer id_imovel) {
@@ -290,8 +289,7 @@ public class Imovel {
      public List<Imovel> getImoveisVenda() {
  
         EntityManager em = new Connect().getConexao();
-        List<Imovel> imoveis = null;
-      //  int situacao = 1;                
+        List<Imovel> imoveis = null;           
         
         try{
 

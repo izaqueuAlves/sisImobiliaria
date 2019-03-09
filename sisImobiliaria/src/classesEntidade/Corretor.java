@@ -5,7 +5,10 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
 /**
@@ -85,13 +88,97 @@ public class Corretor {
     }
 
     public Corretor buscarCorretor(String CPF_corretor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        EntityManager em = new Connect().getConexao();
+        Corretor corretor = null;
+        
+        try{
+           corretor = em.find(Corretor.class, CPF_corretor);
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Corretor não encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        return corretor; 
     }
 
     public void cadastrarCorretor(Corretor corretor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = new Connect().getConexao();
+        
+        try{
+            
+            em.getTransaction().begin();
+            em.persist(corretor);
+            em.getTransaction().commit();
+            
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar corretor!: "+e);
+        }finally{
+            em.close();
+        }
     }
     
+     public void editarCorretor(Corretor corretor) {
+        EntityManager em = new Connect().getConexao();
+        
+        try{
+            
+            em.getTransaction().begin();
+            em.merge(corretor);
+            em.getTransaction().commit();
+            
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao editar corretor!: "+e);
+        }finally{
+            em.close();
+        }
+    }
     
-    
+      public List<Corretor> getTodosCorretores() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Corretor> corretores = null;
+        
+        try{
+            corretores = em.createQuery("from Corretor c").getResultList();                           
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum corretor foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return corretores;  
+    }
+      
+       public void excluirCorretor(String cpf_corretor) {
+ 
+        EntityManager em = new Connect().getConexao();
+        
+        try{    
+                em.getTransaction().begin();
+                 //procura pelo imovel
+                Corretor corretor = em.find(Corretor.class, cpf_corretor);
+                // remove o imovel
+                em.remove(corretor);                
+                em.getTransaction().commit();
+                
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao excluir corretor!: "+e);
+        }finally{
+            em.close();
+        }
+     }
+
+    public boolean fazerLogin(String creci, String senha) {
+        
+        // implementar metodo
+        
+        return true;
+    }
 }
