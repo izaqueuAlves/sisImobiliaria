@@ -69,27 +69,33 @@ public class Proprietario {
 
     
    
-       public void cadastrarProprietario(Proprietario proprietario) {
+       public boolean cadastrarProprietario(Proprietario proprietario) {
 	// ABRE A CONEXAO
 	EntityManager em = new Connect().getConexao();	
-	
-	try {		
+	boolean retorno = false;
+        
+	try {	                
                 em.getTransaction().begin();
                 em.persist(proprietario);
 		em.getTransaction().commit();
-			 	
+                retorno = true;
+                
 	} catch (Exception e) {
-		em.getTransaction().rollback();
-		
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar proprietario!: "+e);
+            em.getTransaction().rollback();
 	}finally{
 	 	em.close();
 	}
+        
+        return retorno;
     }
      
-       public void editarProprietario(Proprietario proprietario) {
+       public boolean editarProprietario(Proprietario proprietario) {
 	// ABRE A CONEXAO
 	EntityManager em = new Connect().getConexao();	
-	
+	boolean retorno = false;
+        
 	try {		
                 em.getTransaction().begin();
                 em.merge(proprietario);
@@ -97,10 +103,14 @@ public class Proprietario {
 			 	
 	} catch (Exception e) {
 		em.getTransaction().rollback();
+                // alterar depois para ser mostrado na tela com JOptionPane
+                 System.out.println("Erro ao editar proprietario!: "+e);
 		
 	}finally{
 	 	em.close();
 	}
+        
+        return retorno;
     }
      
     
@@ -111,11 +121,11 @@ public class Proprietario {
 	Proprietario proprietario = null;
 	
         try {		
-               proprietario = em.find(Proprietario.class, cpf_proprietario);
-                
+               proprietario = em.find(Proprietario.class, cpf_proprietario);                
 			 	
 	} catch (Exception e) {
-		em.getTransaction().rollback();
+                // alterar depois para ser mostrado na tela com JOptionPane
+                System.out.println("Nenhum proprietário encontrado!: "+e);
 		
 	}finally{
 	 	em.close();

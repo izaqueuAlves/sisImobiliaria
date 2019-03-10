@@ -185,15 +185,16 @@ public class Imovel {
    /*
         Inicio Funções Classe Imovel
     */ 
-   public void cadastrarImovel(Imovel imovel) {
+   public boolean cadastrarImovel(Imovel imovel) {
 	// ABRE A CONEXAO
 	EntityManager em = new Connect().getConexao();	
-	
+        boolean retorno = false; 
+        
 	try {		
                 em.getTransaction().begin();
                 em.persist(imovel);
 		em.getTransaction().commit();
-			 		
+		retorno = true;	
 		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
 	} catch (Exception e) {
 		em.getTransaction().rollback();
@@ -203,16 +204,19 @@ public class Imovel {
 	}finally{
 	 	em.close();
 	}
+        
+        return retorno;
     }
-     public void editarImovel(Imovel imovel) {
+     public boolean editarImovel(Imovel imovel) {
 	// ABRE A CONEXAO
 	EntityManager em = new Connect().getConexao();	
-	
+	boolean retorno = false; 
+        
 	try {		
                 em.getTransaction().begin();
                 em.merge(imovel);
 		em.getTransaction().commit();
-			 		
+		retorno = true;	 		
 		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
 	} catch (Exception e) {
 		em.getTransaction().rollback();
@@ -222,11 +226,15 @@ public class Imovel {
 	}finally{
 	 	em.close();
 	}
+        
+        return retorno;
+               
     }
 
-    public void removerImovel(Integer id_imovel) {
+    public boolean removerImovel(Integer id_imovel) {
  
         EntityManager em = new Connect().getConexao();
+        boolean retorno = false; 
         
         try{    
                 em.getTransaction().begin();
@@ -235,6 +243,7 @@ public class Imovel {
                 // remove o imovel
                 em.remove(im);                
                 em.getTransaction().commit();
+                retorno = true; 
                 
         }catch(Exception e){
             em.getTransaction().rollback();
@@ -244,7 +253,7 @@ public class Imovel {
             em.close();
         }
         
-        
+        return retorno;
     }   
  
    
@@ -343,5 +352,23 @@ public class Imovel {
         
         return imoveis;  
     }
+     // no diagrama o parametro é um objeto, porem acho q fica melhor colocar como apenas o cpf, ja que o metodo busca o nome proprietatio
+     // no banco, caso exista ele substitui; #izaqueu
+     public boolean alterarProprietario(String cpf_proprietario, Integer id_imovel){
+         Proprietario p = new Proprietario();
+         Imovel im = new Imovel();
+                  
+         p = p.buscarProprietario(cpf_proprietario);
+                  
+        // proprietario encontrado
+         if(p != null){
+             im = im.getImovelById(id_imovel);
+             im.setProprietario(p);
+             im.editarImovel(im);
+             return true;
+        } else {
+              return false;
+        } 
+     }
 
 }

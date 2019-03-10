@@ -103,8 +103,10 @@ public class Corretor {
         return corretor; 
     }
 
-    public void cadastrarCorretor(Corretor corretor) {
+    public boolean cadastrarCorretor(Corretor corretor) {
+        
         EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
         
         try{
             
@@ -115,26 +117,33 @@ public class Corretor {
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
             System.out.println("Erro ao cadastrar corretor!: "+e);
+            em.getTransaction().rollback();
         }finally{
             em.close();
         }
+        
+        return retorno;
     }
     
-     public void editarCorretor(Corretor corretor) {
+     public boolean editarCorretor(Corretor corretor) {
         EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
         
         try{
             
             em.getTransaction().begin();
             em.merge(corretor);
             em.getTransaction().commit();
-            
+            retorno = true;
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
             System.out.println("Erro ao editar corretor!: "+e);
+            em.getTransaction().rollback();
         }finally{
             em.close();
         }
+        
+        return retorno;
     }
     
       public List<Corretor> getTodosCorretores() {
@@ -154,8 +163,8 @@ public class Corretor {
         return corretores;  
     }
       
-       public void excluirCorretor(String cpf_corretor) {
- 
+       public boolean excluirCorretor(String cpf_corretor) {
+        boolean retorno = false;
         EntityManager em = new Connect().getConexao();
         
         try{    
@@ -165,7 +174,7 @@ public class Corretor {
                 // remove o imovel
                 em.remove(corretor);                
                 em.getTransaction().commit();
-                
+                retorno = true;
         }catch(Exception e){
             em.getTransaction().rollback();
             // alterar depois para ser mostrado na tela com JOptionPane
@@ -173,6 +182,8 @@ public class Corretor {
         }finally{
             em.close();
         }
+        
+        return retorno;
      }
 
     public boolean fazerLogin(String creci, String senha) {

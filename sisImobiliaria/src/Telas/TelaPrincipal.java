@@ -5,6 +5,11 @@
  */
 package Telas;
 
+import classesControle.ControleImovel;
+import classesEntidade.Comprador;
+import classesEntidade.Proprietario;
+import classesEntidade.Imovel;
+
 /**
  *
  * @author welerson
@@ -123,10 +128,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        Imovel im = new Imovel();
+        Proprietario p = new Proprietario();
+       /*
+        p.setCpf("15699897510");
+        p.setEmail("exemplo@gmail.com");
+        p.setNomeCompleto("Paulo vieira");
+        p.setTelefone("999999958");
+        
+        
+        if(p.cadastrarProprietario(p)){
+            System.out.println("Cadastrado!");
+        }
+        */
+      //  p = p.buscarProprietario("15699897510");
+     //   System.out.println("nome "+p.getNomeCompleto());
+        
+  
+        
+        if(im.alterarProprietario("1569997510",1)){
+            System.out.println("Editado com sucesso!");
+        }else{
+            System.out.println("Falha ao editar imóvel!");
+        }
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+ //               new TelaPrincipal().setVisible(true); DESCOMENTAR PARA EXECUTAR A TELA
             }
         });
     }

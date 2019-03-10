@@ -189,10 +189,6 @@ public class Classe_Teste
         //testaCadastroAdm();
         //testaBuscarImovel();
         //...
-        
-        ControleCorretor ctr_c = new ControleCorretor();
-        ctr_c.cadastrarCorretor("9985-4", "05395589962", "naosei", "Pedro alves", "", "");
-        
-        
+       
     }
 }
