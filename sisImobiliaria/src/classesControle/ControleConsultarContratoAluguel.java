@@ -28,14 +28,14 @@ public class ControleConsultarContratoAluguel {
         List<Contrato_Aluguel> contratosList, contratosAbertos = new ArrayList<Contrato_Aluguel>();
         Contrato_Aluguel contratos = new Contrato_Aluguel();
         
-     /*   contratosList = contratos.getTodosContratos();
+        contratosList = contratos.getContratosAluguel();
         
         for (int i = 0; i < contratosList.size(); i+=1) {
             Contrato_Aluguel contrato = contratosList.get(i);
             if (contrato.getSituacao_contrato() == Situacao_Contrato.EM_ABERTO) {
                 contratosAbertos.add(contrato);
             }
-        }*/
+        }
 
         return contratosAbertos;
     }
@@ -49,7 +49,7 @@ public class ControleConsultarContratoAluguel {
     public boolean fecharContratoEmAberto(int id_contrato) {
         Contrato_Aluguel contrato = new Contrato_Aluguel();
         
-  //      contrato = contrato.consultarContrato(id_contrato);
+        contrato = contrato.consultarContrato(id_contrato);
         
         Date data = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -58,7 +58,7 @@ public class ControleConsultarContratoAluguel {
         contrato.setSituacao_contrato(Situacao_Contrato.FECHADO);
         
         try {
-         //   contrato.alterarContratoEmAberto();
+            contrato.alterarContratoEmAberto();
             return true;
         } catch (Exception e){
             return false;
