@@ -90,6 +90,29 @@ public class Proprietario {
         
         return retorno;
     }
+       
+    public boolean excluirProprietario(String cpf_proprietario) {
+ 
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false; 
+        
+        try{    
+                em.getTransaction().begin();
+                Proprietario p = em.find(Proprietario.class, cpf_proprietario);
+                em.remove(p);          // remove o proprietario      
+                em.getTransaction().commit();
+                retorno = true; 
+                
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao excluir proprietário!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return retorno;
+    }  
      
        public boolean editarProprietario(Proprietario proprietario) {
 	// ABRE A CONEXAO

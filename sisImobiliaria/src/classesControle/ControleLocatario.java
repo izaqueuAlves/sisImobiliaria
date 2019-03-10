@@ -30,7 +30,7 @@ public class ControleLocatario {
         locatario.setCpf(CPF);
         locatario.setNomeCompleto(nomeCompleto);
         locatario.setEmail(email);
-        locatario.setTipo_Imovel(tipo_imovel);
+     //   locatario.setTipo_Imovel(tipo_imovel);
         
         
         try {
@@ -58,8 +58,8 @@ public class ControleLocatario {
         locatario.setCpf(novoCPF);
         locatario.setNomeCompleto(novoNomeCompleto); 
         locatario.setEmail(novoEmail);
-        locatario.setTipo_Imovel(novoTipo_imovel);
-        
+      //  locatario.setTipo_Imovel(novoTipo_imovel);
+        // nao entendi pq tipo imovel é um atributo de Locatario (??) no diagrama nao tem esse atributo #izaqueu
         
         try {
             locatario.cadastrarLocatario(locatario);

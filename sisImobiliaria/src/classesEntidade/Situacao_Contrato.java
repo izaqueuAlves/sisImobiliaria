@@ -10,7 +10,7 @@ package classesEntidade;
  * @author welerson
  */
 public enum Situacao_Contrato {
-    EM_ABERTO(1), FECHADO(2), CANCELADO(3);
+    EM_ABERTO(0), FECHADO(1), CANCELADO(2);
         
         private final int valor;
 

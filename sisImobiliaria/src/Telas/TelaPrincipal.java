@@ -6,9 +6,17 @@
 package Telas;
 
 import classesControle.ControleImovel;
+import classesControle.ControleVenda;
 import classesEntidade.Comprador;
+import classesEntidade.Contrato_Aluguel;
+import classesEntidade.Contrato_Venda;
+import classesEntidade.Corretor;
 import classesEntidade.Proprietario;
 import classesEntidade.Imovel;
+import classesEntidade.Locatario;
+import classesEntidade.Situacao_Contrato;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -127,29 +135,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         Imovel im = new Imovel();
-        Proprietario p = new Proprietario();
-       /*
-        p.setCpf("15699897510");
-        p.setEmail("exemplo@gmail.com");
-        p.setNomeCompleto("Paulo vieira");
-        p.setTelefone("999999958");
+        im = im.getImovelById(2);
+        Contrato_Aluguel c_v = new Contrato_Aluguel();
+        /*        
+        Locatario l = new Locatario();
+        l.setCpf("0514826328");
+        l.setEmail("ed@gmail.com");
+        l.setNomeCompleto("Carlos Alberto");
+       
+        l.cadastrarLocatario(l);
+        l = l.buscarLocatario("0514826328");
         
         
-        if(p.cadastrarProprietario(p)){
-            System.out.println("Cadastrado!");
-        }
+        Corretor cor = new Corretor();
+        cor = cor.buscarCorretor("98399457504");
+        
+        c_v.setLocatario(l);
+        c_v.setCorretor(cor);
+        c_v.setDataFechamento("22/03/2019");
+        c_v.setDescricaoAluguel("Descricao teste!!");
+        c_v.setImovel(im);
+        c_v.setSituacao_contrato(Situacao_Contrato.EM_ABERTO);
+        c_v.setValorAluguel(500);
+        c_v.setDataFim("10/04/2019");
+        
+        c_v.abrirContrato(); 
         */
-      //  p = p.buscarProprietario("15699897510");
-     //   System.out.println("nome "+p.getNomeCompleto());
-        
-  
-        
-        if(im.alterarProprietario("1569997510",1)){
-            System.out.println("Editado com sucesso!");
-        }else{
-            System.out.println("Falha ao editar imóvel!");
+               
+        for(Contrato_Aluguel ca: c_v.getContratosVigentes()){
+            System.out.println("Descricao: "+ca.getDescricaoAluguel());
+            System.out.println("Dada Fim: "+ca.getDataFim());
         }
         
         

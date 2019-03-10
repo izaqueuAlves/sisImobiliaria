@@ -5,7 +5,9 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
 /**
@@ -64,23 +66,59 @@ public class Locatario {
         return email;
     }
 
-    public Locatario buscarLocatario(String CPF_locatario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Locatario buscarLocatario(String cpf_locatario) {
+        EntityManager em = new Connect().getConexao();
+        Locatario l = new Locatario();
+        
+        try{
+            l = em.find(Locatario.class, cpf_locatario);
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Locatário não encontrado!: "+e);            
+        }finally{
+            em.close();
+        }
+    
+        return l;
     }
 
-    public void cadastrarLocatario(Locatario locatario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cadastrarLocatario(Locatario locatario) {
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
+        
+        try{
+            em.getTransaction().begin();
+            em.persist(locatario);
+            em.getTransaction().commit();
+            retorno = true;
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar locatário!: "+e); 
+        }finally{
+            em.close();
+        }
+        
+        return retorno;
     }
 
-    public void setTipo_imovel(Tipo_Imovel novoTipo_imovel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean editarLocatario(Locatario locatario) {
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
+        
+        try{
+            em.getTransaction().begin();
+            em.merge(locatario);
+            em.getTransaction().commit();
+            retorno = true;
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao editar locatário!: "+e); 
+        }finally{
+            em.close();
+        }
+        
+        return retorno;
     }
-
-    public void setTipo_Imovel(Tipo_Imovel tipo_imovel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
     
     
 }

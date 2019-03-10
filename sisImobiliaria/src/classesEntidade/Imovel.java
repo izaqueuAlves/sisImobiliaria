@@ -229,9 +229,7 @@ public class Imovel {
         
         return retorno;
                
-    }
-
-    public boolean removerImovel(Integer id_imovel) {
+    }   public boolean removerImovel(Integer id_imovel) {
  
         EntityManager em = new Connect().getConexao();
         boolean retorno = false; 
@@ -254,7 +252,9 @@ public class Imovel {
         }
         
         return retorno;
-    }   
+    }  
+
+  
  
    
     public Imovel getImovelById(Integer id_imovel) {
