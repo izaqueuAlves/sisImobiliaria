@@ -142,7 +142,7 @@ public class Classe_Teste
     
     public static void testaGetImovelById(){
         Imovel im = new Imovel();
-        im = im.getImovelById(2);
+        im = im.getImovelById(1);
         imprimeImovel(im);
     }
     
@@ -192,6 +192,8 @@ public class Classe_Teste
     }
     
     public static void main(String[] args){
+        
+        testaCadastroImovel();
         /*TO TEST: 
         testaEditarProprietario();
         testaEditarImovel();
@@ -201,9 +203,14 @@ public class Classe_Teste
         Nenhum Imóvel foi encontrado!: java.lang.ArrayIndexOutOfBoundsException: 5
         Exception in thread "main" java.lang.NullPointerException
         
+        ##[erro gerado qndo algum campo da tabela imovel nao foi preenchido, solucao: verificar se todos campos tem valor, 
+        PS. testei aqui e quando preenchi os campos q estavam vazios o erro sumiu. #izaqueu]
+        
         testaGetImovelById(); não funciona se id igual a 1 ou 2
         Nenhum Imóvel foi encontrado!: java.lang.ArrayIndexOutOfBoundsException: 5
         Exception in thread "main" java.lang.NullPointerException
+        ##[nao ha erro, acabei de testar aqui na minha máquina, certifique-se de que vc nao apagou os imoveis com os IDs 1 e 2,
+        se apagou os proximos imoveis inseridos nunca pegaram novamente esses IDs. #izaqueu]
         
         TO FIX:
         testaGetImoveisAluguel();
@@ -211,6 +218,9 @@ public class Classe_Teste
         
         Situacao_Imovel diferente dos dados no DB
         Ex: em Situacao_Imovel.java, DISPONIVEL_ALUGUEL = 0 ao invés de 1 como no DB
+        ##[DISPONIVEL_ALUGUEL = 0 pq o proprio java atribui a lista comecando de 0 e nao de um, independete se no codico colocar:
+        DISPONIVEL_ALUGUEL(1), DISPONIVEL_VENDA(2), o java ira fazer: DISPONIVEL_ALUGUEL(0), DISPONIVEL_VENDA(1), por isso ja deixei
+        no codigo como: DISPONIVEL_ALUGUEL(0), DISPONIVEL_VENDA(1) para qndo olharmos entendermos. #izaqueu]
         
         NOTEWORTHY:
         testaCadastroImovel(); necessita endereco e tipo_imovel já cadastrados
