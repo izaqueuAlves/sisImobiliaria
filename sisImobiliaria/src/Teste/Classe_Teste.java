@@ -1,5 +1,7 @@
 package Teste;
 
+import classesControle.ControleComprador;
+import classesControle.ControleCorretor;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
@@ -418,6 +420,9 @@ public class Classe_Teste
     }
     //</editor-fold>
     
+    
+ 
+    
     public static void main(String[] args){
         
         //testaCadastroImovel();
@@ -485,5 +490,40 @@ public class Classe_Teste
         //imprimeComprador(testaBuscarComprador());
         //imprimeLocatario(testaBuscarLocatario());
         //testaCadastrarLocatario();
+        
+        
+        // Testes Classes de Controle
+        
+        System.out.print("Teste Controle Corretor"); testeCadastroCorretorControle();
+        
+        //System.out.print("Teste Controle Comprador");  testeCadastroCompradorControle();
+        
+        
+        
+        
+    }    
+    
+    //TESTES CLASSES DE CONTROLE A PARTIR DAQUI    
+    private static void testeCadastroCorretorControle() {
+        ControleCorretor ctCorretor = new ControleCorretor();
+        String CRECI = "1234-SE";
+        String CPF = "200.200.200-12";
+        String senha = "testeWel";
+        String nomeCompleto = "Welerson Melo";
+        String telefone = "98839-0895";
+        String email = "welerson.a.melo@gmail.com";
+        
+        ctCorretor.cadastrarCorretor(CRECI, CPF, senha, nomeCompleto, telefone, email);
     }
+
+    private static void testeCadastroCompradorControle() {
+        ControleComprador ctComprador = new ControleComprador();
+        String CPF = "200.200.200-24";
+        String nomeCompleto = "Valmirnio Junior Jr";
+        String telefone = "98839-0000";
+        String email = "valmirnio@gmail.com";
+        
+        ctComprador.cadastrarComprador(CPF, nomeCompleto, telefone, email);
+    }
+    
 }

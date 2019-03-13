@@ -34,13 +34,14 @@ public class ControleComprador {
         comprador.setTelefone(telefone);
         comprador.setEmail(email);       
         
-        try {
-            comprador.cadastrarComprador(comprador);
-            //Mensagem de Comprador cadastrado com sucesso!
-        } catch (Error e) {
-            e.printStackTrace();
-            //Mandar mensagem de erro para a tela
+        
+        if (comprador.cadastrarComprador(comprador)) {
+            //Cadastrado com sucesso
+        } else
+        {
+            //Erro ao cadastrar
         }
+            
     }
     
     /**
@@ -51,6 +52,7 @@ public class ControleComprador {
      * @param novoEmail 
      */
     
+   //REFAZER 
    public void editarComprador(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail){
         
        comprador= new Comprador();
@@ -64,7 +66,7 @@ public class ControleComprador {
 //        System.out.println("Novo Telefone: "+novoTelefone);
 //        System.out.println("Novo email: "+novoEmail);
         try {
-            comprador.cadastrarComprador(comprador);
+            //comprador.cadastrarComprador(comprador);
             //Mensagem de Comprador cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();

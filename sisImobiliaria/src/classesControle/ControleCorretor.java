@@ -1,5 +1,7 @@
 package classesControle;
 import classesEntidade.Corretor;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,12 +38,16 @@ public class ControleCorretor {
       corretor.setEmail (email);
       
        
-        try {
-            corretor.cadastrarCorretor(corretor);
-            //Mensagem de corretor cadastrado com sucesso!
-        } catch (Error e) {
-            e.printStackTrace();
-            //Mandar mensagem de erro para a tela
+        final JFrame frame = new JFrame();
+        
+        if (corretor.cadastrarCorretor(corretor)) {
+            //Corretor Cadastrado 
+            System.out.print("Corretor Cadastrado Com sucesso");
+            JOptionPane.showMessageDialog(frame.getContentPane() ,"cadastrado com sucesso.");
+        } else {
+            //Erro
+            System.out.print("Erro ao cadastrar corretor!");
+            JOptionPane.showMessageDialog(frame.getContentPane() ,"cadastrado com sucesso.");
         }
   }
   
@@ -55,6 +61,7 @@ public class ControleCorretor {
    * @param novoEmail 
    */
   
+  //DEVE EDITAR E N CADASTRAR, CONSERTAR
   public void editarCorretor (String novoCRECI, String novoCPF, String novaSenha, String novoNomeCompleto, String novoTelefone, String novoEmail)
   {
       corretor = new Corretor();
@@ -69,7 +76,7 @@ public class ControleCorretor {
       
        
         try {
-            corretor.cadastrarCorretor(corretor);
+            //corretor.cadastrarCorretor(corretor);
             //Mensagem de corretor cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
