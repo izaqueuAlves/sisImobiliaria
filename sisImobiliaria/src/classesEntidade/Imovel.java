@@ -258,7 +258,6 @@ public class Imovel {
  
    
     public Imovel getImovelById(Integer id_imovel) {
- 
         EntityManager em = new Connect().getConexao();
         Imovel im = null;
         try{

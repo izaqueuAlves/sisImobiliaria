@@ -38,6 +38,8 @@ public class ControleProprietario {
             //Mandar mensagem de erro para a tela
         }
     }
+    
+    //REFAZER, ERRO
     public void editarProprietario(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail)
     {
          proprietario = new Proprietario();
@@ -51,7 +53,7 @@ public class ControleProprietario {
         
         
         try {
-            proprietario.cadastrarProprietario(proprietario);
+            //proprietario.cadastrarProprietario(proprietario);
             //Mensagem de proprietario cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();

@@ -10,6 +10,7 @@ import classesEntidade.Contrato_Venda;
 import classesEntidade.Imovel;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
+import classesEntidade.Situacao_Imovel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +54,14 @@ public class ControleConsultarContratoVenda {
         Imovel imovel;
         
         contrato = contrato.consultarContrato(id_contrato);
+        
+        if (contrato.getSituacao_contrato() != Situacao_Contrato.EM_ABERTO) {
+            //Mensagem na tela
+            System.out.print("Erro. Contrato não está em aberto.");
+        }
+        
         imovel = contrato.getImovel();
+        
         Proprietario novoProprietario = new Proprietario();
         Comprador comprador;
         comprador = contrato.getComprador();
@@ -66,7 +74,7 @@ public class ControleConsultarContratoVenda {
         novoProprietario.cadastrarProprietario(novoProprietario);
         
         novoProprietario = novoProprietario.buscarProprietario(novoProprietario.getCpf());
-        
+        imovel.setSituacao_Imovel(Situacao_Imovel.VENDIDO);
         imovel.setProprietario(novoProprietario);
         imovel.editarImovel(imovel);
         

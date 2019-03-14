@@ -12,6 +12,7 @@ import classesEntidade.Endereco;
 import classesEntidade.Imovel;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
+import classesEntidade.Situacao_Imovel;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ControleVenda {
      * @param IdImovel
      * @param CPF_corretor
      * @param condicoesPagamento // Descrição em string das condições 
-     * @param precoNegociado // Obs: O preço negociado pode ser diferente do preço real do imovel salvo na classe imovel. Por isso dá a opção de preço na hora de cadastrar a venda
+     * @param precoNegociado  (em String mesmo)// Obs: O preço negociado pode ser diferente do preço real do imovel salvo na classe imovel. Por isso dá a opção de preço na hora de cadastrar a venda
      */
     public void vendaImovel(String CPF_comprador, int IdImovel, String CPF_corretor, String condicoesPagamento, String precoNegociado) 
     {
@@ -37,6 +38,14 @@ public class ControleVenda {
         Corretor corretor = new Corretor();
         
         imovel = imovel.getImovelById(IdImovel);
+        
+        if (imovel.getSituacao_Imovel() != Situacao_Imovel.DISPONIVEL_VENDA && imovel.getSituacao_Imovel() != Situacao_Imovel.DISPONIVEL_VENDA_ALUGUEL) 
+        {
+            System.out.println("erro, imóvel não disponível para venda!");
+            //Colocar mensagem na tela
+            return;
+        }
+        
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
         comprador = comprador.buscarComprador(CPF_comprador);
