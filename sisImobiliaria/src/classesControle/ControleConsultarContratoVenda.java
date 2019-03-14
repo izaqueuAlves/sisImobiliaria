@@ -7,6 +7,8 @@ package classesControle;
 
 import classesEntidade.Comprador;
 import classesEntidade.Contrato_Venda;
+import classesEntidade.Corretor;
+import classesEntidade.Endereco;
 import classesEntidade.Imovel;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
@@ -92,6 +94,61 @@ public class ControleConsultarContratoVenda {
         }
     }
     
-    
+    /**
+     * 
+     * @param id_contrato (O id do contrato escolhido na tela)
+     * @param condicoesPagamento 
+     * @param precoNegociado 
+     * @return True se o contrato for editado(alterado no banco) com sucesso, False caso contrário
+     */
+  
+    public boolean editarContratoEmAberto(int id_contrato, String condicoesPagamento, String precoNegociado) {
+        Contrato_Venda contrato = new Contrato_Venda();
+        
+        contrato = contrato.consultarContrato(id_contrato);
+        
+        Imovel imovel = contrato.getImovel();
+        Endereco endereco = contrato.getImovel().getEndereco();
+        Proprietario proprietario = contrato.getImovel().getProprietario();
+        Comprador comprador = contrato.getComprador();
+        Corretor corretor = contrato.getCorretor();
+      
+        String descricao = ""
+                + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
+                + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
+                + "Vendedor\n"
+                + "Nome Completo: "+ proprietario.getNomeCompleto() + "\n"
+                + "CPF: " + proprietario.getCpf() + "\n"
+                + "\n"
+                + "Comprador\n"
+                + "Nome Completo: " +comprador.getNomeCompleto() + "\n"
+                + "CPF: " + comprador.getCpf() +"\n"
+                + "\n"
+                + "\n"
+                + "CLÁUSULA 2ª - O presente contrato tem por finalidade a comercialização do imóvel descrito a seguir, de propriedade do VENDEDOR:\n"
+                + "Endereco do Imovel: " +endereco.toString()+ "\n"
+                + "\n"
+                + "CLÁUSULA 3ª - Pelo presente instrumento e na melhor forma de direito, o VENDEDOR tem ajustado vender, conforme promete ao COMPRADOR, e esse comprar-lhe, o imóvel descrito e caracterizado na Cláusula 2ª, que possue de forma livre e desembaraçada de quaisquer ônus real, pessoal, fiscal ou extrajudicial, dívidas, arrestos ou seqüestros, ou, ainda, de restrições de qualquer natureza, pelo preço e de conformidade com as cláusulas ora estabelecidas.\n"
+                + "\n"
+                + "CLÁUSULA 4ª - O preço certo e ajustado da venda ora acertada é de R$ " + precoNegociado +" a título de sinal de negócio e princípio de pagamento, conforme recibo assinado pelo VENDEDOR e que, na época do pagamento, foi entregue aos COMPRADOR e de cujo recebimento dão a mais ampla quitação. \n"
+                + "\n"
+                + "O valor será pago nas seguintes condicoes: " + condicoesPagamento + "\n"
+                + "\n"
+                + "CLÁUSULA 5ª - A posse do imóvel objeto deste contrato é transmitida pelo VENDEDOR ao COMPRADOR neste ato, situação essa representada pela entrega das chaves do referido imóvel.\n"
+                + "E por estarem assim justas e contratadas as partes assinam o presente contrato em vias de igual teor e forma, na presença de testemunhas."
+                + "\n"
+                + "\n";
+        
+        precoNegociado = precoNegociado.replace(',', '.');
+        contrato.setValorVenda(Float.parseFloat(precoNegociado));
+        contrato.setDescricaoVenda(descricao);
+        
+        try {
+            contrato.alterarContratoEmAberto();
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
     
 }
