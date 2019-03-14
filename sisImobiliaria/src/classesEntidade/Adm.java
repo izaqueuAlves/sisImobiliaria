@@ -9,6 +9,7 @@ import conexao.Connect;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 /**
  *
@@ -80,15 +81,16 @@ public class Adm {
     
 
 
-public void cadastrarAdm(Adm adm) {
+public boolean cadastrarAdm(Adm adm) {
 	// ABRE A CONEXAO
 	EntityManager em = new Connect().getConexao();	
-	
+	boolean retorno = false; 
+        
 	try {		
                 em.getTransaction().begin();
                 em.persist(adm);
 		em.getTransaction().commit();
-			 		
+		retorno = true; 	 		
 		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
 	} catch (Exception e) {
 		em.getTransaction().rollback();
@@ -96,5 +98,24 @@ public void cadastrarAdm(Adm adm) {
 	}finally{
 	 	em.close();
 	}
+        return retorno;
     }
+  public Adm buscarAdmPorLogin(String login) {
+ 
+        EntityManager em = new Connect().getConexao();
+        Adm adm = null;
+        try{
+            Query query = em.createQuery("from Adm where login = :login");
+            query.setParameter("login", login);
+            adm = (Adm) query.getSingleResult(); 
+        }catch(Exception e){
+            System.out.println("Administrador não encontrato!: "+e);
+        }finally{
+            em.close();
+        }        
+        return adm;  
+    }
+    
+
+
 }

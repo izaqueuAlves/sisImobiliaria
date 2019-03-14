@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleComprador;
+import classesControle.ControleCorretor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nataliaguimaraes
@@ -31,8 +35,8 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         creci = new javax.swing.JTextField();
-        senha = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        entrar = new javax.swing.JButton();
+        senha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,11 +56,16 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
             }
         });
 
-        senha.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        entrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        entrar.setText("ENTRAR");
+        entrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarActionPerformed(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("ENTRAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        senha.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,7 +75,7 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
                 .addContainerGap(256, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(300, 300, 300))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,8 +86,8 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(creci))))
+                                    .addComponent(creci, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(senha))))
                         .addGap(233, 233, 233))))
         );
         layout.setVerticalGroup(
@@ -90,12 +99,12 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(creci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addComponent(entrar)
                 .addContainerGap(288, Short.MAX_VALUE))
         );
 
@@ -105,6 +114,21 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
     private void creciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creciActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_creciActionPerformed
+
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+        ControleCorretor ctr = new ControleCorretor();
+        String l = creci.getText();
+        String pass = new String(senha.getPassword());
+        
+        if(ctr.fazerLogin(l, pass)){
+            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
+            // chamar a proxima pagina aqui..
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorretos!", "Erro", 0);
+            creci.setText("");
+            senha.setText("");
+        }
+    }//GEN-LAST:event_entrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +167,10 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField creci;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton entrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField senha;
+    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 }

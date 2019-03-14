@@ -89,5 +89,20 @@ public class ControleCorretor {
    public void excluirCorretor(){  
         corretor = new Corretor();
     }  
+   
+    public boolean fazerLogin(String creci, String senha){
+        
+        Corretor corretor = new Corretor();        
+        corretor = corretor.buscarCorretorPorCreci(creci);
+        
+        if(corretor != null)
+            if(creci.equals(corretor.getCreci()) && senha.equals(corretor.getSenha())){
+                return true;
+            }else{
+                return false;
+            }
+        else
+            return false;
+      }
 }
 

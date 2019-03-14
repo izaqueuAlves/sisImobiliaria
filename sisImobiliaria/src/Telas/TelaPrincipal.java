@@ -11,10 +11,13 @@ import classesEntidade.Comprador;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;
+import classesEntidade.Endereco;
 import classesEntidade.Proprietario;
 import classesEntidade.Imovel;
 import classesEntidade.Locatario;
 import classesEntidade.Situacao_Contrato;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,11 +104,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLoginCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginCorretorActionPerformed
-        // Redirecionar para a tela de Login Corretor
+        // Redirecionar para a tela de Login Corretor        
+        tela_corretor = new Tela_Login_Corretor();
+	Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+	tela_corretor.setLocation((tela.width - tela_corretor.getSize().width)/2,(tela.height - tela_corretor.getSize().height)/2);
+	tela_corretor.setVisible(true); //mostra a tela de login do corretor
+	TelaPrincipal.this.dispose();   // fecha a tela principal
     }//GEN-LAST:event_btLoginCorretorActionPerformed
 
     private void btLoginAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginAdmActionPerformed
         //Redirecionar Tela Login Adm
+        tela_adm = new Tela_Login_Adm();
+	Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+	tela_adm.setLocation((tela.width - tela_adm.getSize().width)/2,(tela.height - tela_adm.getSize().height)/2);
+	tela_adm.setVisible(true);     //mostra a tela de login do adm
+	TelaPrincipal.this.dispose();  // fecha a tela principal, isso vale para qualquer pagina
     }//GEN-LAST:event_btLoginAdmActionPerformed
 
     /**
@@ -133,47 +146,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        
-        Imovel im = new Imovel();
-        im = im.getImovelById(2);
-        Contrato_Aluguel c_v = new Contrato_Aluguel();
-        /*        
-        Locatario l = new Locatario();
-        l.setCpf("0514826328");
-        l.setEmail("ed@gmail.com");
-        l.setNomeCompleto("Carlos Alberto");
-       
-        l.cadastrarLocatario(l);
-        l = l.buscarLocatario("0514826328");
-        
-        
-        Corretor cor = new Corretor();
-        cor = cor.buscarCorretor("98399457504");
-        
-        c_v.setLocatario(l);
-        c_v.setCorretor(cor);
-        c_v.setDataFechamento("22/03/2019");
-        c_v.setDescricaoAluguel("Descricao teste!!");
-        c_v.setImovel(im);
-        c_v.setSituacao_contrato(Situacao_Contrato.EM_ABERTO);
-        c_v.setValorAluguel(500);
-        c_v.setDataFim("10/04/2019");
-        
-        c_v.abrirContrato(); 
-        */
-               
-        for(Contrato_Aluguel ca: c_v.getContratosVigentes()){
-            System.out.println("Descricao: "+ca.getDescricaoAluguel());
-            System.out.println("Dada Fim: "+ca.getDataFim());
-        }
-        
-        
+     
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
- //               new TelaPrincipal().setVisible(true); DESCOMENTAR PARA EXECUTAR A TELA
+                try {
+			TelaPrincipal frame = new TelaPrincipal();
+                        frame.setVisible(true);
+			Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+			frame.setLocation((tela.width - frame.getSize().width)/2, (tela.height - frame.getSize().height)/2);
+					
+                } catch (Exception e) {
+			e.printStackTrace();
+		}
             }
         });
     }
@@ -186,4 +171,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+    Tela_Login_Adm tela_adm;
+    Tela_Login_Corretor tela_corretor;
 }

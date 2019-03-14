@@ -113,7 +113,7 @@ public class Corretor {
             em.getTransaction().begin();
             em.persist(corretor);
             em.getTransaction().commit();
-            
+            retorno = true;
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
             System.out.println("Erro ao cadastrar corretor!: "+e);
@@ -185,11 +185,20 @@ public class Corretor {
         
         return retorno;
      }
-
-    public boolean fazerLogin(String creci, String senha) {
+       
+    public Corretor buscarCorretorPorCreci(String creci) {
         
-        // implementar metodo
+        EntityManager em = new Connect().getConexao();
+        Corretor corretor = null;
         
-        return true;
+        try{
+           corretor = em.find(Corretor.class, creci);
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Corretor não encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        return corretor; 
     }
 }

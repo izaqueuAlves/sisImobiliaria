@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleAdm;
+import classesControle.ControleLocatario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nataliaguimaraes
@@ -138,6 +142,18 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         // TODO add your handling code here:
+        ControleAdm ctr = new ControleAdm();
+        String l = login.getText();
+        String pass = new String(senha.getPassword());
+        
+        if(ctr.fazerLogin(l, pass)){
+            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
+            // chamar a proxima pagina aqui..
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorretos!", "Erro", 0);
+            login.setText("");
+            senha.setText("");
+        }
        
     }//GEN-LAST:event_entrarActionPerformed
 
@@ -190,6 +206,6 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
     private javax.swing.JTextField login;
     private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
-
+    
     
 }

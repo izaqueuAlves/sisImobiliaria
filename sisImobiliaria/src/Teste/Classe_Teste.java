@@ -213,7 +213,7 @@ public class Classe_Teste
     //<editor-fold defaultstate="collapsed" desc="TESTA IMOVEL">
     public static Endereco testaBuscarImovel(){
         Endereco en = new Endereco();
-        en = en.buscarImovel(28);
+        en = en.buscarEndereco(28);
         return en;
     }
         
@@ -541,11 +541,19 @@ public class Classe_Teste
         //testeBuscaContratoAberto();
         //System.out.print("Teste Controle Aluguel");  testeAberturaContratoAluguelControle();
         //testeBuscaContratoAberto();
+       Adm adm = new Adm();
+       
+       adm.setEmail("adm@gmail.com");
+       adm.setNomeCompleto("Izaqueu Alves");
+       adm.setLogin("admteste");
+       adm.setSenha("adm123");
+       adm.setTelefone("3338848732");
+       
+       adm.cadastrarAdm(adm);
         
         System.out.print("Teste Controle fechamentoContrato");  
-        testeFechamentoContratoVendaControle();
-        testeFechamentoContratoAluguelControle();
-        
+       
+   
     }    
     
     //<editor-fold defaultstate="collapsed" desc="TESTA CLASSES CONTROLE">    

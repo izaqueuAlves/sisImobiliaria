@@ -109,7 +109,7 @@ public class Endereco {
     }
     
     
-    public Endereco buscarImovel(Integer id_endereco) {
+    public Endereco buscarEndereco(Integer id_endereco) {
  
         EntityManager em = new Connect().getConexao();
         Endereco en = null;
@@ -123,4 +123,20 @@ public class Endereco {
         
         return en;  
     }
+    
+    
+     public void cadastrarEndereco(Endereco endereco) {
+ 
+        EntityManager em = new Connect().getConexao();
+        
+        try{
+            em.getTransaction().begin();
+            em.persist(endereco);
+            em.getTransaction().commit();   
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            em.close();
+        }
+     }   
 }
