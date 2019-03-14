@@ -6,7 +6,9 @@
 package classesControle;
 
 import classesEntidade.Contrato_Aluguel;
+import classesEntidade.Imovel;
 import classesEntidade.Situacao_Contrato;
+import classesEntidade.Situacao_Imovel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,7 +51,11 @@ public class ControleConsultarContratoAluguel {
     public boolean fecharContratoEmAberto(int id_contrato) {
         Contrato_Aluguel contrato = new Contrato_Aluguel();
         
-        contrato = contrato.consultarContrato(id_contrato);
+        contrato = contrato.consultarContrato(id_contrato); 
+        
+        Imovel imovel = contrato.getImovel();
+        imovel.setSituacao_Imovel(Situacao_Imovel.ALUGADO);
+        imovel.editarImovel(imovel);
         
         Date data = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

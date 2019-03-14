@@ -1,7 +1,13 @@
 package Teste;
 
+import classesControle.ControleAluguel;
 import classesControle.ControleComprador;
+import classesControle.ControleConsultarContratoAluguel;
+import classesControle.ControleConsultarContratoVenda;
 import classesControle.ControleCorretor;
+import classesControle.ControleLocatario;
+import classesControle.ControleProprietario;
+import classesControle.ControleVenda;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
@@ -14,6 +20,10 @@ import classesEntidade.Situacao_Imovel;
 import classesEntidade.Tipo_Imovel;
 import classesEntidade.Adm;
 import classesEntidade.Situacao_Contrato;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -423,9 +433,6 @@ public class Classe_Teste
     }
     //</editor-fold>
     
-    
- 
-    
     public static void main(String[] args){
         
         /*        
@@ -514,20 +521,34 @@ public class Classe_Teste
         //testaAlterarContratoEmAberto(ca);
         //testaGetContratosAluguel();
         //testaGetContratosVigentes();
-        
+
         //Contrato_Aluguel ca = testaConsultarContratoAluguel();
         //imprimeContratoAluguel(ca);
         
         // Testes Classes de Controle
         //System.out.print("Teste Controle Corretor"); testeCadastroCorretorControle();
         //System.out.print("Teste Controle Comprador");  testeCadastroCompradorControle();
+
+        //#####Testes Classes de Controle######
         
+        //System.out.print("Teste Controle Corretor"); testeCadastroCorretorControle();
+        //System.out.print("Teste Controle Comprador");  testeCadastroCompradorControle();
+        //System.out.print("Teste Controle Proprietario");  testeCadastroProprietarioControle();
+        //System.out.print("Teste Controle Locatario");  testeCadastroLocatarioControle();
         
+        //System.out.print("Teste Controle Venda");  testeAberturaContratoVendaControle();
+        //System.out.println("\n\n");
+        //testeBuscaContratoAberto();
+        //System.out.print("Teste Controle Aluguel");  testeAberturaContratoAluguelControle();
+        //testeBuscaContratoAberto();
         
+        System.out.print("Teste Controle fechamentoContrato");  
+        testeFechamentoContratoVendaControle();
+        testeFechamentoContratoAluguelControle();
         
     }    
     
-    //TESTES CLASSES DE CONTROLE A PARTIR DAQUI    
+    //<editor-fold defaultstate="collapsed" desc="TESTA CLASSES CONTROLE">    
     private static void testeCadastroCorretorControle() {
         ControleCorretor ctCorretor = new ControleCorretor();
         String CRECI = "1234-SE";
@@ -549,5 +570,81 @@ public class Classe_Teste
         
         ctComprador.cadastrarComprador(CPF, nomeCompleto, telefone, email);
     }
+
+    private static void testeCadastroProprietarioControle() {
+        ControleProprietario ctProprietario = new ControleProprietario();
+        String CPF = "200.200.200-20";
+        String nomeCompleto = "Thôme Leite";
+        String telefone = "99999-1111";
+        String email = "thome@gmail.com";
+        
+        ctProprietario.cadastrarProprietario(CPF, nomeCompleto, telefone, email);
+    }
+
+    private static void testeCadastroLocatarioControle() {
+        ControleLocatario ctLocatario = new ControleLocatario();
+        String CPF = "200.200.200-11";
+        String nomeCompleto = "Joao Jose Santos";
+        String telefone = "91991-9999";
+        String email = "jjs@gmail.com";
+        
+        ctLocatario.cadastrarLocatario(CPF, nomeCompleto, telefone, email);
+    }
+
+    private static void testeAberturaContratoVendaControle() {
+        ControleVenda ctVenda = new ControleVenda();
+        
+        String CPF_comprador = "300.300.300-00";
+        String CPF_corretor = "200.200.200-00";
+        String condicoesPagamento = "O comprador irá pagar em 100 vezes de R$ 2000,00 mensais.";
+        String precoNegociado = "1,50";
+        int codImovel = 9;
+        
+        ctVenda.vendaImovel(CPF_comprador, codImovel, CPF_corretor, condicoesPagamento, precoNegociado);
+
+    }
+
+    private static void testeBuscaContratoAberto() {
+        ControleConsultarContratoAluguel ctCCA = new ControleConsultarContratoAluguel();
+        
+        List<Contrato_Aluguel> contratosAbertos;
+                
+        contratosAbertos = ctCCA.buscarContratosEmAberto();
+        
+        for (int i = 0; i < contratosAbertos.size(); i++) {
+            Contrato_Aluguel cv = contratosAbertos.get(i);
+            
+            System.out.println("Contrato de número:" +cv.getIdContrato()+"\n\nNo que segue:\n"+cv.getDescricaoAluguel());
+        }
+    }
+
+    private static void testeAberturaContratoAluguelControle() {
+        
+        ControleAluguel ctAluguel = new ControleAluguel();
+        
+        String CPF_locatario = "400.400.400-00";
+        String CPF_corretor = "200.200.200-00";
+        String descricoesAdicionais = "O comprador irá pagar a cada dia 15 de cada mês o valor acordado. Ao final do período total, o locatario deve devolver a casa pintada na cor Branca, que é a cor atual, e deve devolver com todos os 21322 telhaados inteiros.";
+        String precoNegociado = "11,50";
+        int codImovel = 3;
+        
+        String dataInicio = "05/02/2019";
+        String dataFim = "05/02/2020";
+        
+        ctAluguel.aluguelImovel(CPF_locatario, codImovel, CPF_corretor, descricoesAdicionais, precoNegociado, dataInicio, dataFim);
+    }
+
+    private static void testeFechamentoContratoVendaControle() {
+        ControleConsultarContratoVenda ctCCV = new ControleConsultarContratoVenda();
+        
+        ctCCV.fecharContratoEmAberto(6);
+    }
+
+    private static void testeFechamentoContratoAluguelControle() {
+        ControleConsultarContratoAluguel ctCCA = new ControleConsultarContratoAluguel();
+        
+        ctCCA.fecharContratoEmAberto(4);
+    }
+    //</editor-fold>
     
 }

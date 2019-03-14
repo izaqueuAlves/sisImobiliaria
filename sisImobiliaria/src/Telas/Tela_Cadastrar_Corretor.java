@@ -44,15 +44,15 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         senha = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        senha_Confirm = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(715, 715));
-        setPreferredSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("CADASTRO CORRETOR");
+
+        nome.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("NOME:");
@@ -60,6 +60,7 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("SOBRENOME:");
 
+        cpf.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpfActionPerformed(evt);
@@ -68,12 +69,7 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("CADASTRAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(0));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setText("CPF:");
@@ -87,11 +83,18 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setText("E-MAIL:");
 
+        sobrenome.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         sobrenome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sobrenomeActionPerformed(evt);
             }
         });
+
+        creci.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        telefone.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        email.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setText("SENHA:");
@@ -99,9 +102,12 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setText("CONFIRMAR SENHA:");
 
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        senha.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        senha_Confirm.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        senha_Confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                senha_ConfirmActionPerformed(evt);
             }
         });
 
@@ -140,7 +146,7 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
                                     .addComponent(telefone)
                                     .addComponent(email)
                                     .addComponent(senha)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(senha_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(209, 209, 209))))
         );
         layout.setVerticalGroup(
@@ -179,18 +185,18 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(senha_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void senha_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senha_ConfirmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_senha_ConfirmActionPerformed
 
     private void sobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenomeActionPerformed
         // TODO add your handling code here:
@@ -199,10 +205,6 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
     private void cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpfActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,9 +255,9 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField nome;
     private javax.swing.JPasswordField senha;
+    private javax.swing.JPasswordField senha_Confirm;
     private javax.swing.JTextField sobrenome;
     private javax.swing.JTextField telefone;
     // End of variables declaration//GEN-END:variables
