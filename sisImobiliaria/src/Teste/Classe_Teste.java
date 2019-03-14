@@ -85,14 +85,22 @@ public class Classe_Teste
     
     public static Contrato_Venda contratoVendaGenerico(){
         Contrato_Venda cv = new Contrato_Venda(200000,"venda teste","00/00/0000");
+        Imovel im = new Imovel();
         cv.setSituacao_contrato(Situacao_Contrato.EM_ABERTO);
+        cv.setComprador(testaBuscarComprador());
+        cv.setCorretor(testaBuscarCorretor());
+        cv.setImovel(im.getImovelById(28));
         return cv;
     }
     
     public static Contrato_Aluguel contratoAluguelGenerico(){
         Contrato_Aluguel ca = new Contrato_Aluguel(300,"aluguel teste","00/00/0000",
         "11/11/1111","22/22/2222");
+        Imovel im = new Imovel();
         ca.setSituacao_contrato(Situacao_Contrato.EM_ABERTO);
+        ca.setLocatario(testaBuscarLocatario());
+        ca.setCorretor(testaBuscarCorretor());
+        ca.setImovel(im.getImovelById(28));
         return ca;
     }
 
@@ -163,7 +171,7 @@ public class Classe_Teste
         System.out.println(ca.getDataFechamento());
         System.out.println(ca.getDataInicio());
         System.out.println(ca.getDataFim());
-        System.out.println(ca.getSituacao_contrato().getValor());
+        //System.out.println(ca.getSituacao_contrato().getValor());
     }
     //</editor-fold>
     
@@ -173,15 +181,14 @@ public class Classe_Teste
         xz.cadastrarProprietario(xz);
     }
     
-    public static void testaEditarProprietario(){
-        Proprietario xz = new Proprietario();
-        xz.editarProprietario(xz);
+    public static void testaEditarProprietario(Proprietario p){
+        p.editarProprietario(p);
     }
     
-    public static void testaBuscarProprietario(){
+    public static Proprietario testaBuscarProprietario(){
         Proprietario xz = new Proprietario();
-        xz = xz.buscarProprietario("100.100.100-02");
-        imprimeProprietario(xz);
+        xz = xz.buscarProprietario("100.100.100-08");
+        return xz;
     }
     
     public static void testaGetTodosProprietarios(){
@@ -196,7 +203,7 @@ public class Classe_Teste
     //<editor-fold defaultstate="collapsed" desc="TESTA IMOVEL">
     public static Endereco testaBuscarImovel(){
         Endereco en = new Endereco();
-        en = en.buscarImovel(23);
+        en = en.buscarImovel(28);
         return en;
     }
         
@@ -205,8 +212,7 @@ public class Classe_Teste
         im.cadastrarImovel(im);
     }
     
-    public static void testaEditarImovel(){
-        Imovel im = imovelGenerico();
+    public static void testaEditarImovel(Imovel im){
         im.editarImovel(im);
     }
     
@@ -270,7 +276,7 @@ public class Classe_Teste
     //<editor-fold defaultstate="collapsed" desc="TESTA CORRETOR">
     public static Corretor testaBuscarCorretor(){
         Corretor c = new Corretor();
-        c = c.buscarCorretor("200.200.200-02");
+        c = c.buscarCorretor("200.200.200-05");
         return c;
     }
     
@@ -279,8 +285,7 @@ public class Classe_Teste
         c.cadastrarCorretor(c);
     }
     
-    public static void testaEditarCorretor(){
-        Corretor c = new Corretor();
+    public static void testaEditarCorretor(Corretor c){
         c.editarCorretor(c);
     }
     
@@ -304,8 +309,7 @@ public class Classe_Teste
         comp.cadastrarComprador(comp);
     }
     
-    public static void testaEditarComprador(){
-        Comprador comp = new Comprador();
+    public static void testaEditarComprador(Comprador comp){
         comp.editarComprador(comp);
     }
     
@@ -319,7 +323,7 @@ public class Classe_Teste
     //<editor-fold defaultstate="collapsed" desc="TESTA LOCATARIO">
     public static Locatario testaBuscarLocatario(){
         Locatario lo = new Locatario();
-        lo = lo.buscarLocatario("400.400.400-01");
+        lo = lo.buscarLocatario("400.400.400-03");
         return lo;
     }
     
@@ -328,8 +332,7 @@ public class Classe_Teste
         lo.cadastrarLocatario(lo);
     }
     
-    public static void testaEditarLocatario(){
-        Locatario lo = new Locatario();
+    public static void testaEditarLocatario(Locatario lo){
         lo.editarLocatario(lo);
     }
     //</editor-fold>
@@ -361,10 +364,10 @@ public class Classe_Teste
         }
     }
     
-    public static void testaConsultarContratoVenda(){
+    public static Contrato_Venda testaConsultarContratoVenda(){
         Contrato_Venda cv = new Contrato_Venda();
-        cv = cv.consultarContrato(1);
-        imprimeContratoVenda(cv);
+        cv = cv.consultarContrato(26);
+        return cv;
     }
     
     public static void testaNegociantes(Contrato_Venda cv){
@@ -413,10 +416,10 @@ public class Classe_Teste
         }
     }
     
-    public static void testaConsultarContratoAluguel(){
+    public static Contrato_Aluguel testaConsultarContratoAluguel(){
         Contrato_Aluguel ca = new Contrato_Aluguel();
-        ca = ca.consultarContrato(1);
-        imprimeContratoAluguel(ca);
+        ca = ca.consultarContrato(16);
+        return ca;
     }
     //</editor-fold>
     
@@ -425,28 +428,35 @@ public class Classe_Teste
     
     public static void main(String[] args){
         
-        //testaCadastroImovel();
-        /*TO TEST: 
-        testaEditarProprietario();
-        testaEditarImovel();
-        testaEditarCorretor();
-        testaEditarComprador();
-        testaEditarLocatario();
-        
-        Contrato_Venda cv = testaAbrirContratoVenda();
-        testaFecharContratoVenda(cv);
-        testaAlterarContratoVendaAberto(cv);
-        testaCancelarContratoVendaAberto(cv);
+        /*        
+        ERRO:
         testaGetTodosContratos();
-        testaNegociantes(cv);
+        Nenhum contrato de venda encontrado!: java.lang.ArrayIndexOutOfBoundsException: 5
+        Exception in thread "main" java.lang.NullPointerException
+                at Teste.Classe_Teste.testaGetTodosContratos(Classe_Teste.java:358)
+                at Teste.Classe_Teste.main(Classe_Teste.java:499)
+        <= erro apesar de existirem 6 contratos de venda cadastrados        
+        ========================================================================
         
-        Contrato_Aluguel ca = testaAbrirContratoAluguel();
-        testaFecharContratoAluguel(ca);
-        testaAlterarContratoEmAberto(ca);
-        testaCancelarContratoEmAberto(ca);
-        testaGetContratosAluguel();
-        testaGetContratosVigentes();
-        testaConsultarContratoAluguel();
+        testaCadastrarCorretor(); <=funciona
+        testaCadastrarProprietario(); <=funciona
+        testaCadastroImovel(); <=funciona, se nao funcionar altere os IDs
+        das linhas 92 e 202 pra ficarem corretos
+        
+        ------------------------------------------------------------------------
+        testaCadastrarComprador(); <=funciona                
+        Contrato_Venda cv = testaConsultarContratoVenda(); <= funciona se rodar
+        as linhas acima
+        testaCancelarContratoVendaAberto(cv); <== Não aconteceu nada ao rodar,
+        o contrato permaneceu aberto, a linha inalterada
+        testaFecharContratoVenda(cv); <== Também não aconceceu nada ao rodar,
+        contrato continua inalterado, e em aberto
+        ------------------------------------------------------------------------
+        testaCadastrarLocatario(); <= funciona
+        Contrato_Aluguel ca = testaAbrirContratoAluguel(); <= funciona se rodar
+        as linhas acima
+        testaCancelarContratoEmAberto(ca); <== Não aconteceu nada ao rodar,
+        o contrato permaneceu aberto, a linha inalterada
         
         NOTEWORTHY:
         testaCadastroImovel(); necessita endereco e tipo_imovel já cadastrados
@@ -490,12 +500,26 @@ public class Classe_Teste
         //imprimeComprador(testaBuscarComprador());
         //imprimeLocatario(testaBuscarLocatario());
         //testaCadastrarLocatario();
+        //testaEditarProprietario();
+        //testaEditarCorretor();
+        //testaEditarComprador();
+        //testaEditarLocatario();
+        //testaEditarImovel();
+        //Contrato_Venda cv = testaAbrirContratoVenda();
+        //testaConsultarContratoVenda();
+        //testaNegociantes(cv);
+        //testaAlterarContratoVendaAberto(cv);
+        //Contrato_Aluguel ca = testaAbrirContratoAluguel();
+        //testaFecharContratoAluguel(ca);
+        //testaAlterarContratoEmAberto(ca);
+        //testaGetContratosAluguel();
+        //testaGetContratosVigentes();
         
+        //Contrato_Aluguel ca = testaConsultarContratoAluguel();
+        //imprimeContratoAluguel(ca);
         
         // Testes Classes de Controle
-        
-        System.out.print("Teste Controle Corretor"); testeCadastroCorretorControle();
-        
+        //System.out.print("Teste Controle Corretor"); testeCadastroCorretorControle();
         //System.out.print("Teste Controle Comprador");  testeCadastroCompradorControle();
         
         
