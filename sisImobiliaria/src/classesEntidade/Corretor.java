@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 /**
  *
@@ -87,13 +88,15 @@ public class Corretor {
         return email;
     }
 
-    public Corretor buscarCorretor(String CPF_corretor) {
+    public Corretor buscarCorretor(String creci) {
         
         EntityManager em = new Connect().getConexao();
         Corretor corretor = null;
         
         try{
-           corretor = em.find(Corretor.class, CPF_corretor);
+              Query query = em.createQuery("from Corretor where creci = :creci");
+              query.setParameter("creci", creci);
+              corretor = (Corretor) query.getSingleResult(); 
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
             System.out.println("Corretor não encontrado!: "+e);
@@ -185,7 +188,7 @@ public class Corretor {
         
         return retorno;
      }
-       
+    /*   
     public Corretor buscarCorretorPorCreci(String creci) {
         
         EntityManager em = new Connect().getConexao();
@@ -200,5 +203,5 @@ public class Corretor {
             em.close();
         }
         return corretor; 
-    }
+    } */
 }
