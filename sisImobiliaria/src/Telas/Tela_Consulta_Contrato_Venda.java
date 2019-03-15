@@ -142,7 +142,6 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1)
                                 .addComponent(jLabel2)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
@@ -164,13 +163,10 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(btAlterarContrato)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(btFecharContrato)))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel5)
-                                                .addComponent(tfProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                    .addComponent(btFecharContrato))))
+                                        .addComponent(jLabel5)
+                                        .addComponent(tfProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel6)
@@ -184,6 +180,10 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +223,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(tfPrecoNegociado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btFecharContrato)
                     .addComponent(btAlterarContrato))
                 .addGap(20, 20, 20))
@@ -236,10 +236,13 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         //cbContratosEmAberto.getSelectedItem();
         int i = cbContratosEmAberto.getSelectedIndex();
         
-        Contrato_Venda contrato = contratos.get(i);
+        Contrato_Venda contrato = contratos.get(i);        
         
         tfIdContrato.setText(Integer.toString(contrato.getIdContrato()));
-        tfEndereco.setText(contrato.getImovel().getEndereco().toString());
+        tfEndereco.setText(""+contrato.getImovel().getEndereco().getLogradouro()+", "
+                +contrato.getImovel().getEndereco().getComplemento()+", "
+                +contrato.getImovel().getEndereco().getNumero()+", "+contrato.getImovel().getEndereco().getBairro()+", "
+                +contrato.getImovel().getEndereco().getCidade()+"");
         tfComprador.setText(contrato.getComprador().getNomeCompleto());
         tfProprietario.setText(contrato.getImovel().getProprietario().getNomeCompleto());
         tfDescricaoGeral.setText(contrato.getDescricaoVenda());
@@ -302,7 +305,11 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         
         descricao.split("CLÁUSULA");
         
-        ctrlCCV.editarContratoEmAberto(id, condicoesPagamento, precoNegociado);
+        if(ctrlCCV.editarContratoEmAberto(id, condicoesPagamento, precoNegociado)){
+            JOptionPane.showMessageDialog(null, "Contrato editado com sucesso!", "Aviso", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao editar contrato!", "Erro", 0);
+        }
     }//GEN-LAST:event_btAlterarContratoActionPerformed
 
     private void btFecharContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharContratoActionPerformed
@@ -314,11 +321,13 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         int id = contrato.getIdContrato();
         
         System.out.println("id"+id);
-        
-        ctrlCCV.fecharContratoEmAberto(id);
-        
-        JOptionPane.showMessageDialog(rootPane, "Contrato Fechado com sucesso!Contrato salvo no .PDF na pasta padrão.");
-        
+       
+         if(ctrlCCV.fecharContratoEmAberto(id)){
+            JOptionPane.showMessageDialog(null, "Contrato Fechado com sucesso! Contrato salvo no .PDF na pasta padrão.", "Aviso", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao editar contrato!", "Erro", 0);
+        }
+                
         atualizeContratos();
         
     }//GEN-LAST:event_btFecharContratoActionPerformed
