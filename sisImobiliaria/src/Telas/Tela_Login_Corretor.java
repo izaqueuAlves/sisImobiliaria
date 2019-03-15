@@ -66,6 +66,11 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
         });
 
         senha.setText("jPasswordField1");
+        senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,6 +134,10 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
             senha.setText("");
         }
     }//GEN-LAST:event_entrarActionPerformed
+
+    private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_senhaActionPerformed
 
     /**
      * @param args the command line arguments

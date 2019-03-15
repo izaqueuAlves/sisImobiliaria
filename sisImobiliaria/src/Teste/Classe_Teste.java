@@ -566,7 +566,7 @@ public class Classe_Teste
         String telefone = "98839-0895";
         String email = "welerson.a.melo@gmail.com";
         
-        ctCorretor.cadastrarCorretor(CRECI, CPF, senha, nomeCompleto, telefone, email);
+      //  ctCorretor.cadastrarCorretor(CRECI, CPF, senha, nomeCompleto, telefone, email);
     }
 
     private static void testeCadastroCompradorControle() {

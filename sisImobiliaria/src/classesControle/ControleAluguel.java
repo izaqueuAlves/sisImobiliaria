@@ -13,9 +13,7 @@ import classesEntidade.Locatario;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import classesEntidade.Situacao_Imovel;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 /**
  *
@@ -26,13 +24,13 @@ public class ControleAluguel {
      * 
      * @param CPF_locatario 
      * @param IdImovel
-     * @param CPF_corretor
+     * @param CRECI_corretor
      * @param descricoesAdicionais
      * @param precoNegociado \\O valor negociado do imovel pode ser diferente do registrado no imovel e fica salvo em valorAluguel
      * @param dataInicio
      * @param dataFim
      */
-    public void aluguelImovel(String CPF_locatario, int IdImovel, String CPF_corretor, String descricoesAdicionais, String precoNegociado, String dataInicio, String dataFim) 
+    public void aluguelImovel(String CPF_locatario, int IdImovel, String CRECI_corretor, String descricoesAdicionais, String precoNegociado, String dataInicio, String dataFim) 
     {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
@@ -52,7 +50,7 @@ public class ControleAluguel {
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
         locatario = locatario.buscarLocatario(CPF_locatario);
-        corretor = corretor.buscarCorretor(CPF_corretor);
+        corretor = corretor.buscarCorretor(CRECI_corretor);
         
         //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         //String dataIniAluguel = dateFormat.format(dataInicio);

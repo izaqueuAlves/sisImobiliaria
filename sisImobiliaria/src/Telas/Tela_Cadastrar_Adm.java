@@ -199,7 +199,7 @@ public class Tela_Cadastrar_Adm extends javax.swing.JFrame {
         adm.setSenha(pass);
         
         if(ctr.cadastrarAdm(adm)){
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!", "Aviso", 2);
+            JOptionPane.showMessageDialog(null, "Administrador cadastrado com sucesso!", "Aviso", 2);
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar Administrador", "Erro", 0);
         }
