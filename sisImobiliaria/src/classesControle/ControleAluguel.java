@@ -12,9 +12,8 @@ import classesEntidade.Imovel;
 import classesEntidade.Locatario;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import classesEntidade.Situacao_Imovel;
+
 
 /**
  *
@@ -25,13 +24,13 @@ public class ControleAluguel {
      * 
      * @param CPF_locatario 
      * @param IdImovel
-     * @param CPF_corretor
+     * @param CRECI_corretor
      * @param descricoesAdicionais
      * @param precoNegociado \\O valor negociado do imovel pode ser diferente do registrado no imovel e fica salvo em valorAluguel
      * @param dataInicio
      * @param dataFim
      */
-    public void aluguelImovel(String CPF_locatario, int IdImovel, String CPF_corretor, String descricoesAdicionais, String precoNegociado, Date dataInicio, Date dataFim) 
+    public void aluguelImovel(String CPF_locatario, int IdImovel, String CRECI_corretor, String descricoesAdicionais, String precoNegociado, String dataInicio, String dataFim) 
     {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
@@ -39,15 +38,26 @@ public class ControleAluguel {
         Locatario locatario = new Locatario();
         Corretor corretor = new Corretor();
         
-        imovel = imovel.buscarImovel(IdImovel);
+        imovel = imovel.getImovelById(IdImovel);
+        
+        if (imovel.getSituacao_Imovel() != 0 && imovel.getSituacao_Imovel() != 2) 
+        {
+            System.out.println("erro, imóvel não disponível para aluguel!");
+            //Colocar mensagem na tela
+            return;
+        }
+        
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
         locatario = locatario.buscarLocatario(CPF_locatario);
-        corretor = corretor.buscarCorretor(CPF_corretor);
+        corretor = corretor.buscarCorretor(CRECI_corretor);
         
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String dataIniAluguel = dateFormat.format(dataInicio);
-        String dataFimAluguel = dateFormat.format(dataFim);
+        //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        //String dataIniAluguel = dateFormat.format(dataInicio);
+        //String dataFimAluguel = dateFormat.format(dataFim);
+        
+        String dataIniAluguel = dataInicio;
+        String dataFimAluguel = dataFim;
         
         Contrato_Aluguel contrato = new Contrato_Aluguel();
         

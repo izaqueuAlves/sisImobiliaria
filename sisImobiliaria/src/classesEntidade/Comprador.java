@@ -5,7 +5,9 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
 /**
@@ -63,13 +65,65 @@ public class Comprador {
         return email;
     }
 
-    public Comprador buscarComprador(String CPF_comprador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cadastrarComprador(Comprador comprador) {
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
+        
+        try{
+            
+            em.getTransaction().begin();
+            em.persist(comprador);
+            em.getTransaction().commit();
+            retorno = true;
+            
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar comprador!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return retorno;    
     }
-
-    public void cadastrarComprador(Comprador comprador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public boolean editarComprador(Comprador comprador) {
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
+        
+        try{
+            
+            em.getTransaction().begin();
+            em.merge(comprador);
+            em.getTransaction().commit();
+            retorno = true;
+            
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao editar comprador!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return retorno;    
     }
+   
+    public Comprador buscarComprador(String cpf_comprador){
+        EntityManager em = new Connect().getConexao();
+        Comprador c = new Comprador();
+        
+        try{            
+            c = em.find(Comprador.class, cpf_comprador);
+            
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum comprador encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return c;    
+    }
+    
     
     
 }

@@ -13,17 +13,23 @@ public class ControleLocatario {
     public ControleLocatario() {
      locatario = new Locatario();
 }
-            
-    void cadastrarLocatario (String CPF, String nomeCompleto, String email, Tipo_Imovel tipo_imovel)
-    {
-        
-         locatario = new Locatario();
+           
+    /**
+     * 
+     * @param CPF
+     * @param nomeCompleto
+     * @param telefone
+     * @param email
+     */
+    
+    public void cadastrarLocatario (String CPF, String nomeCompleto, String telefone, String email)
+    {    
+        locatario = new Locatario();
         
         locatario.setCpf(CPF);
         locatario.setNomeCompleto(nomeCompleto);
+        locatario.setTelefone(telefone);
         locatario.setEmail(email);
-        locatario.setTipo_Imovel(tipo_imovel);
-        
         
         try {
             locatario.cadastrarLocatario(locatario);
@@ -33,7 +39,20 @@ public class ControleLocatario {
             //Mandar mensagem de erro para a tela
         }
     }
-    void editarLocatario (String novoCPF, String novoNomeCompleto, String novoEmail, Tipo_Imovel novoTipo_imovel)
+    
+    public boolean cadastrarLocatario(Locatario locatario){        
+        return locatario.cadastrarLocatario(locatario);                
+    }
+    /**
+     * 
+     * @param novoCPF
+     * @param novoNomeCompleto
+     * @param novoEmail
+     * @param novoTipo_imovel 
+     */
+    
+    //REFAZER
+    public void editarLocatario (String novoCPF, String novoNomeCompleto, String novoEmail, Tipo_Imovel novoTipo_imovel)
     {
         
          locatario = new Locatario();
@@ -41,19 +60,21 @@ public class ControleLocatario {
         locatario.setCpf(novoCPF);
         locatario.setNomeCompleto(novoNomeCompleto); 
         locatario.setEmail(novoEmail);
-        locatario.setTipo_Imovel(novoTipo_imovel);
-        
+      //  locatario.setTipo_Imovel(novoTipo_imovel);
+        // nao entendi pq tipo imovel é um atributo de Locatario (??) no diagrama nao tem esse atributo #izaqueu
         
         try {
-            locatario.cadastrarLocatario(locatario);
+            //locatario.cadastrarLocatario(locatario);
             //Mensagem de Locatario cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
         }
     }
-       void excluirLocatario() {
-     locatario = new Locatario();
-}
+    
+    //FAZER 
+    public  void excluirLocatario() {
+         locatario = new Locatario();
+    }
 }
         

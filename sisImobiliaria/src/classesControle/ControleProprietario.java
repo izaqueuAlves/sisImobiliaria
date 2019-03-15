@@ -18,7 +18,7 @@ public class ControleProprietario {
 }
     
 
-  void cadastrarProprietario(String CPF, String nomeCompleto, String telefone, String email)
+    public void cadastrarProprietario(String CPF, String nomeCompleto, String telefone, String email)
     {
          proprietario = new Proprietario();
          
@@ -32,13 +32,18 @@ public class ControleProprietario {
         
         try {
             proprietario.cadastrarProprietario(proprietario);
-            //Mensagem de proprietario cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
         }
     }
-  void editarProprietario(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail)
+    
+      public boolean cadastrarProprietario(Proprietario proprietario){        
+        return proprietario.cadastrarProprietario(proprietario);                
+    }
+    
+    //REFAZER, ERRO
+    public void editarProprietario(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail)
     {
          proprietario = new Proprietario();
          
@@ -51,14 +56,22 @@ public class ControleProprietario {
         
         
         try {
-            proprietario.cadastrarProprietario(proprietario);
+            //proprietario.cadastrarProprietario(proprietario);
             //Mensagem de proprietario cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
         }
     }
-      void excluirProprietario(){
+    
+    public Proprietario buscarProprietario(String cpf){
+        Proprietario p = new Proprietario();
+        
+        return p.buscarProprietario(cpf);
+  }
+    
+    //FAZER
+    public void excluirProprietario(){
          proprietario = new Proprietario();
 }
 }

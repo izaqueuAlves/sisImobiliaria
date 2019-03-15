@@ -4,6 +4,7 @@ package classesEntidade;
 
 import conexao.Connect;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Query;
 
 
 /**
@@ -22,14 +24,14 @@ import javax.persistence.OneToOne;
 public class Imovel {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+   private Integer id;
    private float area;
-   private int numQuartos, numBanheiros, numSuites, vagasGaragem;
+   private Integer numQuartos, numBanheiros, numSuites, vagasGaragem;
    private ArrayList<String> fotos;
    private String descricao;
    private float valorCompra;
    private float valorAluguel;
-   private Situacao_Imovel situacao_Imovel;
+   private int situacao_Imovel;
    // chaves estranheiras
    @ManyToOne
    private Proprietario proprietario;
@@ -71,7 +73,7 @@ public class Imovel {
         return endereco;
     }
     
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -79,19 +81,19 @@ public class Imovel {
         return area;
     }
 
-    public int getNumQuartos() {
+    public Integer getNumQuartos() {
         return numQuartos;
     }
 
-    public int getNumBanheiros() {
+    public Integer getNumBanheiros() {
         return numBanheiros;
     }
 
-    public int getNumSuites() {
+    public Integer getNumSuites() {
         return numSuites;
     }
 
-    public int getVagasGaragem() {
+    public Integer getVagasGaragem() {
         return vagasGaragem;
     }
 
@@ -115,7 +117,7 @@ public class Imovel {
         return proprietario;
     }
     
-    public Situacao_Imovel getSituacao_Imovel() {
+    public int getSituacao_Imovel() {
         return this.situacao_Imovel;
     }
 
@@ -159,8 +161,8 @@ public class Imovel {
         this.proprietario = proprietario;
     }
     
-     public void setSituacao_Imovel(Situacao_Imovel situacao_Imovel) {
-        this.situacao_Imovel = situacao_Imovel;
+     public void setSituacao_Imovel(int i) {
+        this.situacao_Imovel = i;
     }  
      
     public void setTipo_imovel(Tipo_Imovel tipo_imovel) {
@@ -183,30 +185,187 @@ public class Imovel {
    /*
         Inicio Funções Classe Imovel
     */ 
-   public void cadastrarImovel(Imovel imovel) {
-		// ABRE A CONEXAO
-		EntityManager em = new Connect().getConexao();	
+   public boolean cadastrarImovel(Imovel imovel) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+        boolean retorno = false; 
+        
+	try {		
+                em.getTransaction().begin();
+                em.persist(imovel);
+		em.getTransaction().commit();
+		retorno = true;
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+            System.out.println("Erro ao cadastrar o imóvel!: "+e);
 		
-		try {		
-                    em.getTransaction().begin();
-		    em.persist(imovel);
-		    em.getTransaction().commit();
-			 		
-			// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
-		}finally{
-		 	em.close();
-		}
+	}finally{
+	 	em.close();
+	}
+        
+        return retorno;
     }
+     public boolean editarImovel(Imovel imovel) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	boolean retorno = false; 
+        
+	try {		
+                em.getTransaction().begin();
+                em.merge(imovel);
+		em.getTransaction().commit();
+		retorno = true;	 		
+		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao editar o imóvel!: "+e);
+		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+	}finally{
+	 	em.close();
+	}
+        
+        return retorno;
+               
+    }   public boolean removerImovel(Integer id_imovel) {
+ 
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false; 
+        
+        try{    
+                em.getTransaction().begin();
+                 //procura pelo imovel
+                Imovel im = em.find(Imovel.class, id_imovel);
+                // remove o imovel
+                em.remove(im);                
+                em.getTransaction().commit();
+                retorno = true; 
+                
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao excluir imóvel!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return retorno;
+    }  
 
-    public void cinserir(Imovel im) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Imovel buscarImovel(int IdImovel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
+ 
    
+    public Imovel getImovelById(Integer id_imovel) {
+        EntityManager em = new Connect().getConexao();
+        Imovel im = null;
+        try{
+            im = em.find(Imovel.class, id_imovel);   
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return im;  
+    }
+    // alterar no diagrama de classe, parametro e retorno
+     public List<Imovel> buscarImovel(String nome) {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;
+        String nomeImovel = "%"+nome+"%";
+                
+        try{
+
+            Query query = em.createQuery("from Imovel where upper(descricao) like upper(:nomeImovel) order by descricao");
+            query.setParameter("nomeImovel", nomeImovel);
+            imoveis = query.getResultList();
+
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+     // retorna uma lista com todos os imoveis disponiveis para venda (situacao: DISPONIVEL_VENDA; DISPONIVEL_VENDA_ALUGUEL)
+     public List<Imovel> getImoveisVenda() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;           
+        
+        try{
+
+            Query query = em.createQuery("from Imovel where situacao_imovel = 1 or situacao_imovel = 2 order by descricao");
+            imoveis = query.getResultList();
+
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+    
+     // retorna uma lista com todos os imoveis disponiveis para aluguel (situacao: DISPONIVEL_ALUGUEL; DISPONIVEL_VENDA_ALUGUEL)
+     public List<Imovel> getImoveisAluguel() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;           
+        
+        try{
+
+            Query query = em.createQuery("from Imovel where situacao_imovel = 0 or situacao_imovel = 2 order by descricao");
+            imoveis = query.getResultList();
+
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+
+     public List<Imovel> getTodosImoveis() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Imovel> imoveis = null;
+        
+        try{
+            imoveis = em.createQuery("from Imovel i").getResultList();                           
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Imóvel foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return imoveis;  
+    }
+     // no diagrama o parametro é um objeto, porem acho q fica melhor colocar como apenas o cpf, ja que o metodo busca o nome proprietatio
+     // no banco, caso exista ele substitui; #izaqueu
+     public boolean alterarProprietario(String cpf_proprietario, Integer id_imovel){
+         Proprietario p = new Proprietario();
+         Imovel im = new Imovel();
+                  
+         p = p.buscarProprietario(cpf_proprietario);
+                  
+        // proprietario encontrado
+         if(p != null){
+             im = im.getImovelById(id_imovel);
+             im.setProprietario(p);
+             im.editarImovel(im);
+             return true;
+        } else {
+              return false;
+        } 
+     }
+
 }

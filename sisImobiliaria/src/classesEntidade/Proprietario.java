@@ -5,7 +5,10 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
 /**
@@ -23,6 +26,13 @@ public class Proprietario {
     
     public Proprietario(){
         
+    }
+    
+    public Proprietario(String cpf, String nomeCompleto, String telefone, String email){
+        this.cpf = cpf;
+        this.nomeCompleto = nomeCompleto;
+        this.telefone = telefone;
+        this.email = email;
     }
     
     public String getCpf(){
@@ -57,14 +67,113 @@ public class Proprietario {
         this.email = email;
     }
 
-    //Retorna o objeto proprietario buscado no banco de dados pelo CPF, preenchendo todos os atributos
-    public Proprietario buscarProprietario(String CPF_proprietario) {
-        //Preenche todos os campos e retorna o objeto this
-        return this;
-    }
-
-    public void cadastrarProprietario(Proprietario proprietario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+   
+       public boolean cadastrarProprietario(Proprietario proprietario) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	boolean retorno = false;
+        
+	try {	                
+                em.getTransaction().begin();
+                em.persist(proprietario);
+		em.getTransaction().commit();
+                retorno = true;
+                
+	} catch (Exception e) {
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar proprietario!: "+e);
+            em.getTransaction().rollback();
+	}finally{
+	 	em.close();
+	}
+        
+        return retorno;
+    }
+       
+    public boolean excluirProprietario(String cpf_proprietario) {
+ 
+        EntityManager em = new Connect().getConexao();
+        boolean retorno = false; 
+        
+        try{    
+                em.getTransaction().begin();
+                Proprietario p = em.find(Proprietario.class, cpf_proprietario);
+                em.remove(p);          // remove o proprietario      
+                em.getTransaction().commit();
+                retorno = true; 
+                
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao excluir proprietário!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return retorno;
+    }  
+     
+       public boolean editarProprietario(Proprietario proprietario) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	boolean retorno = false;
+        
+	try {		
+                em.getTransaction().begin();
+                em.merge(proprietario);
+		em.getTransaction().commit();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+                // alterar depois para ser mostrado na tela com JOptionPane
+                 System.out.println("Erro ao editar proprietario!: "+e);
+		
+	}finally{
+	 	em.close();
+	}
+        
+        return retorno;
+    }
+     
+    
+    
+    //Retorna o objeto proprietario buscado no banco de dados pelo CPF, preenchendo todos os atributos
+    public Proprietario buscarProprietario(String cpf_proprietario) {
+        EntityManager em = new Connect().getConexao();	
+	Proprietario proprietario = null;
+	
+        try {		
+               proprietario = em.find(Proprietario.class, cpf_proprietario);                
+			 	
+	} catch (Exception e) {
+                // alterar depois para ser mostrado na tela com JOptionPane
+                System.out.println("Nenhum proprietário encontrado!: "+e);
+		
+	}finally{
+	 	em.close();
+	}
+        
+        return proprietario;
+    }
+   
+
+    public List<Proprietario> getTodosProprietarios() {
+	
+	EntityManager em = new Connect().getConexao();	
+	List<Proprietario> proprietarios = null;
+        
+	try {		
+               proprietarios = em.createQuery("from Proprietario p").getResultList();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+        
+        return proprietarios;
+    } 
+      
 }

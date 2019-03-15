@@ -92,14 +92,14 @@ insert into imovel (area, descricao, fotos, numbanheiros, numquartos, numsuites,
 	(25, 'Circo do valmir', null, 0, 0, 0, 5, 0, 0, 0,'Baltazar_Adm',22, '100.100.100-06',7);
 
 
-insert into contrato_aluguel (datafechamento, datafim, datainicio, descricaoaluguel, valoraluguel, corretor_cpf, imovel_id, locatario_cpf) values
-	('24/02/2019','24/04/2020','24/03/2019','Pagamento todo dia 24.',300,'200.200.200-00',7,'400.400.400-00'),
-	('20/02/2019','01/03/2020','01/03/2019','Pagamento no primeiro dia do mês',400,'200.200.200-01',8,'400.400.400-01'),
-	('05/02/2019','05/12/2019','05/03/2019','Tolerancia de atraso do pagamento: cinco (05) dias.',500,'200.200.200-05',6,'400.400.400-02');
+insert into contrato_aluguel (datafechamento, datafim, datainicio, descricaoaluguel, valoraluguel, corretor_cpf, imovel_id, locatario_cpf, situacao_contrato) values
+	('24/02/2019','24/04/2020','24/03/2019','Pagamento todo dia 24.',300,'200.200.200-00',7,'400.400.400-00',1),
+	('20/02/2019','01/03/2020','01/03/2019','Pagamento no primeiro dia do mês',400,'200.200.200-01',8,'400.400.400-01',1),
+	('05/02/2019','05/12/2019','05/03/2019','Tolerancia de atraso do pagamento: cinco (05) dias.',500,'200.200.200-05',6,'400.400.400-02',1);
 
-insert into contrato_venda (datafechamento, descricaovenda, valorvenda, comprador_cpf, corretor_cpf, imovel_id) values
-	('15/02/2019','Pagamento mensal de parcelas de R$4000',200000,'300.300.300-00','200.200.200-02',9),
-	('11/02/2019','Pagamento anual de R$18000',180000,'300.300.300-01','200.200.200-02',1),
-	('22/02/2019','Pagamento mensal de R$3600',250000,'300.300.300-02','200.200.200-02',2),
-	('11/02/2019','Pagamento anual de R$18000',335000,'300.300.300-03','200.200.200-03',5),
-	('30/02/2019','É um circo, com valmir dentro. Pode pegar de graça.',0,'300.300.300-04','200.200.200-04',22);
+insert into contrato_venda (datafechamento, descricaovenda, valorvenda, comprador_cpf, corretor_cpf, imovel_id, situacao_contrato) values
+	('15/02/2019','Pagamento mensal de parcelas de R$4000',200000,'300.300.300-00','200.200.200-02',9,1),
+	('11/02/2019','Pagamento anual de R$18000',180000,'300.300.300-01','200.200.200-02',1,1),
+	('22/02/2019','Pagamento mensal de R$3600',250000,'300.300.300-02','200.200.200-02',2,1),
+	('11/02/2019','Pagamento anual de R$18000',335000,'300.300.300-03','200.200.200-03',5,1),
+	('30/02/2019','É um circo, com valmir dentro. Pode pegar de graça.',0,'300.300.300-04','200.200.200-04',22,1);

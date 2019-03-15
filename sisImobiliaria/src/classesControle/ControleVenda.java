@@ -12,6 +12,7 @@ import classesEntidade.Endereco;
 import classesEntidade.Imovel;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
+import classesEntidade.Situacao_Imovel;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ControleVenda {
      * @param IdImovel
      * @param CPF_corretor
      * @param condicoesPagamento // Descrição em string das condições 
-     * @param precoNegociado // Obs: O preço negociado pode ser diferente do preço real do imovel salvo na classe imovel. Por isso dá a opção de preço na hora de cadastrar a venda
+     * @param precoNegociado  (em String mesmo)// Obs: O preço negociado pode ser diferente do preço real do imovel salvo na classe imovel. Por isso dá a opção de preço na hora de cadastrar a venda
      */
     public void vendaImovel(String CPF_comprador, int IdImovel, String CPF_corretor, String condicoesPagamento, String precoNegociado) 
     {
@@ -36,7 +37,15 @@ public class ControleVenda {
         Comprador comprador = new Comprador();
         Corretor corretor = new Corretor();
         
-        imovel = imovel.buscarImovel(IdImovel);
+        imovel = imovel.getImovelById(IdImovel);
+        
+        if (imovel.getSituacao_Imovel() != 1 && imovel.getSituacao_Imovel() != 2) 
+        {
+            System.out.println("erro, imóvel não disponível para venda!");
+            //Colocar mensagem na tela
+            return;
+        }
+        
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
         comprador = comprador.buscarComprador(CPF_comprador);
@@ -45,6 +54,7 @@ public class ControleVenda {
         Contrato_Venda contrato = new Contrato_Venda();
         
         String descricao = ""
+                + "Contrato de Venda de Imóvel!\n"
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
                 + "Vendedor\n"

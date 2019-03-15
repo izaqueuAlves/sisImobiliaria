@@ -37,7 +37,7 @@ public class ControleImovel {
      * @param endereco
      * @param admLogado 
      */
-    void cadastrarImovel(String CPF_proprietario, float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, String descricao, float valorCompra, float valorAluguel, Situacao_Imovel situacao_Imovel, Tipo_Imovel tipo_imovel, Endereco endereco, Adm admLogado)
+    void cadastrarImovel(String CPF_proprietario, float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, String descricao, float valorCompra, float valorAluguel, int situacao_Imovel, Tipo_Imovel tipo_imovel, Endereco endereco, Adm admLogado)
     {
         Proprietario proprietario = new Proprietario();
         
@@ -67,6 +67,13 @@ public class ControleImovel {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
         }
+        
+    }
+      
+    public void cadastrarImovel2(Imovel i){
+        // castra imovel
+        i.cadastrarImovel(i);
+        
         
     }
     

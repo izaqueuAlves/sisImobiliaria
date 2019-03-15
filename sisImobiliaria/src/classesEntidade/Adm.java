@@ -5,8 +5,11 @@
  */
 package classesEntidade;
 
+import conexao.Connect;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 /**
  *
@@ -76,4 +79,43 @@ public class Adm {
         this.email = email;
     }
     
+
+
+public boolean cadastrarAdm(Adm adm) {
+	// ABRE A CONEXAO
+	EntityManager em = new Connect().getConexao();	
+	boolean retorno = false; 
+        
+	try {		
+                em.getTransaction().begin();
+                em.persist(adm);
+		em.getTransaction().commit();
+		retorno = true; 	 		
+		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+	}finally{
+	 	em.close();
+	}
+        return retorno;
+    }
+  public Adm buscarAdmPorLogin(String login) {
+ 
+        EntityManager em = new Connect().getConexao();
+        Adm adm = null;
+        try{
+            Query query = em.createQuery("from Adm where login = :login");
+            query.setParameter("login", login);
+            adm = (Adm) query.getSingleResult(); 
+        }catch(Exception e){
+            System.out.println("Administrador não encontrato!: "+e);
+        }finally{
+            em.close();
+        }        
+        return adm;  
+    }
+    
+
+
 }
