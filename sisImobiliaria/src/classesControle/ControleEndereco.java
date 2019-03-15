@@ -69,7 +69,7 @@ public class ControleEndereco {
    */
   
   //DEVE EDITAR E N CADASTRAR, CONSERTAR
-  public void editarCorretor (String novoCep, String novoUf, String novoBairro, String novoComplemento, String novoLogradouro, String novoNumero, String novaCidade)
+  public void editarEndereco (String novoCep, String novoUf, String novoBairro, String novoComplemento, String novoLogradouro, String novoNumero, String novaCidade)
   {
       endereco = new Endereco();
       

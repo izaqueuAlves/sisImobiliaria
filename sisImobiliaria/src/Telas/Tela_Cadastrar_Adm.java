@@ -107,8 +107,6 @@ public class Tela_Cadastrar_Adm extends javax.swing.JFrame {
             }
         });
 
-        senha.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

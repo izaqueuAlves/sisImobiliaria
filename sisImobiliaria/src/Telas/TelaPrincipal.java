@@ -5,7 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleAdm;
+import classesControle.ControleCorretor;
 import classesControle.ControleImovel;
+import classesControle.ControleProprietario;
 import classesControle.ControleVenda;
 import classesEntidade.Comprador;
 import classesEntidade.Contrato_Aluguel;
@@ -55,6 +58,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Bem vindo ao Sistema Imobiliário");
 
@@ -120,6 +128,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	tela_adm.setVisible(true);     //mostra a tela de login do adm
 	TelaPrincipal.this.dispose();  // fecha a tela principal, isso vale para qualquer pagina
     }//GEN-LAST:event_btLoginAdmActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        ControleProprietario ctr = new ControleProprietario();
+        ctr.buscarProprietario("");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
