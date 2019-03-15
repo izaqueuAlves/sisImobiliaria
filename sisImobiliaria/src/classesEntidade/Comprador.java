@@ -6,6 +6,7 @@
 package classesEntidade;
 
 import conexao.Connect;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
@@ -122,6 +123,23 @@ public class Comprador {
         }
         
         return c;    
+    }
+    
+    public List<Comprador> getTodosCompradores() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Comprador> compradores = null;
+        
+        try{
+            compradores = em.createQuery("from Comprador c").getResultList();                           
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Comprador foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return compradores;
     }
     
     

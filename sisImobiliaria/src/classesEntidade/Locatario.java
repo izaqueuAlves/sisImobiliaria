@@ -6,6 +6,7 @@
 package classesEntidade;
 
 import conexao.Connect;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
@@ -119,6 +120,24 @@ public class Locatario {
         
         return retorno;
     }
+    
+    public List<Locatario> getTodosLocatarios() {
+	
+	EntityManager em = new Connect().getConexao();	
+	List<Locatario> locatarios = null;
+        
+	try {		
+               locatarios = em.createQuery("from Locatario p").getResultList();
+			 	
+	} catch (Exception e) {
+		em.getTransaction().rollback();
+		
+	}finally{
+	 	em.close();
+	}
+        
+        return locatarios;
+    } 
     
     
 }

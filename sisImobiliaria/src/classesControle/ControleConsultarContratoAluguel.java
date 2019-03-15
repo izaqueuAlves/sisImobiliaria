@@ -12,7 +12,6 @@ import classesEntidade.Imovel;
 import classesEntidade.Locatario;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
-import classesEntidade.Situacao_Imovel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,6 +65,10 @@ public class ControleConsultarContratoAluguel {
         String dataFechamento = dateFormat.format(data);
         contrato.setDataFechamento(dataFechamento);
         contrato.setSituacao_contrato(Situacao_Contrato.FECHADO);
+        
+        ArrayList<String> a = new ArrayList<String>();
+        a.add(contrato.getDescricaoAluguel());
+        Relatorios.gerarRelatorio(a, "Contrato Luguel de Imovel nº "+id_contrato);
         
         try {
             contrato.alterarContratoEmAberto();

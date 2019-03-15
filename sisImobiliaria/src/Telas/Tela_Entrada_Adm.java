@@ -6,8 +6,17 @@
 package Telas;
 
 
+import classesControle.Relatorios;
+import classesEntidade.Comprador;
+import classesEntidade.Contrato_Aluguel;
+import classesEntidade.Corretor;
+import classesEntidade.Imovel;
+import classesEntidade.Locatario;
+import classesEntidade.Proprietario;
+import classesEntidade.Situacao_Imovel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
@@ -154,18 +163,43 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("Compradores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setText("Proprietários");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Locatários");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Imóveis disponíveis");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Contratos Aluguel Vigentes");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -195,6 +229,19 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         
         //Gerar PDF aqui
+        
+        Corretor c = new Corretor();
+        ArrayList<Corretor> a = new ArrayList<Corretor>();
+        a = (ArrayList<Corretor>) c.getTodosCorretores();
+        String nome = "Relatório todos os corretores";
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add(nome);
+        
+        for (Corretor a1 : a) {
+            lista.add(a1.getNomeCompleto());
+        }
+
+        Relatorios.gerarRelatorio(lista, nome);
         
         JOptionPane.showMessageDialog(rootPane, "Um PDF será gerado e salvo na pasta raiz do projeto!");
         
@@ -270,6 +317,109 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         telaConsultaContratoAluguel.setVisible(true);     //mostra a tela de login do adm
         
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Comprador c = new Comprador();
+        ArrayList<Comprador> a = new ArrayList<Comprador>();
+        
+        a = (ArrayList<Comprador>) c.getTodosCompradores();
+        
+        String nome = "Relatório todos os compradores";
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add(nome);
+        
+        for (Comprador a1 : a) {
+            lista.add(a1.getNomeCompleto());
+        }
+
+        Relatorios.gerarRelatorio(lista, nome);
+        
+        JOptionPane.showMessageDialog(rootPane, "Um PDF será gerado e salvo na pasta raiz do projeto!");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Proprietario c = new Proprietario();
+        ArrayList<Proprietario> a = new ArrayList<Proprietario>();
+        
+        a = (ArrayList<Proprietario>) c.getTodosProprietarios();
+        
+        String nome = "Relatório todos os Proprietarios";
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add(nome);
+        
+        for (Proprietario a1 : a) {
+            lista.add(a1.getNomeCompleto());
+        }
+
+        Relatorios.gerarRelatorio(lista, nome);
+        
+        JOptionPane.showMessageDialog(rootPane, "Um PDF será gerado e salvo na pasta raiz do projeto!");
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Locatario c = new Locatario();
+        ArrayList<Locatario> a = new ArrayList<Locatario>();
+        
+        a = (ArrayList<Locatario>) c.getTodosLocatarios();
+        
+        String nome = "Relatório todos os Locatarios";
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add(nome);
+        
+        for (Locatario a1 : a) {
+            lista.add(a1.getNomeCompleto());
+        }
+
+        Relatorios.gerarRelatorio(lista, nome);
+        
+        JOptionPane.showMessageDialog(rootPane, "Um PDF será gerado e salvo na pasta raiz do projeto!");
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Imovel c = new Imovel();
+        ArrayList<Imovel> a = new ArrayList<Imovel>();
+        
+        a = (ArrayList<Imovel>) c.getTodosImoveis();
+        
+        String nome = "Relatório todos os Imoveis disponível";
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add(nome);
+        
+        for (Imovel a1 : a) {
+            if (Situacao_Imovel.DISPONIVEL_ALGUEL.getValor() == a1.getSituacao_Imovel()) {
+                lista.add(a1.getEndereco().toString() + ": Dispóvel para Aluguel");
+            }
+            if (a1.getSituacao_Imovel() == Situacao_Imovel.DISPONIVEL_VENDA.getValor()) {
+                lista.add(a1.getEndereco().toString() + ": Dispóvel para Venda");
+            }
+            if (a1.getSituacao_Imovel() == Situacao_Imovel.DISPONIVEL_VENDA_ALUGUEL.getValor()) {
+                lista.add(a1.getEndereco().toString() + ": Dispóvel para Venda e Aluguel");
+            }
+        }
+
+        Relatorios.gerarRelatorio(lista, nome);
+        
+        JOptionPane.showMessageDialog(rootPane, "Um PDF será gerado e salvo na pasta raiz do projeto!");
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        Contrato_Aluguel c = new Contrato_Aluguel();
+        ArrayList<Contrato_Aluguel> a = new ArrayList<Contrato_Aluguel>();
+        
+        a = (ArrayList<Contrato_Aluguel>) c.getContratosVigentes();
+        
+        String nome = "Relatório todos os Contratos de Aluguel Vigentes";
+        ArrayList<String> lista = new ArrayList<String>();
+        lista.add(nome);
+        
+        for (Contrato_Aluguel a1 : a) {
+            lista.add("Contrato: "+a1.getIdContrato() + ", Contratantes: Locatario" +a1.getLocatario().getNomeCompleto() + " Proprietário: "+a1.getImovel().getProprietario().getNomeCompleto());
+        }
+
+        Relatorios.gerarRelatorio(lista, nome);
+        
+        JOptionPane.showMessageDialog(rootPane, "Um PDF será gerado e salvo na pasta raiz do projeto!");
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

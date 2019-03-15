@@ -62,6 +62,7 @@ public class ControleAluguel {
         Contrato_Aluguel contrato = new Contrato_Aluguel();
         
         String descricao = ""
+                + "Contrato de Aluguel de Imóvel\n"
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
                 + "PROPRIETARIO\n"
