@@ -5,9 +5,6 @@
  */
 package Telas;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
-
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
