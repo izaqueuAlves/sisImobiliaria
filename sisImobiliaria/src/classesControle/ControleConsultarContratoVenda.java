@@ -86,6 +86,10 @@ public class ControleConsultarContratoVenda {
         contrato.setDataFechamento(dataFechamento);
         contrato.setSituacao_contrato(Situacao_Contrato.FECHADO);
         
+        ArrayList<String> a = new ArrayList<String>();
+        a.add(contrato.getDescricaoVenda());
+        Relatorios.gerarRelatorio(a, "Contrato Venda de Imovel nº "+id_contrato);
+        
         try {
             contrato.alterarContratoEmAberto();
             return true;
@@ -112,7 +116,7 @@ public class ControleConsultarContratoVenda {
         Proprietario proprietario = contrato.getImovel().getProprietario();
         Comprador comprador = contrato.getComprador();
         Corretor corretor = contrato.getCorretor();
-      
+        
         String descricao = ""
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
@@ -143,7 +147,9 @@ public class ControleConsultarContratoVenda {
         contrato.setValorVenda(Float.parseFloat(precoNegociado));
         contrato.setDescricaoVenda(descricao);
         
+        
         try {
+            
             contrato.alterarContratoEmAberto();
             return true;
         } catch (Exception e){
