@@ -76,7 +76,7 @@ public class ControleConsultarContratoVenda {
         novoProprietario.cadastrarProprietario(novoProprietario);
         
         novoProprietario = novoProprietario.buscarProprietario(novoProprietario.getCpf());
-        imovel.setSituacao_Imovel(Situacao_Imovel.VENDIDO);
+        imovel.setSituacao_Imovel(4);
         imovel.setProprietario(novoProprietario);
         imovel.editarImovel(imovel);
         

@@ -64,6 +64,12 @@ public class ControleProprietario {
         }
     }
     
+    public Proprietario buscarProprietario(String cpf){
+        Proprietario p = new Proprietario();
+        
+        return p.buscarProprietario(cpf);
+  }
+    
     //FAZER
     public void excluirProprietario(){
          proprietario = new Proprietario();

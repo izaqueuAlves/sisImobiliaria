@@ -58,7 +58,7 @@ public class ControleConsultarContratoAluguel {
         contrato = contrato.consultarContrato(id_contrato); 
         
         Imovel imovel = contrato.getImovel();
-        imovel.setSituacao_Imovel(Situacao_Imovel.ALUGADO);
+        imovel.setSituacao_Imovel(3);
         imovel.editarImovel(imovel);
         
         Date data = new Date();

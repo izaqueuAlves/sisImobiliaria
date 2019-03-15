@@ -66,7 +66,6 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
 
         cadastrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         cadastrar.setText("CADASTRAR");
-        cadastrar.setActionCommand("CADASTRAR");
         cadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -39,7 +39,7 @@ public class ControleVenda {
         
         imovel = imovel.getImovelById(IdImovel);
         
-        if (imovel.getSituacao_Imovel() != Situacao_Imovel.DISPONIVEL_VENDA && imovel.getSituacao_Imovel() != Situacao_Imovel.DISPONIVEL_VENDA_ALUGUEL) 
+        if (imovel.getSituacao_Imovel() != 1 && imovel.getSituacao_Imovel() != 2) 
         {
             System.out.println("erro, imóvel não disponível para venda!");
             //Colocar mensagem na tela

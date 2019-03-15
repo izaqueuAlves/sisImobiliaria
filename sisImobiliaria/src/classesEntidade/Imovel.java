@@ -31,7 +31,7 @@ public class Imovel {
    private String descricao;
    private float valorCompra;
    private float valorAluguel;
-   private Situacao_Imovel situacao_Imovel;
+   private int situacao_Imovel;
    // chaves estranheiras
    @ManyToOne
    private Proprietario proprietario;
@@ -117,7 +117,7 @@ public class Imovel {
         return proprietario;
     }
     
-    public Situacao_Imovel getSituacao_Imovel() {
+    public int getSituacao_Imovel() {
         return this.situacao_Imovel;
     }
 
@@ -161,8 +161,8 @@ public class Imovel {
         this.proprietario = proprietario;
     }
     
-     public void setSituacao_Imovel(Situacao_Imovel situacao_Imovel) {
-        this.situacao_Imovel = situacao_Imovel;
+     public void setSituacao_Imovel(int i) {
+        this.situacao_Imovel = i;
     }  
      
     public void setTipo_imovel(Tipo_Imovel tipo_imovel) {
@@ -194,13 +194,11 @@ public class Imovel {
                 em.getTransaction().begin();
                 em.persist(imovel);
 		em.getTransaction().commit();
-		retorno = true;	
-		// JOptionPane.showMessageDialog(null, "imovel Salvo com Sucesso!", "", 1);
+		retorno = true;
 	} catch (Exception e) {
 		em.getTransaction().rollback();
-             // alterar depois para ser mostrado na tela com JOptionPane
             System.out.println("Erro ao cadastrar o imóvel!: "+e);
-		//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gravar os dados!", "", 0);
+		
 	}finally{
 	 	em.close();
 	}

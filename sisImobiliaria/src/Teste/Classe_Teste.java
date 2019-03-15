@@ -85,7 +85,7 @@ public class Classe_Teste
         im.setNumQuartos(1);
         im.setNumSuites(1);        
         im.setProprietario(proprietarioGenerico());
-        im.setSituacao_Imovel(Situacao_Imovel.VENDIDO);
+        im.setSituacao_Imovel(4);
         im.setTipo_imovel(abc());
         im.setVagasGaragem(1);
         im.setValorAluguel(0);

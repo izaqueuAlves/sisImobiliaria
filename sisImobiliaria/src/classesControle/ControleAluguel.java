@@ -40,7 +40,7 @@ public class ControleAluguel {
         
         imovel = imovel.getImovelById(IdImovel);
         
-        if (imovel.getSituacao_Imovel() != Situacao_Imovel.DISPONIVEL_ALGUEL && imovel.getSituacao_Imovel() != Situacao_Imovel.DISPONIVEL_VENDA_ALUGUEL) 
+        if (imovel.getSituacao_Imovel() != 0 && imovel.getSituacao_Imovel() != 2) 
         {
             System.out.println("erro, imóvel não disponível para aluguel!");
             //Colocar mensagem na tela

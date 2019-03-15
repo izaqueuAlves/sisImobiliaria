@@ -19,6 +19,7 @@ public enum Situacao_Imovel {
     private Situacao_Imovel(int val) {
         this.valor = val;
     }
+    
     public int getValor(){
         return valor;
     }

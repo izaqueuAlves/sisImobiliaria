@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 /**
  *
@@ -112,4 +113,23 @@ public class Tipo_Imovel {
        return tipos;
        
        }
+    
+    public Tipo_Imovel buscarTipo_ImovelPorNome(String str){
+		
+		EntityManager em = new Connect().getConexao();
+		Tipo_Imovel ti= null;
+		String nome = "%"+str+"%";
+		
+		try{
+			Query query = em.createQuery("from Tipo_Imovel where upper(nome) like upper(:nome)");
+			query.setParameter("nome", nome);
+			ti = (Tipo_Imovel) query.getSingleResult();
+						
+		}catch(Exception e){
+			 System.out.println("Tipo de imóvel não encontrado!: "+e);
+		}finally{
+			em.close();
+		}
+	  return ti;	
+	}
 }
