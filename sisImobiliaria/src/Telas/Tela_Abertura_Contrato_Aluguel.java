@@ -35,7 +35,7 @@ public class Tela_Abertura_Contrato_Aluguel extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
         imovel_Relacionado = new javax.swing.JTextField();
         corretor = new javax.swing.JTextField();
         locatario = new javax.swing.JTextField();
@@ -72,9 +72,14 @@ public class Tela_Abertura_Contrato_Aluguel extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("DESCRIÇÃO DO ALUGUEL:");
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("CADASTRAR ALUGUEL");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cadastrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        cadastrar.setText("CADASTRAR");
+        cadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
 
         imovel_Relacionado.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -120,7 +125,7 @@ public class Tela_Abertura_Contrato_Aluguel extends javax.swing.JFrame {
                             .addComponent(imovel_Relacionado, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(244, 244, 244)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,12 +164,16 @@ public class Tela_Abertura_Contrato_Aluguel extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(data_Fim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
-                .addComponent(jButton1)
+                .addComponent(cadastrar)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,12 +212,12 @@ public class Tela_Abertura_Contrato_Aluguel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField corretor;
     private javax.swing.JTextField data_Fim;
     private javax.swing.JTextField data_inicio;
     private javax.swing.JTextField descricao_Aluguel;
     private javax.swing.JTextField imovel_Relacionado;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
