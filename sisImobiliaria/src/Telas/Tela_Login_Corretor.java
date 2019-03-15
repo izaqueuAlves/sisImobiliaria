@@ -47,7 +47,7 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
         jLabel2.setText("CRECI:");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setText("SENHA:");
+        jLabel3.setText("Senha:");
 
         creci.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         creci.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +57,7 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
         });
 
         entrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        entrar.setText("ENTRAR");
+        entrar.setText("Entrar");
         entrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,12 +71,9 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(256, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(300, 300, 300))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -88,7 +85,10 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(creci, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                                     .addComponent(senha))))
-                        .addGap(233, 233, 233))))
+                        .addGap(233, 233, 233))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(275, 275, 275))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +103,9 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(34, 34, 34)
                 .addComponent(entrar)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
 
         pack();
