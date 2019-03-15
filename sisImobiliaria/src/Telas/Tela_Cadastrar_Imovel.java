@@ -5,6 +5,9 @@
  */
 package Telas;
 
+import classesEntidade.Situacao_Imovel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author caio_
@@ -16,6 +19,17 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
      */
     public Tela_Cadastrar_Imovel() {
         initComponents();
+        
+        
+
+        /*
+        Editora_dao ed_dao = new Editora_dao();
+	Area_conhecimento_dao area_dao = new Area_conhecimento_dao();
+	for(Editora e:ed_dao.buscarListaEditora()){
+	      cbEditora.addItem(e);
+		}*/
+        
+        
     }
 
     /**
@@ -43,12 +57,12 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         num_Suites = new javax.swing.JTextField();
         num_Banheiros = new javax.swing.JTextField();
         valor_Compra = new javax.swing.JTextField();
-        situacao = new javax.swing.JTextField();
         area = new javax.swing.JTextField();
         valor_Aluguel = new javax.swing.JTextField();
         descricao = new javax.swing.JTextField();
         num_Quartos = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
+        situacao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(715, 715));
@@ -123,13 +137,6 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
             }
         });
 
-        situacao.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        situacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                situacaoActionPerformed(evt);
-            }
-        });
-
         area.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         area.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,14 +165,16 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("CADASTRAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        cadastrar.setText("CADASTRAR");
+        cadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarActionPerformed(evt);
             }
         });
+
+        situacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,20 +199,20 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cpf_Proprietario, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                             .addComponent(valor_Aluguel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(situacao, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(area, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(vagas_Garag, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(num_Suites, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(num_Banheiros, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(descricao, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(num_Quartos, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(valor_Compra, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(valor_Compra, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(situacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(142, 142, 142))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(211, 211, 211))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(279, 279, 279))))
         );
         layout.setVerticalGroup(
@@ -255,8 +264,8 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cpf_Proprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51)
-                .addComponent(jButton1)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addComponent(cadastrar)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -282,10 +291,6 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valor_CompraActionPerformed
 
-    private void situacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_situacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_situacaoActionPerformed
-
     private void areaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_areaActionPerformed
@@ -302,10 +307,15 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_num_QuartosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //cria
+    }//GEN-LAST:event_cadastrarActionPerformed
 
+    /**/
+    
+   
+    
     /**
      * @param args the command line arguments
      */
@@ -343,9 +353,9 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField area;
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cpf_Proprietario;
     private javax.swing.JTextField descricao;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -360,9 +370,10 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
     private javax.swing.JTextField num_Banheiros;
     private javax.swing.JTextField num_Quartos;
     private javax.swing.JTextField num_Suites;
-    private javax.swing.JTextField situacao;
+    private javax.swing.JComboBox<String> situacao;
     private javax.swing.JTextField vagas_Garag;
     private javax.swing.JTextField valor_Aluguel;
     private javax.swing.JTextField valor_Compra;
     // End of variables declaration//GEN-END:variables
+
 }
