@@ -134,6 +134,11 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         jMenu4.add(jMenuItem14);
 
         jMenuItem15.setText("Consultar Contratos em Aberto");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem15);
 
         jMenuBar1.add(jMenu4);
@@ -252,8 +257,19 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
+        telaAberturaContratorAluguel = new Tela_Abertura_Contrato_Aluguel();
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        telaAberturaContratorAluguel.setLocation((tela.width - telaAberturaContratorAluguel.getSize().width)/2,(tela.height - telaAberturaContratorAluguel.getSize().height)/2);
+        telaAberturaContratorAluguel.setVisible(true);     //mostra a tela de login do adm
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        telaConsultaContratoAluguel = new Tela_Consulta_Contrato_Aluguel();
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        telaConsultaContratoAluguel.setLocation((tela.width - telaConsultaContratoAluguel.getSize().width)/2,(tela.height - telaConsultaContratoAluguel.getSize().height)/2);
+        telaConsultaContratoAluguel.setVisible(true);     //mostra a tela de login do adm
+        
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,5 +335,7 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     Tela_Cadastrar_Proprietario telaCadastrarProprietario;
     Tela_Cadastrar_Imovel telaCadastrarImovel;
     Tela_Abertura_Contrator_Venda telaAberturaContratorVenda;
+    Tela_Abertura_Contrato_Aluguel telaAberturaContratorAluguel;
     Tela_Consulta_Contrato_Venda telaConsultaContratoVenda;
+    Tela_Consulta_Contrato_Aluguel telaConsultaContratoAluguel;
 }
