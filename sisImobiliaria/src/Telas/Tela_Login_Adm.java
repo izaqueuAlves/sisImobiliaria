@@ -62,6 +62,7 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         jLabel3.setText("Senha:");
 
         senha.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        senha.setMaximumSize(new java.awt.Dimension(715, 715));
         senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaActionPerformed(evt);
@@ -99,7 +100,7 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
                                 .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                    .addComponent(senha)))
+                                    .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +147,7 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         String pass = new String(senha.getPassword());
         
         if(ctr.fazerLogin(l, pass)){
-            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
+          //  JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
             //Redirecionar Tela Login Adm
             telaEntradaAdm = new Tela_Entrada_Adm();
             Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();

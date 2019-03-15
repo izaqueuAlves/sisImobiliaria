@@ -48,7 +48,8 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         senha = new javax.swing.JPasswordField();
         senha_confirm = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N

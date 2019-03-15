@@ -50,7 +50,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         num_Quartos = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
         setSize(new java.awt.Dimension(715, 715));
@@ -189,16 +189,15 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cpf_Proprietario, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(valor_Aluguel, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                .addComponent(situacao)
-                                .addComponent(area)
-                                .addComponent(vagas_Garag)
-                                .addComponent(num_Suites)
-                                .addComponent(num_Banheiros)
-                                .addComponent(descricao)
-                                .addComponent(num_Quartos)
-                                .addComponent(valor_Compra)))
+                            .addComponent(valor_Aluguel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(situacao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(area, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vagas_Garag, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(num_Suites, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(num_Banheiros, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descricao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(num_Quartos, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(valor_Compra, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(142, 142, 142))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel11)

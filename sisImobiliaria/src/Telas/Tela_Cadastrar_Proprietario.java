@@ -38,8 +38,9 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         telefone = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(715, 715));
+        setPreferredSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -61,6 +62,7 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("CADASTRAR PROPRIETÁRIO");
+        jButton1.setActionCommand("CADASTRAR");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

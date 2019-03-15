@@ -44,7 +44,8 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
         complemento = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(715, 715));
         setMinimumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 

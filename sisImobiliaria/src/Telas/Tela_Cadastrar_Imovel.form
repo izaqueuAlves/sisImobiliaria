@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[715, 715]"/>
     </Property>
@@ -49,17 +49,15 @@
                       <EmptySpace pref="28" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="cpf_Proprietario" pref="173" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="valor_Aluguel" pref="173" max="32767" attributes="0"/>
-                              <Component id="situacao" max="32767" attributes="0"/>
-                              <Component id="area" max="32767" attributes="0"/>
-                              <Component id="vagas_Garag" max="32767" attributes="0"/>
-                              <Component id="num_Suites" max="32767" attributes="0"/>
-                              <Component id="num_Banheiros" max="32767" attributes="0"/>
-                              <Component id="descricao" max="32767" attributes="0"/>
-                              <Component id="num_Quartos" max="32767" attributes="0"/>
-                              <Component id="valor_Compra" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="valor_Aluguel" alignment="0" pref="173" max="32767" attributes="0"/>
+                          <Component id="situacao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="area" alignment="0" max="32767" attributes="0"/>
+                          <Component id="vagas_Garag" alignment="0" max="32767" attributes="0"/>
+                          <Component id="num_Suites" alignment="0" max="32767" attributes="0"/>
+                          <Component id="num_Banheiros" alignment="0" max="32767" attributes="0"/>
+                          <Component id="descricao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="num_Quartos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="valor_Compra" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                   </Group>

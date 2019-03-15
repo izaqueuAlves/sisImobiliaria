@@ -38,7 +38,8 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
         telefone = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(715, 715));
         setMinimumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 

@@ -44,7 +44,7 @@ public class Tela_Abertura_Contrato_Aluguel extends javax.swing.JFrame {
         data_inicio = new javax.swing.JTextField();
         data_Fim = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 

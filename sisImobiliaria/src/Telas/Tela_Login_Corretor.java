@@ -65,7 +65,7 @@ public class Tela_Login_Corretor extends javax.swing.JFrame {
             }
         });
 
-        senha.setText("jPasswordField1");
+        senha.setHighlighter(null);
         senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaActionPerformed(evt);
