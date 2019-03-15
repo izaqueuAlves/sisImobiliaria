@@ -41,6 +41,12 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -96,6 +102,41 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         jMenu1.add(jMenuItem11);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Venda de Imóvel");
+
+        jMenuItem12.setText("Abrir Contrato Venda");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem12);
+
+        jMenuItem13.setText("Consultar Contratos em Aberto");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem13);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Aluguel de Imóvel");
+
+        jMenuItem14.setText("Abrir Contrato Aluguel");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem14);
+
+        jMenuItem15.setText("Consultar Contratos em Aberto");
+        jMenu4.add(jMenuItem15);
+
+        jMenuBar1.add(jMenu4);
 
         jMenu2.setText("Gerar Relatório");
 
@@ -196,6 +237,24 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         telaCadastrarImovel.setVisible(true);     
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        telaAberturaContratorVenda = new Tela_Abertura_Contrator_Venda();
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        telaAberturaContratorVenda.setLocation((tela.width - telaAberturaContratorVenda.getSize().width)/2,(tela.height - telaAberturaContratorVenda.getSize().height)/2);
+        telaAberturaContratorVenda.setVisible(true);     //mostra a tela de login do adm
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        telaConsultaContratoVenda = new Tela_Consulta_Contrato_Venda();
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        telaConsultaContratoVenda.setLocation((tela.width - telaConsultaContratoVenda.getSize().width)/2,(tela.height - telaConsultaContratoVenda.getSize().height)/2);
+        telaConsultaContratoVenda.setVisible(true);     //mostra a tela de login do adm
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,10 +294,16 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -253,4 +318,6 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     Tela_Cadastrar_Locatario telaCadastrarLocatario;
     Tela_Cadastrar_Proprietario telaCadastrarProprietario;
     Tela_Cadastrar_Imovel telaCadastrarImovel;
+    Tela_Abertura_Contrator_Venda telaAberturaContratorVenda;
+    Tela_Consulta_Contrato_Venda telaConsultaContratoVenda;
 }
