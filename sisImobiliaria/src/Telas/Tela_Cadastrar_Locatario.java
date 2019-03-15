@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleLocatario;
+import classesEntidade.Locatario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author caio_
@@ -33,7 +37,7 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        nome_Completo = new javax.swing.JTextField();
+        nome_completo = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
         telefone = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
@@ -61,8 +65,13 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("CADASTRAR");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        nome_Completo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        nome_completo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         cpf.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -93,7 +102,7 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nome_Completo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nome_completo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(209, Short.MAX_VALUE))
         );
@@ -107,7 +116,7 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(nome_Completo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nome_completo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addComponent(jLabel5))
                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,6 +135,23 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ControleLocatario ctr = new ControleLocatario();
+        Locatario locatario = new Locatario();
+                
+        locatario.setCpf(cpf.getText());
+        locatario.setEmail(email.getText());
+        locatario.setNomeCompleto(nome_completo.getText());
+        locatario.setTelefone(telefone.getText());
+        
+        if(ctr.cadastrarLocatario(locatario)){
+            JOptionPane.showMessageDialog(null, "Locatário cadastrado com sucesso!", "Aviso", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar locatário", "Erro", 0);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,7 +197,7 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField nome_Completo;
+    private javax.swing.JTextField nome_completo;
     private javax.swing.JTextField telefone;
     // End of variables declaration//GEN-END:variables
 }

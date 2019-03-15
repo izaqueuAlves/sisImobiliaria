@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleComprador;
+import classesEntidade.Comprador;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author caio_
@@ -72,6 +76,11 @@ public class Tela_Cadastrar_Comprador extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("CADASTRAR");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,6 +142,23 @@ public class Tela_Cadastrar_Comprador extends javax.swing.JFrame {
     private void nome_CompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome_CompletoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nome_CompletoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ControleComprador ctr = new ControleComprador();
+        Comprador comprador = new Comprador();
+                
+        comprador.setCpf(cpf.getText());
+        comprador.setEmail(email.getText());
+        comprador.setNomeCompleto(nome_Completo.getText());
+        comprador.setTelefone(telefone.getText());
+        
+        if(ctr.cadastrarCorretor(comprador)){
+            JOptionPane.showMessageDialog(null, "Comprador cadastrado com sucesso!", "Aviso", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar comprador", "Erro", 0);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

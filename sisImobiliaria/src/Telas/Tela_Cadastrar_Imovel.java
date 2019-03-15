@@ -86,7 +86,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         jLabel10.setText("CPF DO PROPRIETÁRIO:");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel11.setText("CADASTRO DE IMÓVEL");
+        jLabel11.setText("CADASTRAR IMÓVEL");
 
         cpf_Proprietario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cpf_Proprietario.addActionListener(new java.awt.event.ActionListener() {

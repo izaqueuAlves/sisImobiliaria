@@ -32,11 +32,14 @@ public class ControleProprietario {
         
         try {
             proprietario.cadastrarProprietario(proprietario);
-            //Mensagem de proprietario cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
         }
+    }
+    
+      public boolean cadastrarProprietario(Proprietario proprietario){        
+        return proprietario.cadastrarProprietario(proprietario);                
     }
     
     //REFAZER, ERRO

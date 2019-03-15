@@ -53,7 +53,7 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("CADASTRO CORRETOR");
+        jLabel1.setText("CADASTRAR CORRETOR");
 
         nome.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 

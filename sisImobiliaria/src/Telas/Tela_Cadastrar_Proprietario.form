@@ -32,7 +32,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="273" max="-2" attributes="0"/>
+              <Component id="cadastrar" min="-2" pref="273" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -85,7 +85,7 @@
                   <Component id="email" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="cadastrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="215" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -139,12 +139,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="cadastrar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CADASTRAR PROPRIET&#xc1;RIO"/>
+        <Property name="text" type="java.lang.String" value="CADASTRAR"/>
         <Property name="actionCommand" type="java.lang.String" value="CADASTRAR"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -153,7 +153,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="cpf">

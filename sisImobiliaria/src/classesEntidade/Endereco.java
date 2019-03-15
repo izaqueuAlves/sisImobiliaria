@@ -125,18 +125,21 @@ public class Endereco {
     }
     
     
-     public void cadastrarEndereco(Endereco endereco) {
+     public boolean cadastrarEndereco(Endereco endereco) {
  
         EntityManager em = new Connect().getConexao();
+        boolean retorno = false;
         
         try{
             em.getTransaction().begin();
             em.persist(endereco);
-            em.getTransaction().commit();   
+            em.getTransaction().commit();
+            retorno = true;
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             em.close();
         }
+        return retorno;
      }   
 }
