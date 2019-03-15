@@ -40,6 +40,9 @@ public class ControleLocatario {
         }
     }
     
+    public boolean cadastrarLocatario(Locatario locatario){        
+        return locatario.cadastrarLocatario(locatario);                
+    }
     /**
      * 
      * @param novoCPF

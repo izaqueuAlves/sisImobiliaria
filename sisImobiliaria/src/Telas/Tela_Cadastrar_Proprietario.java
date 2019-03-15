@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleProprietario;
+import classesEntidade.Proprietario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author caio_
@@ -33,13 +37,14 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         nome_Completo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
         cpf = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         telefone = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(715, 715));
+        setPreferredSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -59,12 +64,13 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
 
         nome_Completo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("CADASTRAR PROPRIETÁRIO");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        cadastrar.setText("CADASTRAR");
+        cadastrar.setActionCommand("CADASTRAR");
+        cadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarActionPerformed(evt);
             }
         });
 
@@ -80,7 +86,7 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(209, 209, 209))
             .addGroup(layout.createSequentialGroup()
                 .addGap(142, 142, 142)
@@ -123,16 +129,29 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(101, 101, 101)
-                .addComponent(jButton1)
+                .addComponent(cadastrar)
                 .addContainerGap(215, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ControleProprietario ctr = new ControleProprietario();
+        Proprietario proprietario = new Proprietario();
+                
+        proprietario.setCpf(cpf.getText());
+        proprietario.setEmail(email.getText());
+        proprietario.setNomeCompleto(nome_Completo.getText());
+        proprietario.setTelefone(telefone.getText());
+        
+        if(ctr.cadastrarProprietario(proprietario)){
+            JOptionPane.showMessageDialog(null, "Proprietário cadastrado com sucesso!", "Aviso", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar proprietário", "Erro", 0);
+        }
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,9 +189,9 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

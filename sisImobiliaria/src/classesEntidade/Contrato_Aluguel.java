@@ -260,7 +260,6 @@ public class Contrato_Aluguel {
         try{
             contrato = em.find(Contrato_Aluguel.class, id_contrato);
         }catch(Exception e){
-            // alterar depois para ser mostrado na tela com JOptionPane
             System.out.println("Nenhum contrato de aluguel encontrado!: "+e);   
         }finally{
             em.close();

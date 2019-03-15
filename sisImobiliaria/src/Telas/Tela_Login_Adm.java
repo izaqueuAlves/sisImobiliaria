@@ -7,6 +7,8 @@ package Telas;
 
 import classesControle.ControleAdm;
 import classesControle.ControleLocatario;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,12 +56,13 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         jLabel1.setText("LOGIN ADMINSTRADOR");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("LOGIN:");
+        jLabel2.setText("Login:");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setText("SENHA:");
+        jLabel3.setText("Senha:");
 
         senha.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        senha.setMaximumSize(new java.awt.Dimension(715, 715));
         senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaActionPerformed(evt);
@@ -67,7 +70,7 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         });
 
         entrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        entrar.setText("ENTRAR");
+        entrar.setText("Entrar");
         entrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,13 +85,8 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(510, 510, 510)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(510, 510, 510)
+                .addComponent(jLabel4)
                 .addContainerGap(200, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -99,13 +97,15 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                    .addComponent(senha))))
+                                    .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))))
                         .addGap(253, 253, 253))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -147,8 +147,13 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         String pass = new String(senha.getPassword());
         
         if(ctr.fazerLogin(l, pass)){
-            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
-            // chamar a proxima pagina aqui..
+          //  JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
+            //Redirecionar Tela Login Adm
+            telaEntradaAdm = new Tela_Entrada_Adm();
+            Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+            telaEntradaAdm.setLocation((tela.width - telaEntradaAdm.getSize().width)/2,(tela.height - telaEntradaAdm.getSize().height)/2);
+            telaEntradaAdm.setVisible(true);     //mostra a tela de login do adm
+            Tela_Login_Adm.this.dispose();  // fecha a tela principal, isso vale para qualquer pagina
         }else{
             JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorretos!", "Erro", 0);
             login.setText("");
@@ -207,5 +212,6 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
     private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
     
+    Tela_Entrada_Adm telaEntradaAdm;
     
 }

@@ -25,10 +25,9 @@ public class ControleCorretor {
    * @param email 
    * return void
    */  
-  public void cadastrarCorretor (String CRECI, String CPF, String senha, String nomeCompleto, String telefone, String email)
+  void cadastrarCorretor (String CRECI, String CPF, String senha, String nomeCompleto, String telefone, String email)
   {
-      corretor = new Corretor();
-      
+      corretor = new Corretor();      
       
       corretor.setCreci (CRECI);
       corretor.setCpf (CPF);
@@ -37,20 +36,20 @@ public class ControleCorretor {
       corretor.setTelefone (telefone);
       corretor.setEmail (email);
       
+       try {
+            corretor.cadastrarCorretor(corretor);
+            //Mensagem de Adm cadastrado com sucesso!
+        } catch (Error e) {
+            e.printStackTrace();
+            //Mandar mensagem de erro para a tela
+        }        
+    }
+      
+    public boolean cadastrarCorretor(Corretor corretor){        
+        return corretor.cadastrarCorretor(corretor);                
+    }
        
-        final JFrame frame = new JFrame();
         
-        if (corretor.cadastrarCorretor(corretor)) {
-            //Corretor Cadastrado 
-            System.out.print("Corretor Cadastrado Com sucesso");
-            JOptionPane.showMessageDialog(frame.getContentPane() ,"cadastrado com sucesso.");
-        } else {
-            //Erro
-            System.out.print("Erro ao cadastrar corretor!");
-            JOptionPane.showMessageDialog(frame.getContentPane() ,"cadastrado com sucesso.");
-        }
-  }
-  
   /***
    * 
    * @param novoCRECI
@@ -93,7 +92,7 @@ public class ControleCorretor {
     public boolean fazerLogin(String creci, String senha){
         
         Corretor corretor = new Corretor();        
-        corretor = corretor.buscarCorretorPorCreci(creci);
+        corretor = corretor.buscarCorretor(creci);
         
         if(corretor != null)
             if(creci.equals(corretor.getCreci()) && senha.equals(corretor.getSenha())){

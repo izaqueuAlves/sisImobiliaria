@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import classesControle.ControleEndereco;
+import classesEntidade.Endereco;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author caio_
@@ -35,7 +39,7 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cpf = new javax.swing.JTextField();
+        cep = new javax.swing.JTextField();
         uf = new javax.swing.JTextField();
         cidade = new javax.swing.JTextField();
         bairro = new javax.swing.JTextField();
@@ -44,7 +48,8 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
         complemento = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(715, 715));
         setMinimumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 
@@ -72,7 +77,7 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setText("LOGRADOURO:");
 
-        cpf.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cep.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         uf.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -87,8 +92,13 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
         complemento.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("CADASTRAR ENDEREÇO");
+        jButton1.setText("CADASTRAR");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +122,7 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(uf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cep, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,7 +153,7 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -180,6 +190,27 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ControleEndereco ctr = new ControleEndereco();
+        Endereco endereco = new Endereco();
+        
+        endereco.setCEP(cep.getText());
+        endereco.setUF(uf.getText());
+        endereco.setCidade(cidade.getText());
+        endereco.setBairro(bairro.getText());
+        endereco.setComplemento(complemento.getText());
+        endereco.setLogradouro(logradouro.getText());
+        endereco.setNumero(numero.getText());
+        
+        
+        if(ctr.cadastrarEndereco(endereco)){
+            JOptionPane.showMessageDialog(null, "Endereço cadastrado com sucesso!", "Aviso", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar endereço", "Erro", 0);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,9 +249,9 @@ public class Tela_Cadastrar_Endereco extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairro;
+    private javax.swing.JTextField cep;
     private javax.swing.JTextField cidade;
     private javax.swing.JTextField complemento;
-    private javax.swing.JTextField cpf;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

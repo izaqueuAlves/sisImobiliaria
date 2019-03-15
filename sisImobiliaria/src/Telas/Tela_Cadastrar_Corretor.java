@@ -6,6 +6,8 @@
 package Telas;
 
 import classesControle.ControleCorretor;
+import classesEntidade.Corretor;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,7 +35,7 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cpf = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -44,18 +46,19 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         senha = new javax.swing.JPasswordField();
-        senha_Confirm = new javax.swing.JPasswordField();
+        senha_confirm = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("CADASTRO CORRETOR");
+        jLabel1.setText("CADASTRAR CORRETOR");
 
         nome.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("NOME COMPLETO: (FAZER ISSO PRA TODOS)");
+        jLabel2.setText("NOME COMPLETO:");
 
         cpf.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cpf.addActionListener(new java.awt.event.ActionListener() {
@@ -64,12 +67,12 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setText("CADASTRAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        cadastrar.setText("CADASTRAR");
+        cadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarActionPerformed(evt);
             }
         });
 
@@ -104,10 +107,10 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
             }
         });
 
-        senha_Confirm.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        senha_Confirm.addActionListener(new java.awt.event.ActionListener() {
+        senha_confirm.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        senha_confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senha_ConfirmActionPerformed(evt);
+                senha_confirmActionPerformed(evt);
             }
         });
 
@@ -116,62 +119,60 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(233, 233, 233)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(266, 266, 266))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                            .addComponent(telefone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(creci, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cpf, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(senha)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8))
-                                        .addGap(424, 424, 424))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(41, 41, 41))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nome)
-                                    .addComponent(cpf)
-                                    .addComponent(creci)
-                                    .addComponent(telefone)
-                                    .addComponent(email)
-                                    .addComponent(senha)
-                                    .addComponent(senha_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(209, 209, 209))))
+                                .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE))
+                            .addComponent(senha_confirm))))
+                .addGap(272, 272, 272))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(323, 323, 323))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
+                .addGap(88, 88, 88)
                 .addComponent(jLabel1)
-                .addGap(68, 68, 68)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(51, 51, 51)
+                    .addComponent(jLabel2)
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(creci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(creci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -179,30 +180,64 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(senha_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(jButton1)
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(senha_confirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95)
+                .addComponent(cadastrar)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void senha_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senha_ConfirmActionPerformed
+    private void senha_confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senha_confirmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_senha_ConfirmActionPerformed
+    }//GEN-LAST:event_senha_confirmActionPerformed
 
     private void cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpfActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+        ControleCorretor ctr = new ControleCorretor();
+        Corretor corretor = new Corretor();
+        String pass = new String(senha.getPassword());
+        String pass_confirm = new String(senha_confirm.getPassword());
+        
+    //verifica se as senhas informadas sao iguais
+        if(pass.equals(pass_confirm)){
+            corretor.setEmail(email.getText());
+            corretor.setCreci(creci.getText());
+            corretor.setCpf(cpf.getText());
+            corretor.setNomeCompleto(nome.getText());
+            corretor.setTelefone(telefone.getText());
+            corretor.setSenha(pass);
+            
+            if(ctr.cadastrarCorretor(corretor)){
+                JOptionPane.showMessageDialog(null, "Corretor cadastrado com sucesso!", "Aviso", 2);
+                limparCampos();
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar corretor!", "Erro", 0);
+                limparCampos();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "As senhas digitadas são diferentes!", "Erro", 0);
+            senha.setText("");
+            senha_confirm.setText("");
+        }
+    }//GEN-LAST:event_cadastrarActionPerformed
+    public void limparCampos(){
+        email.setText("");
+        creci.setText("");
+        cpf.setText("");
+        nome.setText("");
+        telefone.setText("");
+        senha.setText("");
+        senha_confirm.setText("");
+    }
     private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaActionPerformed
@@ -243,10 +278,10 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField creci;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -257,7 +292,7 @@ public class Tela_Cadastrar_Corretor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nome;
     private javax.swing.JPasswordField senha;
-    private javax.swing.JPasswordField senha_Confirm;
+    private javax.swing.JPasswordField senha_confirm;
     private javax.swing.JTextField telefone;
     // End of variables declaration//GEN-END:variables
 }
