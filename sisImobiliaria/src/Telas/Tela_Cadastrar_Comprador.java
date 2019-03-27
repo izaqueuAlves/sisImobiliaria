@@ -154,7 +154,6 @@ public class Tela_Cadastrar_Comprador extends javax.swing.JFrame {
         comprador.setTelefone(telefone.getText());
         
         if(ctr.cadastrarCorretor(comprador)){
-            System.out.println("testet lab_IFS");
             JOptionPane.showMessageDialog(null, "Comprador cadastrado com sucesso!", "Aviso", 2);
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar comprador", "Erro", 0);
