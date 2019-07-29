@@ -5,12 +5,11 @@
  */
 package Telas;
 
-import static Teste.Classe_Teste.proprietarioGenerico;
 import classesControle.ControleEndereco;
-import classesControle.ControleProprietario;
+import classesControle.ControleCliente;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
-import classesEntidade.Proprietario;
+import classesEntidade.Cliente;
 import classesEntidade.Situacao_Imovel;
 import classesEntidade.Tipo_Imovel;
 import javax.swing.JOptionPane;
@@ -495,7 +494,7 @@ public class Tela_Editar_Imovel extends javax.swing.JFrame {
 
     private void cpf_ProprietarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cpf_ProprietarioFocusLost
         // TODO add your handling code here:
-        ControleProprietario ctr = new ControleProprietario();
+        ControleCliente ctr = new ControleCliente();
                
         p = ctr.buscarProprietario(cpf_Proprietario.getText());
         if(p == null){
@@ -584,5 +583,5 @@ public class Tela_Editar_Imovel extends javax.swing.JFrame {
     private javax.swing.JTextField valor_Aluguel;
     private javax.swing.JTextField valor_Compra;
     // End of variables declaration//GEN-END:variables
-    Proprietario p = new Proprietario();
+    Cliente p = new Cliente();
 }

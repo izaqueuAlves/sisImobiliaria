@@ -6,7 +6,7 @@
 package Telas;
 
 import classesControle.ControleAdm;
-import classesControle.ControleLocatario;
+import classesControle.ControleCliente;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;

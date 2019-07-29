@@ -10,7 +10,6 @@ import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
-import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import classesEntidade.Situacao_Imovel;
 import java.text.DateFormat;
@@ -64,7 +63,7 @@ public class ControleConsultarContratoVenda {
         
         imovel = contrato.getImovel();
         
-        Proprietario novoProprietario = new Proprietario();
+        Cliente novoProprietario = new Cliente();
         Cliente cliente;
         cliente = contrato.getComprador();
                 
@@ -73,7 +72,7 @@ public class ControleConsultarContratoVenda {
         novoProprietario.setNomeCompleto(cliente.getNomeCompleto());
         novoProprietario.setTelefone(cliente.getTelefone());
         
-        novoProprietario.cadastrarProprietario(novoProprietario);
+        novoProprietario.cadastrarCliente(novoProprietario);
         
         novoProprietario = novoProprietario.buscarProprietario(novoProprietario.getCpf());
         imovel.setSituacao_Imovel(4);
@@ -113,7 +112,7 @@ public class ControleConsultarContratoVenda {
         
         Imovel imovel = contrato.getImovel();
         Endereco endereco = contrato.getImovel().getEndereco();
-        Proprietario proprietario = contrato.getImovel().getProprietario();
+        Cliente cliente_proprietario = contrato.getImovel().getProprietario();
         Cliente cliente_comprador = contrato.getComprador();
         Corretor corretor = contrato.getCorretor();
         
@@ -121,8 +120,8 @@ public class ControleConsultarContratoVenda {
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
                 + "Vendedor\n"
-                + "Nome Completo: "+ proprietario.getNomeCompleto() + "\n"
-                + "CPF: " + proprietario.getCpf() + "\n"
+                + "Nome Completo: "+ cliente_proprietario.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_proprietario.getCpf() + "\n"
                 + "\n"
                 + "Comprador\n"
                 + "Nome Completo: " +cliente_comprador.getNomeCompleto() + "\n"

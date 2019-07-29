@@ -11,8 +11,7 @@ import classesEntidade.Cliente;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
 import classesEntidade.Imovel;
-import classesEntidade.Locatario;
-import classesEntidade.Proprietario;
+import classesEntidade.Cliente;
 import classesEntidade.Situacao_Imovel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -338,16 +337,16 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        Proprietario c = new Proprietario();
-        ArrayList<Proprietario> a = new ArrayList<Proprietario>();
+        Cliente c = new Cliente();
+        ArrayList<Cliente> a = new ArrayList<Cliente>();
         
-        a = (ArrayList<Proprietario>) c.getTodosProprietarios();
+        a = (ArrayList<Cliente>) c.getTodosProprietarios();
         
         String nome = "Relatório todos os Proprietarios";
         ArrayList<String> lista = new ArrayList<String>();
         lista.add(nome);
         
-        for (Proprietario a1 : a) {
+        for (Cliente a1 : a) {
             lista.add(a1.getNomeCompleto());
         }
 
@@ -357,16 +356,16 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        Locatario c = new Locatario();
-        ArrayList<Locatario> a = new ArrayList<Locatario>();
+        Cliente c = new Cliente();
+        ArrayList<Cliente> a = new ArrayList<Cliente>();
         
-        a = (ArrayList<Locatario>) c.getTodosLocatarios();
+        a = (ArrayList<Cliente>) c.getTodosLocatarios();
         
         String nome = "Relatório todos os Locatarios";
         ArrayList<String> lista = new ArrayList<String>();
         lista.add(nome);
         
-        for (Locatario a1 : a) {
+        for (Cliente a1 : a) {
             lista.add(a1.getNomeCompleto());
         }
 

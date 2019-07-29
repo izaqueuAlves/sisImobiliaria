@@ -8,16 +8,15 @@ package Telas;
 import classesControle.ControleAdm;
 import classesControle.ControleCorretor;
 import classesControle.ControleImovel;
-import classesControle.ControleProprietario;
+import classesControle.ControleCliente;
 import classesControle.ControleVenda;
 import classesEntidade.Cliente;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
-import classesEntidade.Proprietario;
+import classesEntidade.Cliente;
 import classesEntidade.Imovel;
-import classesEntidade.Locatario;
 import classesEntidade.Situacao_Contrato;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -131,7 +130,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        ControleProprietario ctr = new ControleProprietario();
+        ControleCliente ctr = new ControleCliente();
         ctr.buscarProprietario("");
     }//GEN-LAST:event_formWindowOpened
 

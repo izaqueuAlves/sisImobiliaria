@@ -34,7 +34,7 @@ public class Imovel {
    private int situacao_Imovel;
    // chaves estranheiras
    @ManyToOne
-   private Proprietario proprietario;
+   private Cliente cliente_proprietario;
    @ManyToOne
    private Tipo_Imovel tipo_imovel;
    @OneToOne 
@@ -113,8 +113,8 @@ public class Imovel {
         return valorAluguel;
     }
 
-    public Proprietario getProprietario() {
-        return proprietario;
+    public Cliente getProprietario() {
+        return cliente_proprietario;
     }
     
     public int getSituacao_Imovel() {
@@ -157,8 +157,8 @@ public class Imovel {
         this.valorAluguel = valorAluguel;
     }
 
-    public void setProprietario(Proprietario proprietario) {
-        this.proprietario = proprietario;
+    public void setProprietario(Cliente cliente_proprietario) {
+        this.cliente_proprietario = cliente_proprietario;
     }
     
      public void setSituacao_Imovel(int i) {
@@ -352,7 +352,7 @@ public class Imovel {
      // no diagrama o parametro é um objeto, porem acho q fica melhor colocar como apenas o cpf, ja que o metodo busca o nome proprietatio
      // no banco, caso exista ele substitui; #izaqueu
      public boolean alterarProprietario(String cpf_proprietario, Integer id_imovel){
-         Proprietario p = new Proprietario();
+         Cliente p = new Cliente();
          Imovel im = new Imovel();
                   
          p = p.buscarProprietario(cpf_proprietario);

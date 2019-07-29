@@ -8,7 +8,7 @@ package classesControle;
 import classesEntidade.Adm;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
-import classesEntidade.Proprietario;
+import classesEntidade.Cliente;
 import classesEntidade.Situacao_Imovel;
 import classesEntidade.Tipo_Imovel;
 
@@ -39,9 +39,9 @@ public class ControleImovel {
      */
     void cadastrarImovel(String CPF_proprietario, float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, String descricao, float valorCompra, float valorAluguel, int situacao_Imovel, Tipo_Imovel tipo_imovel, Endereco endereco, Adm admLogado)
     {
-        Proprietario proprietario = new Proprietario();
+        Cliente cliente_proprietario = new Cliente();
         
-        proprietario = proprietario.buscarProprietario(CPF_proprietario);
+        cliente_proprietario = cliente_proprietario.buscarProprietario(CPF_proprietario);
 
         Imovel novoImovel = new Imovel();
         novoImovel.setArea(area);
@@ -53,7 +53,7 @@ public class ControleImovel {
         novoImovel.setValorAluguel(valorAluguel);
         novoImovel.setValorCompra(valorCompra);
         novoImovel.setSituacao_Imovel(situacao_Imovel);
-        novoImovel.setProprietario(proprietario);
+        novoImovel.setProprietario(cliente_proprietario);
         novoImovel.setEndereco(endereco);
         novoImovel.setAdm(admLogado);
         novoImovel.setSituacao_Imovel(situacao_Imovel);

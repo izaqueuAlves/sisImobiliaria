@@ -5,8 +5,8 @@
  */
 package Telas;
 
-import classesControle.ControleProprietario;
-import classesEntidade.Proprietario;
+import classesControle.ControleCliente;
+import classesEntidade.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -137,15 +137,15 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
-        ControleProprietario ctr = new ControleProprietario();
-        Proprietario proprietario = new Proprietario();
+        ControleCliente ctr = new ControleCliente();
+        Cliente cliente_proprietario = new Cliente();
                 
-        proprietario.setCpf(cpf.getText());
-        proprietario.setEmail(email.getText());
-        proprietario.setNomeCompleto(nome_Completo.getText());
-        proprietario.setTelefone(telefone.getText());
+        cliente_proprietario.setCpf(cpf.getText());
+        cliente_proprietario.setEmail(email.getText());
+        cliente_proprietario.setNomeCompleto(nome_Completo.getText());
+        cliente_proprietario.setTelefone(telefone.getText());
         
-        if(ctr.cadastrarProprietario(proprietario)){
+        if(ctr.cadastrarCliente(cliente_proprietario)){
             JOptionPane.showMessageDialog(null, "Proprietário cadastrado com sucesso!", "Aviso", 2);
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar proprietário", "Erro", 0);

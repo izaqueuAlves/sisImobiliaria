@@ -5,17 +5,13 @@ import classesControle.ControleCliente;
 import classesControle.ControleConsultarContratoAluguel;
 import classesControle.ControleConsultarContratoVenda;
 import classesControle.ControleCorretor;
-import classesControle.ControleLocatario;
-import classesControle.ControleProprietario;
 import classesControle.ControleVenda;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
 import classesEntidade.Cliente;
-import classesEntidade.Locatario;
 import classesEntidade.Imovel;
 import classesEntidade.Endereco;
-import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Imovel;
 import classesEntidade.Tipo_Imovel;
 import classesEntidade.Adm;
@@ -51,11 +47,7 @@ public class Classe_Teste
         return ti;
     }
     
-    public static Proprietario proprietarioGenerico(){
-        Proprietario p = new Proprietario("100.100.100-08","Adalacio Santos",
-        "99999-0008","prop8@hotmail.com");
-        return p;
-    }
+  
     
     public static Corretor corretorGenerico(){
         Corretor c = new Corretor("200.200.200-06",null,"caneca","Camarao Prado",
@@ -69,11 +61,7 @@ public class Classe_Teste
         return comp;
     }
     
-    public static Locatario locatarioGenerico(){
-        Locatario lot = new Locatario("400.400.400-03","Euler Matos",
-        "99999-4003","locat3@hotmail.com");
-        return lot;
-    }
+    
       /* 
     public static Imovel imovelGenerico(){
         Imovel im = new Imovel();

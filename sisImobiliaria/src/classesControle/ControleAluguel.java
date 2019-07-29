@@ -10,7 +10,6 @@ import classesEntidade.Corretor;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
 import classesEntidade.Cliente;
-import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import classesEntidade.Situacao_Imovel;
 
@@ -34,7 +33,7 @@ public class ControleAluguel {
     {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
-        Proprietario proprietario = new Proprietario();
+        Cliente cliente_proprietario = new Cliente();
         Cliente cliente_locatario = new Cliente();
         Corretor corretor = new Corretor();
         
@@ -48,7 +47,7 @@ public class ControleAluguel {
         }
         
         endereco = imovel.getEndereco();
-        proprietario = imovel.getProprietario();
+        cliente_proprietario = imovel.getProprietario();
         cliente_locatario = cliente_locatario.buscarLocatario(CPF_locatario);
         corretor = corretor.buscarCorretor(CRECI_corretor);
         
@@ -66,8 +65,8 @@ public class ControleAluguel {
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
                 + "PROPRIETARIO\n"
-                + "Nome Completo: "+proprietario.getNomeCompleto() + "\n"
-                + "CPF: " + proprietario.getCpf() + "\n"
+                + "Nome Completo: "+cliente_proprietario.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_proprietario.getCpf() + "\n"
                 + "\n"
                 + "LOCATARIO\n"
                 + "Nome Completo: " +cliente_locatario.getNomeCompleto() + "\n"

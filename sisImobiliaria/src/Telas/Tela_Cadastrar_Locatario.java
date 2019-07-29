@@ -5,8 +5,8 @@
  */
 package Telas;
 
-import classesControle.ControleLocatario;
-import classesEntidade.Locatario;
+import classesControle.ControleCliente;
+import classesEntidade.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -138,15 +138,15 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ControleLocatario ctr = new ControleLocatario();
-        Locatario locatario = new Locatario();
+        ControleCliente ctr = new ControleCliente();
+        Cliente cliente_locatario = new Cliente();
                 
-        locatario.setCpf(cpf.getText());
-        locatario.setEmail(email.getText());
-        locatario.setNomeCompleto(nome_completo.getText());
-        locatario.setTelefone(telefone.getText());
+        cliente_locatario.setCpf(cpf.getText());
+        cliente_locatario.setEmail(email.getText());
+        cliente_locatario.setNomeCompleto(nome_completo.getText());
+        cliente_locatario.setTelefone(telefone.getText());
         
-        if(ctr.cadastrarLocatario(locatario)){
+        if(ctr.cadastrarCliente(cliente_locatario)){
             JOptionPane.showMessageDialog(null, "Locatário cadastrado com sucesso!", "Aviso", 2);
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar locatário", "Erro", 0);

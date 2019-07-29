@@ -10,7 +10,6 @@ import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
-import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import classesEntidade.Situacao_Imovel;
 
@@ -33,7 +32,7 @@ public class ControleVenda {
     {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
-        Proprietario proprietario = new Proprietario();
+        Cliente cliente_proprietario = new Cliente();
         Cliente cliente_comprador = new Cliente();
         Corretor corretor = new Corretor();
         
@@ -47,7 +46,7 @@ public class ControleVenda {
         }
         
         endereco = imovel.getEndereco();
-        proprietario = imovel.getProprietario();
+        cliente_proprietario = imovel.getProprietario();
         cliente_comprador = cliente_comprador.buscarComprador(CPF_cliente);
         corretor = corretor.buscarCorretor(CPF_corretor);
         
@@ -58,8 +57,8 @@ public class ControleVenda {
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
                 + "Vendedor\n"
-                + "Nome Completo: "+proprietario.getNomeCompleto() + "\n"
-                + "CPF: " + proprietario.getCpf() + "\n"
+                + "Nome Completo: "+cliente_proprietario.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_proprietario.getCpf() + "\n"
                 + "\n"
                 + "Comprador\n"
                 + "Nome Completo: " +cliente_comprador.getNomeCompleto() + "\n"

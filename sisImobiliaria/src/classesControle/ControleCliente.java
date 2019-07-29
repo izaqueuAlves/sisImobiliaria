@@ -70,11 +70,19 @@ public class ControleCliente {
         }
    }
    
+   
+   
    //FAZER 
    public void excluirCliente(){
         
        cliente = new Cliente();    
    }
  
+   
+    public Cliente buscarProprietario(String cpf){
+        Cliente p = new Cliente();
+        
+        return p.buscarProprietario(cpf);
+  }
 }
 

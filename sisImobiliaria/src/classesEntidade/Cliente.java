@@ -176,6 +176,16 @@ public class Cliente {
         return clientes;
     }
     
+    public List<Cliente> getTodosProprietarios() {
+        List<Cliente> clientes_proprietarios = null; 
+        
+        return clientes_proprietarios;
+    }
     
+    public List<Cliente> getTodosLocatarios() {
+        List<Cliente> clientes_locatarios = null; 
+        
+        return clientes_locatarios;
+    }
     
 }

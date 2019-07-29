@@ -10,7 +10,6 @@ import classesEntidade.Corretor;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
 import classesEntidade.Cliente;
-import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -95,7 +94,7 @@ public class ControleConsultarContratoAluguel {
         
         Imovel imovel = contrato.getImovel();
         Endereco endereco = contrato.getImovel().getEndereco();
-        Proprietario proprietario = contrato.getImovel().getProprietario();
+        Cliente cliente_proprietario = contrato.getImovel().getProprietario();
         Cliente cliente_locatario = contrato.getLocatario();
         Corretor corretor = contrato.getCorretor();
         
@@ -106,8 +105,8 @@ public class ControleConsultarContratoAluguel {
                 + "Por este instrumento particular, as partes qualificadas na Cláusula 1ª têm entre si justa e acertada a presente relação contratual por intermédio do Corretor "+ corretor.getNomeCompleto() +", registrado com o CRECI: "+corretor.getCreci()+" .\n"
                 + "CLÁUSULA 1ª - QUALIFICAÇÃO DAS PARTES\n"
                 + "PROPRIETARIO\n"
-                + "Nome Completo: "+proprietario.getNomeCompleto() + "\n"
-                + "CPF: " + proprietario.getCpf() + "\n"
+                + "Nome Completo: "+cliente_proprietario.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_proprietario.getCpf() + "\n"
                 + "\n"
                 + "LOCATARIO\n"
                 + "Nome Completo: " +cliente_locatario.getNomeCompleto() + "\n"
