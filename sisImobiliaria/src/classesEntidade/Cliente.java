@@ -16,17 +16,17 @@ import javax.persistence.Id;
  * @author Izaqueu
  */
 @Entity
-public class Comprador {
+public class Cliente {
     @Id
     private String cpf;
     private String nomeCompleto;
     private String telefone;
     private String email;
 
-    public Comprador() {
+    public Cliente() {
     }
 
-    public Comprador(String cpf, String nomeCompleto, String telefone, String email) {
+    public Cliente(String cpf, String nomeCompleto, String telefone, String email) {
         this.cpf = cpf;
         this.nomeCompleto = nomeCompleto;
         this.telefone = telefone;
@@ -66,20 +66,20 @@ public class Comprador {
         return email;
     }
 
-    public boolean cadastrarComprador(Comprador comprador) {
+    public boolean cadastrarCliente(Cliente cliente) {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
         
         try{
             
             em.getTransaction().begin();
-            em.persist(comprador);
+            em.persist(cliente);
             em.getTransaction().commit();
             retorno = true;
             
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao cadastrar comprador!: "+e);
+            System.out.println("Erro ao cadastrar Cliente!: "+e);
         }finally{
             em.close();
         }
@@ -87,20 +87,20 @@ public class Comprador {
         return retorno;    
     }
     
-    public boolean editarComprador(Comprador comprador) {
+    public boolean editarCliente(Cliente cliente) {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
         
         try{
             
             em.getTransaction().begin();
-            em.merge(comprador);
+            em.merge(cliente);
             em.getTransaction().commit();
             retorno = true;
             
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao editar comprador!: "+e);
+            System.out.println("Erro ao editar Cliente!: "+e);
         }finally{
             em.close();
         }
@@ -108,16 +108,16 @@ public class Comprador {
         return retorno;    
     }
    
-    public Comprador buscarComprador(String cpf_comprador){
+    public Cliente buscarComprador(String cpf_cliente){
         EntityManager em = new Connect().getConexao();
-        Comprador c = new Comprador();
+        Cliente c = new Cliente();
         
         try{            
-            c = em.find(Comprador.class, cpf_comprador);
+            c = em.find(Cliente.class, cpf_cliente);
             
         }catch(Exception e){
              // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum comprador encontrado!: "+e);
+            System.out.println("Nenhum Cliente encontrado!: "+e);
         }finally{
             em.close();
         }
@@ -125,21 +125,55 @@ public class Comprador {
         return c;    
     }
     
-    public List<Comprador> getTodosCompradores() {
- 
+    public Cliente buscarLocatario(String cpf_locatario){
         EntityManager em = new Connect().getConexao();
-        List<Comprador> compradores = null;
+        Cliente c = new Cliente();
         
-        try{
-            compradores = em.createQuery("from Comprador c").getResultList();                           
+        try{            
+            c = em.find(Cliente.class, cpf_locatario);
+            
         }catch(Exception e){
-            // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum Comprador foi encontrado!: "+e);
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Locatario encontrado!: "+e);
         }finally{
             em.close();
         }
         
-        return compradores;
+        return c;    
+    }
+    
+    public Cliente buscarProprietario(String cpf_proprietario){
+        EntityManager em = new Connect().getConexao();
+        Cliente c = new Cliente();
+        
+        try{            
+            c = em.find(Cliente.class, cpf_proprietario);
+            
+        }catch(Exception e){
+             // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Proprietário encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return c;    
+    }
+    
+    public List<Cliente> getTodosClientes() {
+ 
+        EntityManager em = new Connect().getConexao();
+        List<Cliente> clientes = null;
+        
+        try{
+            clientes = em.createQuery("from Cliente c").getResultList();                           
+        }catch(Exception e){
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Cliente foi encontrado!: "+e);
+        }finally{
+            em.close();
+        }
+        
+        return clientes;
     }
     
     

@@ -43,7 +43,7 @@ public class Contrato_Venda {
     */
     
     @ManyToOne
-    private Comprador comprador;
+    private Cliente cliente;
     
     @ManyToOne
     private Corretor corretor;    
@@ -80,8 +80,8 @@ public class Contrato_Venda {
         this.dataFechamento = dataFechamento;
     }
 
-    public void setComprador(Comprador comprador) {
-        this.comprador = comprador;
+    public void setComprador(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void setCorretor(Corretor corretor) {
@@ -112,8 +112,8 @@ public class Contrato_Venda {
         return dataFechamento;
     }
 
-    public Comprador getComprador() {
-        return comprador;
+    public Cliente getComprador() {
+        return cliente;
     }
 
     public Corretor getCorretor() {
@@ -239,7 +239,7 @@ public class Contrato_Venda {
         
         List<Object> negociantes = new ArrayList<>();
         
-        negociantes.add(contrato.comprador);
+        negociantes.add(contrato.cliente);
         negociantes.add(contrato.corretor);
         
         return negociantes;

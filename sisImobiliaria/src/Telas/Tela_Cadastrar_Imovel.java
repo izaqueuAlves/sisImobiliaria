@@ -5,9 +5,6 @@
  */
 package Telas;
 
-import static Teste.Classe_Teste.abc;
-import static Teste.Classe_Teste.proprietarioGenerico;
-import static Teste.Classe_Teste.testaBuscarImovel;
 import classesControle.ControleEndereco;
 import classesControle.ControleProprietario;
 import classesEntidade.Endereco;

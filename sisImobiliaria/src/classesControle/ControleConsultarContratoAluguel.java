@@ -9,7 +9,7 @@ import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
-import classesEntidade.Locatario;
+import classesEntidade.Cliente;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import java.text.DateFormat;
@@ -96,7 +96,7 @@ public class ControleConsultarContratoAluguel {
         Imovel imovel = contrato.getImovel();
         Endereco endereco = contrato.getImovel().getEndereco();
         Proprietario proprietario = contrato.getImovel().getProprietario();
-        Locatario locatario = contrato.getLocatario();
+        Cliente cliente_locatario = contrato.getLocatario();
         Corretor corretor = contrato.getCorretor();
         
         String dataIniAluguel = dataInicio;
@@ -110,8 +110,8 @@ public class ControleConsultarContratoAluguel {
                 + "CPF: " + proprietario.getCpf() + "\n"
                 + "\n"
                 + "LOCATARIO\n"
-                + "Nome Completo: " +locatario.getNomeCompleto() + "\n"
-                + "CPF: " + locatario.getCpf() +"\n"
+                + "Nome Completo: " +cliente_locatario.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_locatario.getCpf() +"\n"
                 + "As partes acima mencionadas, pelo presente instrumento particular, ajustam a locação de um imóvel residencial, de acordo com as cláusulas que seguem:\n"
                 + "\n"
                 + "CLÁUSULA 2ª - O objeto deste contrato de locação é o imóvel residencial, situado à:\n"

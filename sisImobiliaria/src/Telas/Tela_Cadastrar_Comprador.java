@@ -5,8 +5,8 @@
  */
 package Telas;
 
-import classesControle.ControleComprador;
-import classesEntidade.Comprador;
+import classesControle.ControleCliente;
+import classesEntidade.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -145,16 +145,16 @@ public class Tela_Cadastrar_Comprador extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ControleComprador ctr = new ControleComprador();
-        Comprador comprador = new Comprador();
+        ControleCliente ctr = new ControleCliente();
+        Cliente cliente = new Cliente();
                 
-        comprador.setCpf(cpf.getText());
-        comprador.setEmail(email.getText());
-        comprador.setNomeCompleto(nome_Completo.getText());
-        comprador.setTelefone(telefone.getText());
+        cliente.setCpf(cpf.getText());
+        cliente.setEmail(email.getText());
+        cliente.setNomeCompleto(nome_Completo.getText());
+        cliente.setTelefone(telefone.getText());
         
-        if(ctr.cadastrarCorretor(comprador)){
-            JOptionPane.showMessageDialog(null, "Comprador cadastrado com sucesso!", "Aviso", 2);
+        if(ctr.cadastrarCliente(cliente)){
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Aviso", 2);
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar comprador", "Erro", 0);
         }

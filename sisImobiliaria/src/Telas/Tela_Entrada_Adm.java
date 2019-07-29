@@ -7,7 +7,7 @@ package Telas;
 
 
 import classesControle.Relatorios;
-import classesEntidade.Comprador;
+import classesEntidade.Cliente;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
 import classesEntidade.Imovel;
@@ -319,16 +319,16 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        Comprador c = new Comprador();
-        ArrayList<Comprador> a = new ArrayList<Comprador>();
+        Cliente c = new Cliente();
+        ArrayList<Cliente> a = new ArrayList<Cliente>();
         
-        a = (ArrayList<Comprador>) c.getTodosCompradores();
+        a = (ArrayList<Cliente>) c.getTodosClientes();
         
-        String nome = "Relatório todos os compradores";
+        String nome = "Relatório todos os clientes";
         ArrayList<String> lista = new ArrayList<String>();
         lista.add(nome);
         
-        for (Comprador a1 : a) {
+        for (Cliente a1 : a) {
             lista.add(a1.getNomeCompleto());
         }
 

@@ -36,7 +36,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cbContratosEmAberto = new javax.swing.JComboBox<>();
+        cbContratosEmAberto = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,8 +46,8 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tfIdContrato = new javax.swing.JTextField();
         tfEndereco = new javax.swing.JTextField();
-        tfProprietario = new javax.swing.JTextField();
-        tfComprador = new javax.swing.JTextField();
+        tfCliente_proprietario = new javax.swing.JTextField();
+        tfCliente_comprador = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tfDescricaoGeral = new javax.swing.JTextArea();
         tfPrecoNegociado = new javax.swing.JTextField();
@@ -61,18 +61,18 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(715, 715));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Consultar Contratos de Venda em Aberto");
 
-        cbContratosEmAberto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbContratosEmAberto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbContratosEmAberto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbContratosEmAbertoItemStateChanged(evt);
@@ -90,9 +90,9 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
 
         jLabel4.setText("Entedereço do Imóvel:");
 
-        jLabel5.setText("Proprietário:");
+        jLabel5.setText("Cliente Proprietário:");
 
-        jLabel6.setText("Comprador:");
+        jLabel6.setText("Cliente comprador");
 
         jLabel7.setText("Nova Descrição das Condições Pagamento:");
 
@@ -102,9 +102,9 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
 
         tfEndereco.setEditable(false);
 
-        tfProprietario.setEditable(false);
+        tfCliente_proprietario.setEditable(false);
 
-        tfComprador.setEditable(false);
+        tfCliente_comprador.setEditable(false);
 
         tfDescricaoGeral.setEditable(false);
         tfDescricaoGeral.setColumns(20);
@@ -165,13 +165,13 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                                                     .addGap(18, 18, 18)
                                                     .addComponent(btFecharContrato))))
                                         .addComponent(jLabel5)
-                                        .addComponent(tfProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfCliente_proprietario, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel6)
                                             .addGap(0, 315, Short.MAX_VALUE))
-                                        .addComponent(tfComprador))))
+                                        .addComponent(tfCliente_comprador))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE))))
@@ -208,8 +208,8 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCliente_proprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCliente_comprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -243,8 +243,8 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
                 +contrato.getImovel().getEndereco().getComplemento()+", "
                 +contrato.getImovel().getEndereco().getNumero()+", "+contrato.getImovel().getEndereco().getBairro()+", "
                 +contrato.getImovel().getEndereco().getCidade()+"");
-        tfComprador.setText(contrato.getComprador().getNomeCompleto());
-        tfProprietario.setText(contrato.getImovel().getProprietario().getNomeCompleto());
+        tfCliente_comprador.setText(contrato.getComprador().getNomeCompleto());
+        tfCliente_proprietario.setText(contrato.getImovel().getProprietario().getNomeCompleto());
         tfDescricaoGeral.setText(contrato.getDescricaoVenda());
         tfPrecoNegociado.setText(Float.toString(contrato.getValorVenda()));
         
@@ -257,13 +257,13 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
     private void atualizeContratos()
     {
         
-        tfComprador.setText("");
+        tfCliente_comprador.setText("");
         tfCondicoesPagamento1.setText("");
         tfDescricaoGeral.setText("");
         tfEndereco.setText("");
         tfIdContrato.setText("");
         tfPrecoNegociado.setText("");
-        tfProprietario.setText("");
+        tfCliente_proprietario.setText("");
         
         ControleConsultarContratoVenda ctrlCCV = new ControleConsultarContratoVenda();
         contratos = ctrlCCV.buscarContratosEmAberto();
@@ -273,7 +273,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         for(int i=0; i < contratos.size(); i++) 
         {
             Contrato_Venda contrato = contratos.get(i);
-            String aux = "id: "+contrato.getIdContrato()+";Comprador: "+contrato.getComprador().getNomeCompleto()+"; Proprietario: "+contrato.getImovel().getProprietario().getNomeCompleto();
+            String aux = "id: "+contrato.getIdContrato()+";Cliente: "+contrato.getComprador().getNomeCompleto()+"; Proprietario: "+contrato.getImovel().getProprietario().getNomeCompleto();
             contratosStr.add(i, aux);
             
         }
@@ -389,13 +389,13 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField tfComprador;
+    private javax.swing.JTextField tfCliente_comprador;
+    private javax.swing.JTextField tfCliente_proprietario;
     private javax.swing.JTextArea tfCondicoesPagamento1;
     private javax.swing.JTextArea tfDescricaoGeral;
     private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfIdContrato;
     private javax.swing.JTextField tfPrecoNegociado;
-    private javax.swing.JTextField tfProprietario;
     // End of variables declaration//GEN-END:variables
     List<Contrato_Venda> contratos = new ArrayList<Contrato_Venda>();
 }

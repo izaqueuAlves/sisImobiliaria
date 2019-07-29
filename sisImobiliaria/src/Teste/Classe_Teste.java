@@ -1,7 +1,7 @@
 package Teste;
 
 import classesControle.ControleAluguel;
-import classesControle.ControleComprador;
+import classesControle.ControleCliente;
 import classesControle.ControleConsultarContratoAluguel;
 import classesControle.ControleConsultarContratoVenda;
 import classesControle.ControleCorretor;
@@ -11,7 +11,7 @@ import classesControle.ControleVenda;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
-import classesEntidade.Comprador;
+import classesEntidade.Cliente;
 import classesEntidade.Locatario;
 import classesEntidade.Imovel;
 import classesEntidade.Endereco;
@@ -63,8 +63,8 @@ public class Classe_Teste
         return c;
     }
     
-    public static Comprador compradorGenerico(){
-        Comprador comp = new Comprador("300.300.300-05","Daiane Costa",
+    public static Cliente ClienteGenerico(){
+        Cliente comp = new Cliente("300.300.300-05","Daiane Costa",
         "99999-3005","comprad5@hotmail.com");
         return comp;
     }
@@ -74,7 +74,7 @@ public class Classe_Teste
         "99999-4003","locat3@hotmail.com");
         return lot;
     }
-       
+      /* 
     public static Imovel imovelGenerico(){
         Imovel im = new Imovel();
         im.setArea(25);
@@ -97,7 +97,7 @@ public class Classe_Teste
         Contrato_Venda cv = new Contrato_Venda(200000,"venda teste","00/00/0000");
         Imovel im = new Imovel();
         cv.setSituacao_contrato(Situacao_Contrato.EM_ABERTO);
-        cv.setComprador(testaBuscarComprador());
+        cv.setCliente(testaBuscarCliente());
         cv.setCorretor(testaBuscarCorretor());
         cv.setImovel(im.getImovelById(28));
         return cv;
@@ -154,7 +154,7 @@ public class Classe_Teste
         System.out.println(c.getTelefone());
     }
     
-    public static void imprimeComprador(Comprador comp){
+    public static void imprimeCliente(Cliente comp){
         System.out.println(comp.getCpf());
         System.out.println(comp.getEmail());
         System.out.println(comp.getNomeCompleto());
@@ -315,17 +315,17 @@ public class Classe_Teste
     
     //<editor-fold defaultstate="collapsed" desc="TESTA COMPRADOR">
     public static void testaCadastrarComprador(){
-        Comprador comp = compradorGenerico();
-        comp.cadastrarComprador(comp);
+        Cliente comp = clienteGenerico();
+        comp.cadastrarCliente(comp);
     }
     
-    public static void testaEditarComprador(Comprador comp){
-        comp.editarComprador(comp);
+    public static void testaEditarComprador(Cliente comp){
+        comp.editarCliente(comp);
     }
     
-    public static Comprador testaBuscarComprador(){
-        Comprador comp = new Comprador();
-        comp = comp.buscarComprador("300.300.300-05");
+    public static Cliente testaBuscarComprador(){
+        Cliente comp = new Cliente();
+        comp = comp.buscarClientes("300.300.300-05");
         return comp;
     }
     //</editor-fold>
@@ -540,9 +540,9 @@ public class Classe_Teste
         //System.out.println("\n\n");
         //testeBuscaContratoAberto();
         //System.out.print("Teste Controle Aluguel");  testeAberturaContratoAluguelControle();
-        //testeBuscaContratoAberto();
+        //testeBuscaContratoAberto(); */
        Adm adm = new Adm();
-       
+       /*
        adm.setEmail("adm@gmail.com");
        adm.setNomeCompleto("Izaqueu Alves");
        adm.setLogin("admteste");
@@ -553,9 +553,9 @@ public class Classe_Teste
         
         System.out.print("Teste Controle fechamentoContrato");  
        
-   
+   */
     }    
-    
+    /*
     //<editor-fold defaultstate="collapsed" desc="TESTA CLASSES CONTROLE">    
     private static void testeCadastroCorretorControle() {
         ControleCorretor ctCorretor = new ControleCorretor();
@@ -570,7 +570,7 @@ public class Classe_Teste
     }
 
     private static void testeCadastroCompradorControle() {
-        ControleComprador ctComprador = new ControleComprador();
+        ControleCliente ctComprador = new ControleCliente();
         String CPF = "200.200.200-24";
         String nomeCompleto = "Valmirnio Junior Jr";
         String telefone = "98839-0000";
@@ -655,4 +655,4 @@ public class Classe_Teste
     }
     //</editor-fold>
     
-}
+} */

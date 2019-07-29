@@ -5,7 +5,7 @@
  */
 package classesControle;
 
-import classesEntidade.Comprador;
+import classesEntidade.Cliente;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
@@ -23,18 +23,18 @@ import classesEntidade.Situacao_Imovel;
 public class ControleVenda {
     /**
      * 
-     * @param CPF_comprador
+     * @param CPF_cliente
      * @param IdImovel
      * @param CPF_corretor
      * @param condicoesPagamento // Descrição em string das condições 
      * @param precoNegociado  (em String mesmo)// Obs: O preço negociado pode ser diferente do preço real do imovel salvo na classe imovel. Por isso dá a opção de preço na hora de cadastrar a venda
      */
-    public void vendaImovel(String CPF_comprador, int IdImovel, String CPF_corretor, String condicoesPagamento, String precoNegociado) 
+    public void vendaImovel(String CPF_cliente, int IdImovel, String CPF_corretor, String condicoesPagamento, String precoNegociado) 
     {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
         Proprietario proprietario = new Proprietario();
-        Comprador comprador = new Comprador();
+        Cliente cliente_comprador = new Cliente();
         Corretor corretor = new Corretor();
         
         imovel = imovel.getImovelById(IdImovel);
@@ -48,7 +48,7 @@ public class ControleVenda {
         
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
-        comprador = comprador.buscarComprador(CPF_comprador);
+        cliente_comprador = cliente_comprador.buscarComprador(CPF_cliente);
         corretor = corretor.buscarCorretor(CPF_corretor);
         
         Contrato_Venda contrato = new Contrato_Venda();
@@ -62,8 +62,8 @@ public class ControleVenda {
                 + "CPF: " + proprietario.getCpf() + "\n"
                 + "\n"
                 + "Comprador\n"
-                + "Nome Completo: " +comprador.getNomeCompleto() + "\n"
-                + "CPF: " + comprador.getCpf() +"\n"
+                + "Nome Completo: " +cliente_comprador.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_comprador.getCpf() +"\n"
                 + "\n"
                 + "\n"
                 + "CLÁUSULA 2ª - O presente contrato tem por finalidade a comercialização do imóvel descrito a seguir, de propriedade do VENDEDOR:\n"
@@ -80,7 +80,7 @@ public class ControleVenda {
                 + "\n"
                 + "\n";
         
-        contrato.setComprador(comprador);
+        contrato.setComprador(cliente_comprador);
         contrato.setCorretor(corretor);
         contrato.setImovel(imovel);
         precoNegociado = precoNegociado.replace(',', '.');

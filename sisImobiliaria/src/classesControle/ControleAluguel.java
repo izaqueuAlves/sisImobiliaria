@@ -9,7 +9,7 @@ import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
-import classesEntidade.Locatario;
+import classesEntidade.Cliente;
 import classesEntidade.Proprietario;
 import classesEntidade.Situacao_Contrato;
 import classesEntidade.Situacao_Imovel;
@@ -35,7 +35,7 @@ public class ControleAluguel {
         Imovel imovel = new Imovel();
         Endereco endereco = new Endereco();
         Proprietario proprietario = new Proprietario();
-        Locatario locatario = new Locatario();
+        Cliente cliente_locatario = new Cliente();
         Corretor corretor = new Corretor();
         
         imovel = imovel.getImovelById(IdImovel);
@@ -49,7 +49,7 @@ public class ControleAluguel {
         
         endereco = imovel.getEndereco();
         proprietario = imovel.getProprietario();
-        locatario = locatario.buscarLocatario(CPF_locatario);
+        cliente_locatario = cliente_locatario.buscarLocatario(CPF_locatario);
         corretor = corretor.buscarCorretor(CRECI_corretor);
         
         //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -70,8 +70,8 @@ public class ControleAluguel {
                 + "CPF: " + proprietario.getCpf() + "\n"
                 + "\n"
                 + "LOCATARIO\n"
-                + "Nome Completo: " +locatario.getNomeCompleto() + "\n"
-                + "CPF: " + locatario.getCpf() +"\n"
+                + "Nome Completo: " +cliente_locatario.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_locatario.getCpf() +"\n"
                 + "As partes acima mencionadas, pelo presente instrumento particular, ajustam a locação de um imóvel residencial, de acordo com as cláusulas que seguem:\n"
                 + "\n"
                 + "CLÁUSULA 2ª - O objeto deste contrato de locação é o imóvel residencial, situado à:\n"
@@ -85,7 +85,7 @@ public class ControleAluguel {
                 + "\n"
                 + "\n";
         
-        contrato.setLocatario(locatario);
+        contrato.setLocatario(cliente_locatario);
         contrato.setCorretor(corretor);
         contrato.setImovel(imovel);
         precoNegociado = precoNegociado.replace(',', '.');

@@ -5,7 +5,7 @@
  */
 package Telas;
 
-import classesControle.ControleComprador;
+import classesControle.ControleCliente;
 import classesControle.ControleCorretor;
 import javax.swing.JOptionPane;
 

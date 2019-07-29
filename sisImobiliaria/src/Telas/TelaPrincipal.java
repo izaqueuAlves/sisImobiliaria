@@ -10,7 +10,7 @@ import classesControle.ControleCorretor;
 import classesControle.ControleImovel;
 import classesControle.ControleProprietario;
 import classesControle.ControleVenda;
-import classesEntidade.Comprador;
+import classesEntidade.Cliente;
 import classesEntidade.Contrato_Aluguel;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;

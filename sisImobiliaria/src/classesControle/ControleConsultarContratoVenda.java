@@ -5,7 +5,7 @@
  */
 package classesControle;
 
-import classesEntidade.Comprador;
+import classesEntidade.Cliente;
 import classesEntidade.Contrato_Venda;
 import classesEntidade.Corretor;
 import classesEntidade.Endereco;
@@ -65,13 +65,13 @@ public class ControleConsultarContratoVenda {
         imovel = contrato.getImovel();
         
         Proprietario novoProprietario = new Proprietario();
-        Comprador comprador;
-        comprador = contrato.getComprador();
+        Cliente cliente;
+        cliente = contrato.getComprador();
                 
-        novoProprietario.setCpf(comprador.getCpf());
-        novoProprietario.setEmail(comprador.getEmail());
-        novoProprietario.setNomeCompleto(comprador.getNomeCompleto());
-        novoProprietario.setTelefone(comprador.getTelefone());
+        novoProprietario.setCpf(cliente.getCpf());
+        novoProprietario.setEmail(cliente.getEmail());
+        novoProprietario.setNomeCompleto(cliente.getNomeCompleto());
+        novoProprietario.setTelefone(cliente.getTelefone());
         
         novoProprietario.cadastrarProprietario(novoProprietario);
         
@@ -114,7 +114,7 @@ public class ControleConsultarContratoVenda {
         Imovel imovel = contrato.getImovel();
         Endereco endereco = contrato.getImovel().getEndereco();
         Proprietario proprietario = contrato.getImovel().getProprietario();
-        Comprador comprador = contrato.getComprador();
+        Cliente cliente_comprador = contrato.getComprador();
         Corretor corretor = contrato.getCorretor();
         
         String descricao = ""
@@ -125,8 +125,8 @@ public class ControleConsultarContratoVenda {
                 + "CPF: " + proprietario.getCpf() + "\n"
                 + "\n"
                 + "Comprador\n"
-                + "Nome Completo: " +comprador.getNomeCompleto() + "\n"
-                + "CPF: " + comprador.getCpf() +"\n"
+                + "Nome Completo: " +cliente_comprador.getNomeCompleto() + "\n"
+                + "CPF: " + cliente_comprador.getCpf() +"\n"
                 + "\n"
                 + "\n"
                 + "CLÁUSULA 2ª - O presente contrato tem por finalidade a comercialização do imóvel descrito a seguir, de propriedade do VENDEDOR:\n"

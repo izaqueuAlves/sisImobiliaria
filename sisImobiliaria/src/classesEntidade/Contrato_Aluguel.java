@@ -38,7 +38,7 @@ public class Contrato_Aluguel {
     */
     
     @ManyToOne
-    private Locatario locatario;
+    private Cliente cliente_locatario;
     
     @ManyToOne
     private Corretor corretor;    
@@ -81,8 +81,8 @@ public class Contrato_Aluguel {
         this.dataFim = dataFim;
     }
 
-    public void setLocatario(Locatario locatario) {
-        this.locatario = locatario;
+    public void setLocatario(Cliente cliente) {
+        this.cliente_locatario = cliente;
     }
 
     public void setCorretor(Corretor corretor) {
@@ -119,8 +119,8 @@ public class Contrato_Aluguel {
         return dataFim;
     }
 
-    public Locatario getLocatario() {
-        return locatario;
+    public Cliente getLocatario() {
+        return cliente_locatario;
     }
 
     public Corretor getCorretor() {

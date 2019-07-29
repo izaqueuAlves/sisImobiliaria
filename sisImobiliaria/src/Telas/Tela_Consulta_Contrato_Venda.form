@@ -66,7 +66,7 @@
                                           </Group>
                                       </Group>
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tfProprietario" alignment="0" min="-2" pref="423" max="-2" attributes="0"/>
+                                      <Component id="tfCliente_proprietario" alignment="0" min="-2" pref="423" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -74,7 +74,7 @@
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="tfComprador" max="32767" attributes="0"/>
+                                      <Component id="tfCliente_comprador" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -124,8 +124,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfProprietario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfComprador" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfCliente_proprietario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfCliente_comprador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
@@ -195,12 +195,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Propriet&#xe1;rio:"/>
+        <Property name="text" type="java.lang.String" value="Cliente Propriet&#xe1;rio:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Comprador:"/>
+        <Property name="text" type="java.lang.String" value="Cliente comprador"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
@@ -223,12 +223,12 @@
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfProprietario">
+    <Component class="javax.swing.JTextField" name="tfCliente_proprietario">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfComprador">
+    <Component class="javax.swing.JTextField" name="tfCliente_comprador">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
