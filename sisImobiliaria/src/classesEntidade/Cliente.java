@@ -22,6 +22,7 @@ public class Cliente {
     private String nomeCompleto;
     private String telefone;
     private String email;
+    private char tipo_cliente;
 
     public Cliente() {
     }
@@ -50,6 +51,10 @@ public class Cliente {
         this.email = email;
     }
 
+    public void setTipoCliente(char tipo) {
+        this.tipo_cliente = tipo;
+    }
+    
     public String getCpf() {
         return cpf;
     }
@@ -64,6 +69,10 @@ public class Cliente {
 
     public String getEmail() {
         return email;
+    }
+    
+    public char getTipoCliente() {
+        return tipo_cliente;
     }
 
     public boolean cadastrarCliente(Cliente cliente) {

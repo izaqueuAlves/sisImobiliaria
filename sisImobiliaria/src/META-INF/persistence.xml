@@ -12,7 +12,6 @@
     
         <class>classes.Imovel</class>
 	<class>classes.Situacao_Imovel</class>
-       
         <class>classes.Adm</class>
         <class>classes.Contrato_Aluguel</class>
         <class>classes.Contrato_Venda</class>
