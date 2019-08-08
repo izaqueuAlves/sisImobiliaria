@@ -117,7 +117,6 @@ public class Tela_Login_Adm extends javax.swing.JFrame {
         String pass = new String(senha.getPassword());
 
         if (ctr.Login(l, pass)) {
-            //  JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!", "Aviso", 2);
             //Redirecionar Tela Login Adm
             telaEntradaAdm = new Tela_Entrada_Adm();
             Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();

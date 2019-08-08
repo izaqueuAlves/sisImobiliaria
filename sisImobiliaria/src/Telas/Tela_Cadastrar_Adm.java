@@ -1,7 +1,7 @@
 package Telas;
 
 import classesControle.ControleAdm;
-import classesEntidade.Administrador;
+import classesEntidade.Adm;
 import javax.swing.JOptionPane;
 
 public class Tela_Cadastrar_Adm extends javax.swing.JFrame {
@@ -134,7 +134,7 @@ public class Tela_Cadastrar_Adm extends javax.swing.JFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
 
         ControleAdm ctr = new ControleAdm();
-        Administrador adm = new Administrador();
+        Adm adm = new Adm();
         String pass = new String(senha.getPassword());
 
         adm.setEmail(email.getText());

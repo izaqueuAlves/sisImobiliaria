@@ -1,7 +1,6 @@
 package classesEntidade;
 
 import conexao.Connect;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -105,7 +104,7 @@ public class Contrato_Venda {
     }
 
     //O objeto é a ser tratado nas func abaixo é próprio contrato (this)
-    public boolean abrirContrato() {
+    public boolean Abrir() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -126,7 +125,7 @@ public class Contrato_Venda {
 
     // fechar contrato, alterar contato e cancelar contrato os metodos sao iguais a alteração sera apenas na situação do contrato
     // onde será feita no na classe controle. 
-    public boolean fecharContrato() {
+    public boolean Fechar() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -145,7 +144,7 @@ public class Contrato_Venda {
         return retorno;
     }
 
-    public boolean alterarContratoEmAberto() {
+    public boolean AlterarEmAberto() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -164,7 +163,7 @@ public class Contrato_Venda {
         return retorno;
     }
 
-    public boolean cancelarContratoEmAberto() {
+    public boolean CancelarEmAberto() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -183,7 +182,7 @@ public class Contrato_Venda {
         return retorno;
     }
 
-    public List<Contrato_Venda> getTodosContratos() {
+    public List<Contrato_Venda> GetTodos() {
         EntityManager em = new Connect().getConexao();
         List<Contrato_Venda> contratos_venda = null;
 
@@ -199,7 +198,7 @@ public class Contrato_Venda {
         return contratos_venda;
     }
 
-    public Contrato_Venda consultarContrato(int id_contrato) {
+    public Contrato_Venda Consultar(int id_contrato) {
         EntityManager em = new Connect().getConexao();
         Contrato_Venda contrato = null;
 
@@ -215,7 +214,7 @@ public class Contrato_Venda {
         return contrato;
     }
 
-    public List<Object> negociantes(Contrato_Venda contrato) {
+    public List<Object> GetNegociantes(Contrato_Venda contrato) {
 
         List<Object> negociantes = new ArrayList<>();
 

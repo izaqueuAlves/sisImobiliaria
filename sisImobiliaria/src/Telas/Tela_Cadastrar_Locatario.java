@@ -128,6 +128,7 @@ public class Tela_Cadastrar_Locatario extends javax.swing.JFrame {
         cliente_locatario.setEmail(email.getText());
         cliente_locatario.setNomeCompleto(nome_completo.getText());
         cliente_locatario.setTelefone(telefone.getText());
+        cliente_locatario.setTipoCliente('l');
 
         if (ctr.Cadastrar(cliente_locatario)) {
             JOptionPane.showMessageDialog(null, "Locatário cadastrado com sucesso!", "Aviso", 2);

@@ -53,14 +53,14 @@ public class Tipo_Imovel {
         this.emCondominio = emCondominio;
     }
 
-    public void CadastrarTipo(String nome, boolean emCondominio) {
+    public void Cadastrar(String nome, boolean emCondominio) {
         Tipo_Imovel type = new Tipo_Imovel();
 
         type.setNome(nome);
         type.setEmCondominio(emCondominio);
 
         try {
-            type.novoTipo(type);
+            type.Novo(type);
             //Mensagem de Imovel cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class Tipo_Imovel {
         }
     }
 
-    public void novoTipo(Tipo_Imovel tipo_imovel) {
+    public void Novo(Tipo_Imovel tipo_imovel) {
 
         EntityManager em = new Connect().getConexao();
 
@@ -87,7 +87,7 @@ public class Tipo_Imovel {
 
     // verificar se vai ser preciso buscar apenas um tipo, provavelmente isso estará em uma combo listantos todos. ass izaqueu
 
-    public List<Tipo_Imovel> buscarTipo() {
+    public List<Tipo_Imovel> Buscar() {
 
         EntityManager em = new Connect().getConexao();
         List<Tipo_Imovel> tipos = null;
@@ -106,7 +106,7 @@ public class Tipo_Imovel {
 
     }
 
-    public Tipo_Imovel buscarTipo_ImovelPorNome(String str) {
+    public Tipo_Imovel BuscarPorNome(String str) {
 
         EntityManager em = new Connect().getConexao();
         Tipo_Imovel ti = null;

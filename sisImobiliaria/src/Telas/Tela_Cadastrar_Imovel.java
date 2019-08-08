@@ -10,10 +10,9 @@ import javax.swing.JOptionPane;
 
 public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
 
-
     public Tela_Cadastrar_Imovel() {
         initComponents();
-
+        valor_Compra.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -135,6 +134,11 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         });
 
         situacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disponível para aluguel", "Disponível para venda", "Disponível para venda e aluguel", "Disponível para alugado", "Disponível para vendido" }));
+        situacao.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                situacaoItemStateChanged(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setText("CEP:");
@@ -359,7 +363,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         if (endereco.Cadastrar(endereco)) {
             Imovel im = new Imovel();
             Tipo_Imovel ti = new Tipo_Imovel();
-            ti = ti.buscarTipo_ImovelPorNome(tipo_imovel.getSelectedItem().toString());
+            ti = ti.BuscarPorNome(tipo_imovel.getSelectedItem().toString());
 
             im.setArea(Float.parseFloat(area.getText()));
             im.setDescricao(descricao.getText());
@@ -375,7 +379,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
             im.setValorAluguel(Float.parseFloat(valor_Aluguel.getText()));
             im.setValorCompra(Float.parseFloat(valor_Compra.getText()));
 
-            if (im.cadastrarImovel(im)) {
+            if (im.Cadastrar(im)) {
                 JOptionPane.showMessageDialog(null, "Imóvel cadastrado com sucesso!", "Aviso", 2);
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar imóvel", "Erro", 0);
@@ -390,7 +394,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tipo_Imovel ti = new Tipo_Imovel();
 
-        for (Tipo_Imovel t : ti.buscarTipo()) {
+        for (Tipo_Imovel t : ti.Buscar()) {
             tipo_imovel.addItem(t.getNome());
         }
     }//GEN-LAST:event_descricaoFocusGained
@@ -405,6 +409,33 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
             cpf_Proprietario.setText("");
         }
     }//GEN-LAST:event_cpf_ProprietarioFocusLost
+
+    private void situacaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_situacaoItemStateChanged
+        if (situacao.getSelectedIndex() == 0) {
+            valor_Aluguel.setEnabled(true);
+            valor_Compra.setEnabled(false);
+        } else {
+            if (situacao.getSelectedIndex() == 1) {
+                valor_Aluguel.setEnabled(false);
+                valor_Compra.setEnabled(true);
+            } else {
+                if (situacao.getSelectedIndex() == 2) {
+                    valor_Aluguel.setEnabled(true);
+                    valor_Compra.setEnabled(true);
+                } else {
+                    if (situacao.getSelectedIndex() == 3) {
+                        valor_Aluguel.setEnabled(true);
+                        valor_Compra.setEnabled(false);
+                    } else {
+                        if (situacao.getSelectedIndex() == 4) {
+                            valor_Aluguel.setEnabled(false);
+                            valor_Compra.setEnabled(true);
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_situacaoItemStateChanged
 
     /**/
     /**

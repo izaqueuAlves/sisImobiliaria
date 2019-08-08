@@ -12,7 +12,6 @@ public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String CEP;
     private String UF;
     private String cidade;

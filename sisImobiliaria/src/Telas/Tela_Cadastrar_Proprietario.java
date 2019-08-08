@@ -127,6 +127,7 @@ public class Tela_Cadastrar_Proprietario extends javax.swing.JFrame {
         cliente_proprietario.setEmail(email.getText());
         cliente_proprietario.setNomeCompleto(nome_Completo.getText());
         cliente_proprietario.setTelefone(telefone.getText());
+        cliente_proprietario.setTipoCliente('p');
 
         if (ctr.Cadastrar(cliente_proprietario)) {
             JOptionPane.showMessageDialog(null, "Proprietário cadastrado com sucesso!", "Aviso", 2);

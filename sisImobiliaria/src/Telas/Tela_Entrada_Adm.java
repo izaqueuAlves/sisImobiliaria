@@ -353,7 +353,7 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         Imovel c = new Imovel();
         ArrayList<Imovel> a = new ArrayList<Imovel>();
 
-        a = (ArrayList<Imovel>) c.getTodosImoveis();
+        a = (ArrayList<Imovel>) c.GetTodos();
 
         String nome = "Relatório todos os Imoveis disponível";
         ArrayList<String> lista = new ArrayList<String>();
@@ -380,7 +380,7 @@ public class Tela_Entrada_Adm extends javax.swing.JFrame {
         Contrato_Aluguel c = new Contrato_Aluguel();
         ArrayList<Contrato_Aluguel> a = new ArrayList<Contrato_Aluguel>();
 
-        a = (ArrayList<Contrato_Aluguel>) c.getContratosVigentes();
+        a = (ArrayList<Contrato_Aluguel>) c.GetVigentes();
 
         String nome = "Relatório todos os Contratos de Aluguel Vigentes";
         ArrayList<String> lista = new ArrayList<String>();

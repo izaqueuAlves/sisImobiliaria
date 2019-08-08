@@ -1,6 +1,6 @@
 package Telas;
 
-import classesControle.ControleConsultarContratoAluguel;
+import classesControle.ControleAluguel;
 import classesEntidade.Contrato_Aluguel;
 import java.util.ArrayList;
 import java.util.List;
@@ -287,8 +287,8 @@ public class Tela_Consulta_Contrato_Aluguel extends javax.swing.JFrame {
         tfDataInicio.setText("");
         tfDataFim.setText("");
 
-        ControleConsultarContratoAluguel ctrlCCV = new ControleConsultarContratoAluguel();
-        contratos = ctrlCCV.buscarContratosEmAberto();
+        ControleAluguel ctrlCCV = new ControleAluguel();
+        contratos = ctrlCCV.BuscarEmAberto();
 
         List<String> contratosStr = new ArrayList<String>();
 
@@ -311,7 +311,7 @@ public class Tela_Consulta_Contrato_Aluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_cbContratosEmAbertoItemStateChanged
 
     private void btAlterarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarContratoActionPerformed
-        ControleConsultarContratoAluguel ctrlCCA = new ControleConsultarContratoAluguel();
+        ControleAluguel ctrlCCA = new ControleAluguel();
 
         int i = cbContratosEmAberto.getSelectedIndex();
         Contrato_Aluguel contrato = contratos.get(i);
@@ -329,7 +329,7 @@ public class Tela_Consulta_Contrato_Aluguel extends javax.swing.JFrame {
 
         descricao.split("CLÁUSULA");
 
-        if (ctrlCCA.editarContratoEmAberto(id, condicoesPagamento, precoNegociado, dataI, dataF)) {
+        if (ctrlCCA.AlterarEmAberto(id, condicoesPagamento, precoNegociado, dataI, dataF)) {
             JOptionPane.showMessageDialog(null, "Contrato editado com sucesso!", "Aviso", 2);
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao editar contrato!", "Erro", 0);
@@ -337,7 +337,7 @@ public class Tela_Consulta_Contrato_Aluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btAlterarContratoActionPerformed
 
     private void btFecharContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharContratoActionPerformed
-        ControleConsultarContratoAluguel ctrlCCA = new ControleConsultarContratoAluguel();
+        ControleAluguel ctrlCCA = new ControleAluguel();
 
         int i = cbContratosEmAberto.getSelectedIndex();
         Contrato_Aluguel contrato = contratos.get(i);
@@ -346,7 +346,7 @@ public class Tela_Consulta_Contrato_Aluguel extends javax.swing.JFrame {
 
         System.out.println("id" + id);
 
-        if (ctrlCCA.fecharContratoEmAberto(id)) {
+        if (ctrlCCA.FecharEmAberto(id)) {
             JOptionPane.showMessageDialog(null, "Contrato Fechado com sucesso! Contrato salvo no .PDF na pasta padrão.", "Aviso", 2);
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao editar contrato!", "Erro", 0);

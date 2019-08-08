@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Query;
 
 @Entity
-public class Administrador {
+public class Adm {
 
     @Id
     private String login;
@@ -17,7 +17,7 @@ public class Administrador {
     private String email;
 
     //Construtores
-    public Administrador(String login, String senha, String nomeCompleto, String telefone, String email) {
+    public Adm(String login, String senha, String nomeCompleto, String telefone, String email) {
         this.login = login;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
@@ -25,7 +25,7 @@ public class Administrador {
         this.email = email;
     }
 
-    public Administrador() {
+    public Adm() {
 
     }
 
@@ -70,7 +70,7 @@ public class Administrador {
         this.email = email;
     }
 
-    public boolean Cadastrar(Administrador adm) {
+    public boolean Cadastrar(Adm adm) {
         
         // ABRE A CONEXAO
         EntityManager em = new Connect().getConexao();
@@ -90,14 +90,14 @@ public class Administrador {
         return retorno;
     }
 
-    public Administrador BuscarPorLogin(String login) {
+    public Adm BuscarPorLogin(String login) {
 
         EntityManager em = new Connect().getConexao();
-        Administrador adm = null;
+        Adm adm = null;
         try {
             Query query = em.createQuery("from Adm where login = :login");
             query.setParameter("login", login);
-            adm = (Administrador) query.getSingleResult();
+            adm = (Adm) query.getSingleResult();
         } catch (Exception e) {
 
         } finally {

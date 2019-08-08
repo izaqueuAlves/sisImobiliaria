@@ -19,11 +19,12 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String cpf, String nomeCompleto, String telefone, String email) {
+    public Cliente(String cpf, String nomeCompleto, String telefone, String email, char tipo_cliente) {
         this.cpf = cpf;
         this.nomeCompleto = nomeCompleto;
         this.telefone = telefone;
         this.email = email;
+        this.tipo_cliente = tipo_cliente;
     }
 
     //Gets e sets
