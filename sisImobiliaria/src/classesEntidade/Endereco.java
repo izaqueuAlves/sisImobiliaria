@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classesEntidade;
 
 import conexao.Connect;
@@ -12,15 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author welerson
- */
 @Entity
 public class Endereco {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEndereco;
+    private int id;
     private String CEP;
     private String UF;
     private String cidade;
@@ -28,9 +20,8 @@ public class Endereco {
     private String logradouro;
     private String numero;
     private String complemento;
-    
-    //Construtores
 
+    //Construtores
     public Endereco(String CEP, String UF, String cidade, String bairro, String logradouro, String numero, String complemento) {
         this.CEP = CEP;
         this.UF = UF;
@@ -40,18 +31,17 @@ public class Endereco {
         this.numero = numero;
         this.complemento = complemento;
     }
-    
-    public Endereco(){
-        
+
+    public Endereco() {
+
     }
 
     @Override
     public String toString() {
-        return "Rua/Av/Rod " + logradouro + " Nยบ " + numero + " " + complemento + ", bairro " + bairro + ", " + cidade + " - "+ UF + " de CEP: " + CEP ;
+        return "Rua/Av/Rod " + logradouro + " Nº: " + numero + " " + complemento + ", bairro " + bairro + ", " + cidade + " - " + UF + " de CEP: " + CEP;
     }
-    
-    //Gets e Sets
 
+    //Gets e Sets
     public String getCEP() {
         return CEP;
     }
@@ -107,39 +97,37 @@ public class Endereco {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-    
-    
-    public Endereco buscarEndereco(Integer id_endereco) {
- 
+
+    public Endereco Buscar(Integer id_endereco) {
+
         EntityManager em = new Connect().getConexao();
         Endereco en = null;
-        try{
-            en = em.find(Endereco.class, id_endereco);   
-        }catch(Exception e){
+        try {
+            en = em.find(Endereco.class, id_endereco);
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             em.close();
         }
-        
-        return en;  
+
+        return en;
     }
-    
-    
-     public boolean cadastrarEndereco(Endereco endereco) {
- 
+
+    public boolean Cadastrar(Endereco endereco) {
+
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
-        
-        try{
+
+        try {
             em.getTransaction().begin();
             em.persist(endereco);
             em.getTransaction().commit();
             retorno = true;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             em.close();
         }
         return retorno;
-     }   
+    }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classesEntidade;
 
 import conexao.Connect;
@@ -14,30 +9,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Query;
 
-/**
- *
- * @author welerson
- */
 @Entity
 public class Tipo_Imovel {
-    @Id 
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTipoImovel;
     private String nome;
     private boolean emCondominio;
-    
+
     // Funcoes contrutoras Imovel
-    public Tipo_Imovel(){
-        
+    public Tipo_Imovel() {
+
     }
 
     public Tipo_Imovel(String nome, boolean emCondominio) {
         this.nome = nome;
         this.emCondominio = emCondominio;
     }
-    
-    //Gets e sets
 
+    //Gets e sets
     public Integer getIdTipoImovel() {
         return idTipoImovel;
     }
@@ -61,75 +52,76 @@ public class Tipo_Imovel {
     public void setEmCondominio(boolean emCondominio) {
         this.emCondominio = emCondominio;
     }
-    
-    
-       public void CadastrarTipo(String nome, boolean emCondominio){
-           Tipo_Imovel type = new Tipo_Imovel();
-           
-           type.setNome(nome);
-           type.setEmCondominio(emCondominio);
-           
-           try {
+
+    public void CadastrarTipo(String nome, boolean emCondominio) {
+        Tipo_Imovel type = new Tipo_Imovel();
+
+        type.setNome(nome);
+        type.setEmCondominio(emCondominio);
+
+        try {
             type.novoTipo(type);
             //Mensagem de Imovel cadastrado com sucesso!
-            } catch (Error e) {
-                e.printStackTrace();
-                //Mandar mensagem de erro para a tela
-            }
-       }
-    
-       public void novoTipo(Tipo_Imovel tipo_imovel) {
-	
-	EntityManager em = new Connect().getConexao();	
-	
-	try {		
-                em.getTransaction().begin();
-                em.persist(tipo_imovel);
-		em.getTransaction().commit();
-			 	
-	} catch (Exception e) {
-		em.getTransaction().rollback();
-		
-	}finally{
-	 	em.close();
-	}
+        } catch (Error e) {
+            e.printStackTrace();
+            //Mandar mensagem de erro para a tela
+        }
     }
-       // verificar se vai ser preciso buscar apenas um tipo, provavelmente isso estará em uma combo listantos todos. ass izaqueu
-    public List<Tipo_Imovel> buscarTipo(){
-	
-	EntityManager em = new Connect().getConexao();	
-	List<Tipo_Imovel> tipos = null;
-	
-        try {		
-                tipos = em.createQuery("from Tipo_Imovel tp").getResultList();
-                	 	
-	} catch (Exception e) {
-		em.getTransaction().rollback();
-		
-	}finally{
-	 	em.close();
-	}
-    
-       return tipos;
-       
-       }
-    
-    public Tipo_Imovel buscarTipo_ImovelPorNome(String str){
-		
-		EntityManager em = new Connect().getConexao();
-		Tipo_Imovel ti= null;
-		String nome = "%"+str+"%";
-		
-		try{
-			Query query = em.createQuery("from Tipo_Imovel where upper(nome) like upper(:nome)");
-			query.setParameter("nome", nome);
-			ti = (Tipo_Imovel) query.getSingleResult();
-						
-		}catch(Exception e){
-			 System.out.println("Tipo de imóvel não encontrado!: "+e);
-		}finally{
-			em.close();
-		}
-	  return ti;	
-	}
+
+    public void novoTipo(Tipo_Imovel tipo_imovel) {
+
+        EntityManager em = new Connect().getConexao();
+
+        try {
+            em.getTransaction().begin();
+            em.persist(tipo_imovel);
+            em.getTransaction().commit();
+
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+
+        } finally {
+            em.close();
+        }
+    }
+
+    // verificar se vai ser preciso buscar apenas um tipo, provavelmente isso estará em uma combo listantos todos. ass izaqueu
+
+    public List<Tipo_Imovel> buscarTipo() {
+
+        EntityManager em = new Connect().getConexao();
+        List<Tipo_Imovel> tipos = null;
+
+        try {
+            tipos = em.createQuery("from Tipo_Imovel tp").getResultList();
+
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+
+        } finally {
+            em.close();
+        }
+
+        return tipos;
+
+    }
+
+    public Tipo_Imovel buscarTipo_ImovelPorNome(String str) {
+
+        EntityManager em = new Connect().getConexao();
+        Tipo_Imovel ti = null;
+        String nome = "%" + str + "%";
+
+        try {
+            Query query = em.createQuery("from Tipo_Imovel where upper(nome) like upper(:nome)");
+            query.setParameter("nome", nome);
+            ti = (Tipo_Imovel) query.getSingleResult();
+
+        } catch (Exception e) {
+            System.out.println("Tipo de imóvel não encontrado!: " + e);
+        } finally {
+            em.close();
+        }
+        return ti;
+    }
 }

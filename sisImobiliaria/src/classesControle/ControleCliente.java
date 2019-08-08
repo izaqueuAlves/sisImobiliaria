@@ -2,87 +2,69 @@ package classesControle;
 
 import classesEntidade.Cliente;
 
-/**
- *
- * @author Alline
- */
 public class ControleCliente {
 
-    public Cliente cliente = new Cliente();
-   // public Comprador editarComprador = new Comprador();
-    
-    public ControleCliente()
-    {
-        cliente = new Cliente();
+    public ControleCliente() {
+        
     }
 
-    /***
-     * 
-     * @param CPF
-     * @param nomeCompleto
-     * @param telefone
-     * @param email 
-     */
-    
-    public void cadastrarCliente (String CPF, String nomeCompleto, String telefone, String email)
-    {
-        
+    /**
+    * @param CPF
+    * @param nomeCompleto
+    * @param telefone
+    * @param email
+    **/
+    public void Cadastrar(String CPF, String nomeCompleto, String telefone, String email) {
+        Cliente cliente = new Cliente();
         cliente = new Cliente();
-        
+
         cliente.setCpf(CPF);
         cliente.setNomeCompleto(nomeCompleto);
         cliente.setTelefone(telefone);
-        cliente.setEmail(email);       
-      
-       try {
-            cliente.cadastrarCliente(cliente);
+        cliente.setEmail(email);
+
+        try {
+            cliente.Cadastrar(cliente);
             //Mensagem de Adm cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
-        }        
+        }
     }
-      
-    public boolean cadastrarCliente(Cliente cliente){        
-        return cliente.cadastrarCliente(cliente);                
+
+    public boolean Cadastrar(Cliente cliente) {
+        return cliente.Cadastrar(cliente);
     }
-    
+
     /**
-     * 
      * @param novoCPF
      * @param novoNomeCompleto
      * @param novoTelefone
-     * @param novoEmail 
-     */
-    
-   public void editarCliente(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail){
-        
-       cliente = new Cliente();
-        
+     * @param novoEmail
+     **/
+    public void Editar(String novoCPF, String novoNomeCompleto, String novoTelefone, String novoEmail) {
+        Cliente cliente = new Cliente();
+        cliente = new Cliente();
+
         cliente.setCpf(novoCPF);
         cliente.setNomeCompleto(novoNomeCompleto);
         cliente.setTelefone(novoTelefone);
-        cliente.setEmail(novoEmail); 
+        cliente.setEmail(novoEmail);
         try {
-            cliente.editarCliente(cliente);            
+            cliente.Editar(cliente);
         } catch (Error e) {
             e.printStackTrace();
         }
-   }
-   
-   
-   
-   //FAZER 
-   public void excluirCliente(){
-        
-       cliente = new Cliente();    
-   }
- 
-   
-    public Cliente buscarProprietario(String cpf){
-        Cliente p = new Cliente();
-        
-        return p.buscarProprietario(cpf);
-  }
-}
+    }
 
+    //FAZER 
+    public void Excluir() {
+
+        
+    }
+
+    public Cliente BuscarProprietario(String cpf) {
+        Cliente p = new Cliente();
+        return p.BuscarProprietario(cpf);
+    }
+}

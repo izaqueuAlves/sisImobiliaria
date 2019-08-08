@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classesEntidade;
 
 import conexao.Connect;
@@ -12,12 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.Query;
 
-/**
- *
- * @author Izaqueu
- */
 @Entity
 public class Corretor {
+
     @Id
     private String cpf;
     private String creci;
@@ -28,7 +20,7 @@ public class Corretor {
 
     public Corretor() {
     }
-    
+
     public Corretor(String cpf, String creci, String senha, String nomeCompleto, String telefone, String email) {
         this.cpf = cpf;
         this.creci = creci;
@@ -61,8 +53,6 @@ public class Corretor {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
 
     public String getCpf() {
         return cpf;
@@ -88,120 +78,95 @@ public class Corretor {
         return email;
     }
 
-    public Corretor buscarCorretor(String creci) {
-        
+    public Corretor Buscar(String creci) {
+
         EntityManager em = new Connect().getConexao();
         Corretor corretor = null;
-        
-        try{
-              Query query = em.createQuery("from Corretor where creci = :creci");
-              query.setParameter("creci", creci);
-              corretor = (Corretor) query.getSingleResult(); 
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Corretor não encontrado!: "+e);
-        }finally{
+
+        try {
+            Query query = em.createQuery("from Corretor where creci = :creci");
+            query.setParameter("creci", creci);
+            corretor = (Corretor) query.getSingleResult();
+        } catch (Exception e) {
+
+        } finally {
             em.close();
         }
-        return corretor; 
+        return corretor;
     }
 
-    public boolean cadastrarCorretor(Corretor corretor) {
-        
+    public boolean Cadastrar(Corretor corretor) {
+
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
-        
-        try{
-            
+
+        try {
+
             em.getTransaction().begin();
             em.persist(corretor);
             em.getTransaction().commit();
             retorno = true;
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao cadastrar corretor!: "+e);
+        } catch (Exception e) {
             em.getTransaction().rollback();
-        }finally{
+        } finally {
             em.close();
         }
-        
+
         return retorno;
     }
-    
-     public boolean editarCorretor(Corretor corretor) {
+
+    public boolean Editar(Corretor corretor) {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
-        
-        try{
-            
+
+        try {
             em.getTransaction().begin();
             em.merge(corretor);
             em.getTransaction().commit();
             retorno = true;
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao editar corretor!: "+e);
+        } catch (Exception e) {
             em.getTransaction().rollback();
-        }finally{
+        } finally {
             em.close();
         }
-        
+
         return retorno;
     }
-    
-      public List<Corretor> getTodosCorretores() {
- 
+
+    public List<Corretor> GetTodos() {
+
         EntityManager em = new Connect().getConexao();
         List<Corretor> corretores = null;
-        
-        try{
-            corretores = em.createQuery("from Corretor c").getResultList();                           
-        }catch(Exception e){
-            // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum corretor foi encontrado!: "+e);
-        }finally{
+
+        try {
+            corretores = em.createQuery("from Corretor c").getResultList();
+        } catch (Exception e) {
+
+        } finally {
             em.close();
         }
-        
-        return corretores;  
+
+        return corretores;
     }
-      
-       public boolean excluirCorretor(String cpf_corretor) {
+
+    public boolean Excluir(String cpf_corretor) {
         boolean retorno = false;
         EntityManager em = new Connect().getConexao();
-        
-        try{    
-                em.getTransaction().begin();
-                 //procura pelo imovel
-                Corretor corretor = em.find(Corretor.class, cpf_corretor);
-                // remove o imovel
-                em.remove(corretor);                
-                em.getTransaction().commit();
-                retorno = true;
-        }catch(Exception e){
+
+        try {
+            em.getTransaction().begin();
+            //procura pelo imovel
+            Corretor corretor = em.find(Corretor.class, cpf_corretor);
+            // remove o imovel
+            em.remove(corretor);
+            em.getTransaction().commit();
+            retorno = true;
+        } catch (Exception e) {
             em.getTransaction().rollback();
-            // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao excluir corretor!: "+e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
         return retorno;
-     }
-    /*   
-    public Corretor buscarCorretorPorCreci(String creci) {
-        
-        EntityManager em = new Connect().getConexao();
-        Corretor corretor = null;
-        
-        try{
-           corretor = em.find(Corretor.class, creci);
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Corretor não encontrado!: "+e);
-        }finally{
-            em.close();
-        }
-        return corretor; 
-    } */
+    }
 }

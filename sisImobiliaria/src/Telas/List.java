@@ -10,5 +10,5 @@ package Telas;
  * @author welerson
  */
 class List<T> {
-    
+
 }

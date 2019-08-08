@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classesEntidade;
 
 import conexao.Connect;
@@ -11,12 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
 
-/**
- *
- * @author Izaqueu
- */
 @Entity
 public class Cliente {
+
     @Id
     private String cpf;
     private String nomeCompleto;
@@ -54,7 +46,7 @@ public class Cliente {
     public void setTipoCliente(char tipo) {
         this.tipo_cliente = tipo;
     }
-    
+
     public String getCpf() {
         return cpf;
     }
@@ -70,131 +62,124 @@ public class Cliente {
     public String getEmail() {
         return email;
     }
-    
+
     public char getTipoCliente() {
         return tipo_cliente;
     }
 
-    public boolean cadastrarCliente(Cliente cliente) {
+    public boolean Cadastrar(Cliente cliente) {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
-        
-        try{
-            
+
+        try {
             em.getTransaction().begin();
             em.persist(cliente);
             em.getTransaction().commit();
             retorno = true;
-            
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao cadastrar Cliente!: "+e);
-        }finally{
+        } catch (Exception e) {
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao cadastrar Cliente!: " + e);
+        } finally {
             em.close();
         }
-        
-        return retorno;    
+
+        return retorno;
     }
-    
-    public boolean editarCliente(Cliente cliente) {
+
+    public boolean Editar(Cliente cliente) {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
-        
-        try{
-            
+        try {
+
             em.getTransaction().begin();
             em.merge(cliente);
             em.getTransaction().commit();
             retorno = true;
-            
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Erro ao editar Cliente!: "+e);
-        }finally{
+        } catch (Exception e) {
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Erro ao editar Cliente!: " + e);
+        } finally {
             em.close();
         }
-        
-        return retorno;    
+
+        return retorno;
     }
-   
-    public Cliente buscarComprador(String cpf_cliente){
+
+    public Cliente Buscar(String cpf_cliente) {
         EntityManager em = new Connect().getConexao();
         Cliente c = new Cliente();
-        
-        try{            
+
+        try {
             c = em.find(Cliente.class, cpf_cliente);
-            
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum Cliente encontrado!: "+e);
-        }finally{
+        } catch (Exception e) {
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Cliente encontrado!: " + e);
+        } finally {
             em.close();
         }
-        
-        return c;    
+
+        return c;
     }
-    
-    public Cliente buscarLocatario(String cpf_locatario){
+
+    public Cliente BuscarLocatario(String cpf_locatario) {
         EntityManager em = new Connect().getConexao();
         Cliente c = new Cliente();
-        
-        try{            
+
+        try {
             c = em.find(Cliente.class, cpf_locatario);
-            
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum Locatario encontrado!: "+e);
-        }finally{
+        } catch (Exception e) {
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Locatario encontrado!: " + e);
+        } finally {
             em.close();
         }
-        
-        return c;    
+
+        return c;
     }
-    
-    public Cliente buscarProprietario(String cpf_proprietario){
+
+    public Cliente BuscarProprietario(String cpf_proprietario) {
         EntityManager em = new Connect().getConexao();
         Cliente c = new Cliente();
-        
-        try{            
+
+        try {
             c = em.find(Cliente.class, cpf_proprietario);
-            
-        }catch(Exception e){
-             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum Proprietário encontrado!: "+e);
-        }finally{
+        } catch (Exception e) {
+            // alterar depois para ser mostrado na tela com JOptionPane
+            System.out.println("Nenhum Proprietário encontrado!: " + e);
+        } finally {
             em.close();
         }
-        
-        return c;    
+
+        return c;
     }
-    
-    public List<Cliente> getTodosClientes() {
- 
+
+    public List<Cliente> GetTodos() {
+
         EntityManager em = new Connect().getConexao();
         List<Cliente> clientes = null;
-        
-        try{
-            clientes = em.createQuery("from Cliente c").getResultList();                           
-        }catch(Exception e){
+
+        try {
+            clientes = em.createQuery("from Cliente c").getResultList();
+        } catch (Exception e) {
             // alterar depois para ser mostrado na tela com JOptionPane
-            System.out.println("Nenhum Cliente foi encontrado!: "+e);
-        }finally{
+            System.out.println("Nenhum Cliente foi encontrado!: " + e);
+        } finally {
             em.close();
         }
-        
+
         return clientes;
     }
-    
+
     public List<Cliente> getTodosProprietarios() {
-        List<Cliente> clientes_proprietarios = null; 
-        
+        List<Cliente> clientes_proprietarios = null;
+
         return clientes_proprietarios;
     }
-    
+
     public List<Cliente> getTodosLocatarios() {
-        List<Cliente> clientes_locatarios = null; 
-        
+        List<Cliente> clientes_locatarios = null;
+
         return clientes_locatarios;
     }
-    
+
 }

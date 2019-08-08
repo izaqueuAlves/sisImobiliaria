@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   
-  <!-- Unidade de persistencia -->
-  <persistence-unit name="meuPU">
+    <!-- Unidade de persistencia -->
+    <persistence-unit name="meuPU">
    
-    <!-- Implementação do JPA -->
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- Implementação do JPA -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
-    <!-- Lista de entidades -->
-    <!-- <class> nome_pacote.nome_classe </class> -->
+        <!-- Lista de entidades -->
+        <!-- <class> nome_pacote.nome_classe </class> -->
     
         <class>classes.Imovel</class>
-	<class>classes.Situacao_Imovel</class>
+        <class>classes.Situacao_Imovel</class>
         <class>classes.Adm</class>
         <class>classes.Contrato_Aluguel</class>
         <class>classes.Contrato_Venda</class>
@@ -22,20 +22,20 @@
         <class>classes.Corretor</class>
 	
     
-    <properties>
+        <properties>
     
-      <!-- Propriedades JDBC -->
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bdImobiliaria"/>
-      <property name="javax.persistence.jdbc.user" value="postgres"/>
-      <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <!-- Propriedades JDBC -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bdImobiliaria"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
      
-      <!-- Configurações específicas do Hibernate -->
-      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.format_sql" value="true"/>
+            <!-- Configurações específicas do Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
     
-    </properties>
-  </persistence-unit>
+        </properties>
+    </persistence-unit>
 </persistence>

@@ -1,42 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classesControle;
 
-import classesEntidade.Adm;
+import classesEntidade.Administrador;
 
-/**
- *
- * @author welerson
- */
 public class ControleGerenciarAdm {
-    
+
     /**
-     * 
      * @param login
      * @param senha
      * @param nomeComp
      * @param telefone
-     * @param email 
-     */
-    
-    public void CadastrarAdm(String login, String senha, String nomeComp, String telefone, String email){
-        Adm novoAdm = new Adm();
-        
+     * @param email
+     **/
+    public void Cadastrar(String login, String senha, String nomeComp, String telefone, String email) {
+        Administrador novoAdm = new Administrador();
+
         novoAdm.setLogin(login);
         novoAdm.setSenha(senha);
         novoAdm.setNomeCompleto(nomeComp);
         novoAdm.setTelefone(telefone);
         novoAdm.setEmail(email);
-        
+
         try {
-            novoAdm.cadastrarAdm(novoAdm);
-            //Mensagem de Imovel cadastrado com sucesso!
+            novoAdm.Cadastrar(novoAdm);
         } catch (Error e) {
             e.printStackTrace();
-            //Mandar mensagem de erro para a tela
         }
     }
 }
