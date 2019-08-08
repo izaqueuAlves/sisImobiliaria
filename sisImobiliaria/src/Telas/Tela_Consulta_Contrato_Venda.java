@@ -1,7 +1,6 @@
 package Telas;
 
-import classesControle.ControleConsultarContratoVenda;
-import classesControle.Relatorios;
+import classesControle.ControleVenda;
 import classesEntidade.Contrato_Venda;
 import java.util.ArrayList;
 import java.util.List;
@@ -247,8 +246,8 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
         tfPrecoNegociado.setText("");
         tfCliente_proprietario.setText("");
 
-        ControleConsultarContratoVenda ctrlCCV = new ControleConsultarContratoVenda();
-        contratos = ctrlCCV.buscarContratosEmAberto();
+        ControleVenda ctrlCCV = new ControleVenda();
+        contratos = ctrlCCV.BuscarEmAberto();
 
         List<String> contratosStr = new ArrayList<String>();
 
@@ -271,7 +270,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_cbContratosEmAbertoItemStateChanged
 
     private void btAlterarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarContratoActionPerformed
-        ControleConsultarContratoVenda ctrlCCV = new ControleConsultarContratoVenda();
+        ControleVenda ctrlCCV = new ControleVenda();
 
         int i = cbContratosEmAberto.getSelectedIndex();
         Contrato_Venda contrato = contratos.get(i);
@@ -286,7 +285,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
 
         descricao.split("CLÁUSULA");
 
-        if (ctrlCCV.editarContratoEmAberto(id, condicoesPagamento, precoNegociado)) {
+        if (ctrlCCV.AlterarEmAberto(id, condicoesPagamento, precoNegociado)) {
             JOptionPane.showMessageDialog(null, "Contrato editado com sucesso!", "Aviso", 2);
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao editar contrato!", "Erro", 0);
@@ -294,7 +293,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_btAlterarContratoActionPerformed
 
     private void btFecharContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharContratoActionPerformed
-        ControleConsultarContratoVenda ctrlCCV = new ControleConsultarContratoVenda();
+        ControleVenda ctrlCCV = new ControleVenda();
 
         int i = cbContratosEmAberto.getSelectedIndex();
         Contrato_Venda contrato = contratos.get(i);
@@ -303,7 +302,7 @@ public class Tela_Consulta_Contrato_Venda extends javax.swing.JFrame {
 
         System.out.println("id" + id);
 
-        if (ctrlCCV.fecharContratoEmAberto(id)) {
+        if (ctrlCCV.FecharEmAberto(id)) {
             JOptionPane.showMessageDialog(null, "Contrato Fechado com sucesso! Contrato salvo no .PDF na pasta padrão.", "Aviso", 2);
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao editar contrato!", "Erro", 0);

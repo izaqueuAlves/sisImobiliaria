@@ -1,6 +1,6 @@
 package classesControle;
 
-import classesEntidade.Administrador;
+import classesEntidade.Adm;
 import classesEntidade.Endereco;
 import classesEntidade.Imovel;
 import classesEntidade.Cliente;
@@ -26,7 +26,7 @@ public class ControleImovel {
      * @param endereco
      * @param admLogado
      **/
-    void cadastrarImovel(String CPF_proprietario, float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, String descricao, float valorCompra, float valorAluguel, int situacao_Imovel, Tipo_Imovel tipo_imovel, Endereco endereco, Administrador admLogado) {
+    void Cadastrar(String CPF_proprietario, float area, int numQuartos, int numBanheiros, int numSuites, int vagasGaragem, String descricao, float valorCompra, float valorAluguel, int situacao_Imovel, Tipo_Imovel tipo_imovel, Endereco endereco, Adm admLogado) {
         Cliente cliente_proprietario = new Cliente();
 
         cliente_proprietario = cliente_proprietario.BuscarProprietario(CPF_proprietario);
@@ -48,7 +48,7 @@ public class ControleImovel {
         novoImovel.setTipo_imovel(tipo_imovel);
 
         try {
-            novoImovel.cadastrarImovel(novoImovel);
+            novoImovel.Cadastrar(novoImovel);
             //Mensagem de Imovel cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
@@ -57,10 +57,9 @@ public class ControleImovel {
 
     }
 
-    public void cadastrarImovel2(Imovel i) {
+    public boolean Cadastrar(Imovel i) {
         // castra imovel
-        i.cadastrarImovel(i);
-
+        return i.Cadastrar(i);
     }
 
 }

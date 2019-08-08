@@ -12,11 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Query;
 
-/**
- *
- * @author Izaqueu
- *
- */
 @Entity
 public class Imovel {
 
@@ -38,10 +33,8 @@ public class Imovel {
     @OneToOne
     private Endereco endereco;
     @ManyToOne
-    private Administrador adm;
+    private Adm adm;
 
-    // Funcoes contrutoras Imovel
-    //Construtor Vazio
     public Imovel() {
 
     }
@@ -171,17 +164,11 @@ public class Imovel {
         this.endereco = endereco;
     }
 
-    public void setAdm(Administrador adm) {
+    public void setAdm(Adm adm) {
         this.adm = adm;
     }
 
-    /*
-     Fim Gets e Sets Gerados Automaticamente
-     */
-    /*
-     Inicio Funções Classe Imovel
-     */
-    public boolean cadastrarImovel(Imovel imovel) {
+    public boolean Cadastrar(Imovel imovel) {
         // ABRE A CONEXAO
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
@@ -202,7 +189,7 @@ public class Imovel {
         return retorno;
     }
 
-    public boolean editarImovel(Imovel imovel) {
+    public boolean Editar(Imovel imovel) {
         // ABRE A CONEXAO
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
@@ -226,7 +213,7 @@ public class Imovel {
 
     }
 
-    public boolean removerImovel(Integer id_imovel) {
+    public boolean Remover(Integer id_imovel) {
 
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
@@ -251,7 +238,7 @@ public class Imovel {
         return retorno;
     }
 
-    public Imovel getImovelById(Integer id_imovel) {
+    public Imovel GetPorId(Integer id_imovel) {
         EntityManager em = new Connect().getConexao();
         Imovel im = null;
         try {
@@ -268,7 +255,7 @@ public class Imovel {
 
     // alterar no diagrama de classe, parametro e retorno
 
-    public List<Imovel> buscarImovel(String nome) {
+    public List<Imovel> Buscar(String nome) {
 
         EntityManager em = new Connect().getConexao();
         List<Imovel> imoveis = null;
@@ -292,7 +279,7 @@ public class Imovel {
 
     // retorna uma lista com todos os imoveis disponiveis para venda (situacao: DISPONIVEL_VENDA; DISPONIVEL_VENDA_ALUGUEL)
 
-    public List<Imovel> getImoveisVenda() {
+    public List<Imovel> GetVenda() {
 
         EntityManager em = new Connect().getConexao();
         List<Imovel> imoveis = null;
@@ -313,7 +300,7 @@ public class Imovel {
     }
 
     // retorna uma lista com todos os imoveis disponiveis para aluguel (situacao: DISPONIVEL_ALUGUEL; DISPONIVEL_VENDA_ALUGUEL)
-    public List<Imovel> getImoveisAluguel() {
+    public List<Imovel> GetAluguel() {
 
         EntityManager em = new Connect().getConexao();
         List<Imovel> imoveis = null;
@@ -333,7 +320,7 @@ public class Imovel {
         return imoveis;
     }
 
-    public List<Imovel> getTodosImoveis() {
+    public List<Imovel> GetTodos() {
 
         EntityManager em = new Connect().getConexao();
         List<Imovel> imoveis = null;
@@ -352,7 +339,7 @@ public class Imovel {
      // no diagrama o parametro é um objeto, porem acho q fica melhor colocar como apenas o cpf, ja que o metodo busca o nome proprietatio
     // no banco, caso exista ele substitui; #izaqueu
 
-    public boolean alterarProprietario(String cpf_proprietario, Integer id_imovel) {
+    public boolean AlterarProprietario(String cpf_proprietario, Integer id_imovel) {
         Cliente p = new Cliente();
         Imovel im = new Imovel();
 
@@ -360,9 +347,9 @@ public class Imovel {
 
         // proprietario encontrado
         if (p != null) {
-            im = im.getImovelById(id_imovel);
+            im = im.GetPorId(id_imovel);
             im.setProprietario(p);
-            im.editarImovel(im);
+            im.Editar(im);
             return true;
         } else {
             return false;

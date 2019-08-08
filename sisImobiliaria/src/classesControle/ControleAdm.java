@@ -1,6 +1,6 @@
 package classesControle;
 
-import classesEntidade.Administrador;
+import classesEntidade.Adm;
 
 public class ControleAdm {
 
@@ -15,7 +15,7 @@ public class ControleAdm {
      * @param telefone
      **/
     void Cadastrar(String login, String email, String nome, String telefone) {
-        Administrador adm = new Administrador();
+        Adm adm = new Adm();
         adm.setLogin(login);
         adm.setEmail(email);
         adm.setNomeCompleto(nome);
@@ -28,13 +28,12 @@ public class ControleAdm {
         }
     }
 
-    public boolean Cadastrar(Administrador adm) {
+    public boolean Cadastrar(Adm adm) {
         return adm.Cadastrar(adm);
     }
 
     public boolean Login(String login, String senha) {
-
-        Administrador adm = new Administrador();
+        Adm adm = new Adm();
         adm = adm.BuscarPorLogin(login);
 
         if (adm != null) {

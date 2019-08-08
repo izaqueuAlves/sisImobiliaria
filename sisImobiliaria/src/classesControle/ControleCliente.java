@@ -14,9 +14,10 @@ public class ControleCliente {
     * @param telefone
     * @param email
     **/
-    public void Cadastrar(String CPF, String nomeCompleto, String telefone, String email) {
+    public boolean Cadastrar(String CPF, String nomeCompleto, String telefone, String email) {
         Cliente cliente = new Cliente();
         cliente = new Cliente();
+        boolean retorno = false;
 
         cliente.setCpf(CPF);
         cliente.setNomeCompleto(nomeCompleto);
@@ -25,15 +26,18 @@ public class ControleCliente {
 
         try {
             cliente.Cadastrar(cliente);
+            retorno = true;
             //Mensagem de Adm cadastrado com sucesso!
         } catch (Error e) {
             e.printStackTrace();
             //Mandar mensagem de erro para a tela
         }
+        
+        return retorno;
     }
 
     public boolean Cadastrar(Cliente cliente) {
-        return cliente.Cadastrar(cliente);
+        return Cadastrar(cliente.getCpf(), cliente.getNomeCompleto(),cliente.getTelefone(),cliente.getEmail());
     }
 
     /**

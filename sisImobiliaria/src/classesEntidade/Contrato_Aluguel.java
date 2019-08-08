@@ -20,7 +20,7 @@ public class Contrato_Aluguel {
     private String dataFechamento;
     private String dataInicio;
     private String dataFim;
-    private Situacao_Contrato situacao_contrato;
+    private Situacao_Contrato situacao;
 
     @ManyToOne
     private Cliente cliente_locatario;
@@ -115,15 +115,15 @@ public class Contrato_Aluguel {
     }
 
     public Situacao_Contrato getSituacao_contrato() {
-        return situacao_contrato;
+        return situacao;
     }
 
     public void setSituacao_contrato(Situacao_Contrato situacao_contrato) {
-        this.situacao_contrato = situacao_contrato;
+        this.situacao = situacao_contrato;
     }
 
      //O objeto é a ser tratado nas func abaixo é próprio contrato (this)
-    public boolean abrirContrato() {
+    public boolean Abrir() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -145,7 +145,7 @@ public class Contrato_Aluguel {
     // fechar contrato, alterar contato e cancelar contrato os metodos sao iguais a alteração sera apenas na situação do contrato
     // onde será feita no na classe controle. #izaqueu
 
-    public boolean fecharContrato() {
+    public boolean Fechar() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -164,7 +164,7 @@ public class Contrato_Aluguel {
         return retorno;
     }
 
-    public boolean alterarContratoEmAberto() {
+    public boolean AlterarEmAberto() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -183,7 +183,7 @@ public class Contrato_Aluguel {
         return retorno;
     }
 
-    public boolean cancelarContratoEmAberto() {
+    public boolean CancelarEmAberto() {
         EntityManager em = new Connect().getConexao();
         boolean retorno = false;
 
@@ -202,7 +202,7 @@ public class Contrato_Aluguel {
         return retorno;
     }
 
-    public List<Contrato_Aluguel> getContratosAluguel() {
+    public List<Contrato_Aluguel> GetTodos() {
         EntityManager em = new Connect().getConexao();
         List<Contrato_Aluguel> contratos_aluguel = null;
 
@@ -220,7 +220,7 @@ public class Contrato_Aluguel {
 
    // contratos virgentes são os contratos que estao em aberto e tem a data final do contrato maior que a data atual, ou seja ainda vai vencer. #izaqueu
     // PS: as datas devem estar no formato DD/MM/AAAA . para o metodo abaixo funcionar.
-    public List<Contrato_Aluguel> getContratosVigentes() {
+    public List<Contrato_Aluguel> GetVigentes() {
         EntityManager em = new Connect().getConexao();
         List<Contrato_Aluguel> contratos_vigentes = null;
 
@@ -236,7 +236,7 @@ public class Contrato_Aluguel {
         return contratos_vigentes;
     }
 
-    public Contrato_Aluguel consultarContrato(int id_contrato) {
+    public Contrato_Aluguel Consultar(int id_contrato) {
         EntityManager em = new Connect().getConexao();
         Contrato_Aluguel contrato = null;
 

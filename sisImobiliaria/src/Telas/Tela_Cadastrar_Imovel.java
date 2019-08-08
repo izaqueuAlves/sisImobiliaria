@@ -359,7 +359,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         if (endereco.Cadastrar(endereco)) {
             Imovel im = new Imovel();
             Tipo_Imovel ti = new Tipo_Imovel();
-            ti = ti.buscarTipo_ImovelPorNome(tipo_imovel.getSelectedItem().toString());
+            ti = ti.BuscarPorNome(tipo_imovel.getSelectedItem().toString());
 
             im.setArea(Float.parseFloat(area.getText()));
             im.setDescricao(descricao.getText());
@@ -375,7 +375,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
             im.setValorAluguel(Float.parseFloat(valor_Aluguel.getText()));
             im.setValorCompra(Float.parseFloat(valor_Compra.getText()));
 
-            if (im.cadastrarImovel(im)) {
+            if (im.Cadastrar(im)) {
                 JOptionPane.showMessageDialog(null, "Imóvel cadastrado com sucesso!", "Aviso", 2);
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar imóvel", "Erro", 0);
@@ -390,7 +390,7 @@ public class Tela_Cadastrar_Imovel extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tipo_Imovel ti = new Tipo_Imovel();
 
-        for (Tipo_Imovel t : ti.buscarTipo()) {
+        for (Tipo_Imovel t : ti.Buscar()) {
             tipo_imovel.addItem(t.getNome());
         }
     }//GEN-LAST:event_descricaoFocusGained
